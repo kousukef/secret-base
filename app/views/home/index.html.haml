@@ -1,2 +1,101 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.erb
+%nav.navbar.navbar-expand-md.navbar-light.bg-light.sticky-top
+  .container-fluid
+    = link_to image_tag("logo.jpeg"), root_path, class: 'navbar-brand'
+    %button.navnar-toggler{type: 'button', data: {toggle: 'collapse', target: '#navbarResponsive'}}
+      %span.navbar-toggler-icon
+    .collapse.navbar-collapse#navbarResponsive
+      %ul.navbar-nav.ml-auto
+        %li.nav-item.active
+          = link_to 'Home', root_path, class: 'nav-link'
+        %li.nav-item
+          = link_to 'About', '#', class: 'nav-link'
+        %li.nav-item
+          = link_to 'Signin', '#', class: 'nav-link'
+        %li.nav-item
+          = link_to 'Signup', '#', class: 'nav-link'
+
+/slide
+.carousel.slide#slides{data: {ride: 'carousel'}}
+  %ul.carousel-indicators
+    %li.active{data: {target: '#slides', slide: {to: '0'}}}
+    %li{data: {target: '#slides', slide: {to: '1'}}}
+    %li{data: {target: '#slides', slide: {to: '2'}}}
+  .carousel-inner
+    .carousel-item.active
+      = image_tag("slide0.jpg")
+      .carousel-caption
+        %h1.display-2
+          Secret Base
+        %h3
+          there are what you want 
+        %button.btn.btn-outline-light.btn-lg
+          What You Can Do
+        %button.btn.btn-primary.btn-lg
+          get started
+    .carousel-item
+      = image_tag("slide1.jpg")
+    .carousel-item
+      = image_tag("slide2.jpg")
+          
+/jumbotron
+.container-fluid
+  .row.jumbotron
+    .col-xs-12.col-sm-12.col-md-9.col-lg-9.col-xl-10
+      %p.lead
+        aaaaaaaaaaa
+    .col-xs-12.col-sm-12.col-md-3.col-lg-3.col-xl-2
+      = link_to 'Link', '#', type: 'button', class: 'btn btn-outline-secondary btn-lg'
+      
+/welcome section
+.container-fluid.padding
+  .row.welcome.text-center
+    .col-12
+      %h1.display-4
+        What You Can Do
+    %hr.my-4
+    .col-12
+      %p.lead
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+/some column section
+.container-fluid.padding
+  .row.text-center.padding
+    .col-xs-12.col-sm-6.col-md-4
+      %i.fas.fa-code
+      %h3
+        aaaa
+      %p  aaaaaaaa
+    .col-xs-12.col-sm-6.col-md-4
+      %i.fas.fa-code
+      %h3
+        aaaa
+      %p  aaaaaaaa
+    .col-sm-12.col-md-4
+      %i.fas.fa-code
+      %h3
+        aaaa
+      %p  aaaaaaaa
+        
+  %hr.my-4
+
+/tow column section
+.container-fluid.padding
+  .row.padding
+    .col-md-12.col-lg-6
+      %h2
+        If You Use This Site...
+      %p
+      aaaaaaaaaaa
+    .col-lg-6
+      = image_tag 'default.png', class: 'img-fluid'
+
+
+/footer
+%footer
+  .container-fluid.padding
+    .row.text-center
+      .col-md-12
+        = image_tag 'logo.jpeg'
+        %hr.light
+        %p
+          &= 'secret.base.of.tku@gmail.com'
