@@ -1,0 +1,516 @@
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (19.8ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (22.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime, "unconfirmed_email" varchar, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" varchar, "locked_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_image" varchar)[0m
+  [1m[35m (20.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (19.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (21.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (19.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id" FROM "products"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","product_image","created_at","updated_at","user_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id" FROM "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproducts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (12.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (13.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200427044100)[0m
+  [1m[35m (15.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200425120459),
+(20200426050116);
+
+[0m
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2020-04-27 05:29:32.699272"], ["updated_at", "2020-04-27 05:29:32.699272"]]
+  [1m[35m (13.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "ad9cba5247bf7cdf400a09c1e09b315e3997edf4"], ["created_at", "2020-04-27 05:29:32.715729"], ["updated_at", "2020-04-27 05:29:32.715729"]]
+  [1m[35m (12.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example1@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example3@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example4@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example1@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example3@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example4@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example1@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (4.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Julietta Daugherty MD"], ["email", "example1@tku.ac.jp"], ["encrypted_password", "$2a$04$etb/jj.7tB6.YJAh3.cDReiGQQt25pEOj190Z4KKRHLYZvRjmayQC"], ["confirmation_token", "siGsQJxrP-KiRNVY2mrS"], ["confirmation_sent_at", "2020-04-27 05:47:49.766816"], ["created_at", "2020-04-27 05:47:49.766679"], ["updated_at", "2020-04-27 05:47:49.766679"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 7.2ms | Allocations: 1159)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 17.0ms
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ms. Felipe Cruickshank"], ["email", "example2@tku.ac.jp"], ["encrypted_password", "$2a$04$d2PPRZQbA85KGFPefKZnJOFRAWeHAYWRTjjo6cvabEdyTZqaD/YeO"], ["confirmation_token", "MknZTDzZaTgbGph_wLuN"], ["confirmation_sent_at", "2020-04-27 05:47:49.809831"], ["created_at", "2020-04-27 05:47:49.809763"], ["updated_at", "2020-04-27 05:47:49.809763"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 208)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.0ms
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example3@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Devon Armstrong"], ["email", "example3@tku.ac.jp"], ["encrypted_password", "$2a$04$cI9RWgF2UPVLdogJhZCtJuTFFvpef5asvAud4C.KeJnui4g/6OlZ6"], ["confirmation_token", "tZqaa-5x3XNWkAwWNpEB"], ["confirmation_sent_at", "2020-04-27 05:47:49.817576"], ["created_at", "2020-04-27 05:47:49.817512"], ["updated_at", "2020-04-27 05:47:49.817512"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 208)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 0.9ms
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example4@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Phillip Powlowski"], ["email", "example4@tku.ac.jp"], ["encrypted_password", "$2a$04$ob0iNvsAxEYZKItrX6x2X.6qNPkMx7M1X7HMefnqX6dWVwqvW9OCS"], ["confirmation_token", "ZzpnTjvLyK8cfitSEGxu"], ["confirmation_sent_at", "2020-04-27 05:47:49.827284"], ["created_at", "2020-04-27 05:47:49.827233"], ["updated_at", "2020-04-27 05:47:49.827233"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 208)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 0.9ms
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example1@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Stevie Ritchie"], ["email", "example1@tku.ac.jp"], ["encrypted_password", "$2a$04$jVCfsb/e8Up8Gr4JecDZvuHZSi3KGNr2OU9VrPs93/8D1HoADwsIq"], ["confirmation_token", "xx43RHGkYLYz6A86pmFE"], ["confirmation_sent_at", "2020-04-27 05:48:04.113418"], ["created_at", "2020-04-27 05:48:04.113291"], ["updated_at", "2020-04-27 05:48:04.113291"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 1.5ms | Allocations: 983)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 4.9ms
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Lottie Torp"], ["email", "example2@tku.ac.jp"], ["encrypted_password", "$2a$04$CHws03Fu8Su8YO85TrMe4O37wFEPW9G6dWH4oJbYgV7q710d70nmG"], ["confirmation_token", "6pCRCxWfNMCfAmHFw6Jm"], ["confirmation_sent_at", "2020-04-27 05:48:04.135308"], ["created_at", "2020-04-27 05:48:04.135240"], ["updated_at", "2020-04-27 05:48:04.135240"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 208)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.1ms
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example3@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Annie Watsica"], ["email", "example3@tku.ac.jp"], ["encrypted_password", "$2a$04$No8W.PF2Aou5LvUKMm7VzO7v15BMOF1KMEoOAIT5nHg.twgHOGW4K"], ["confirmation_token", "8nC162Hu1ESQ_YfQ1pS8"], ["confirmation_sent_at", "2020-04-27 05:48:04.143188"], ["created_at", "2020-04-27 05:48:04.143134"], ["updated_at", "2020-04-27 05:48:04.143134"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 208)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.1ms
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example4@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Stephan Koelpin I"], ["email", "example4@tku.ac.jp"], ["encrypted_password", "$2a$04$IHKr5Hr9IH7ktHhZW4JB0uIPzPWmvcLWKLJtVVuuCiaAGFWsZyefu"], ["confirmation_token", "LL6TcdQT2bYz3UaevxmE"], ["confirmation_sent_at", "2020-04-27 05:48:04.151096"], ["created_at", "2020-04-27 05:48:04.151037"], ["updated_at", "2020-04-27 05:48:04.151037"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 208)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.1ms
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example1@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Xochitl Emard"], ["email", "example1@tku.ac.jp"], ["encrypted_password", "$2a$04$sFxSfZh2hgznkijVR9NVWeoEEh/SKp9v0bvJN/0JpQ3A/74GGlmjG"], ["confirmation_token", "KMYXUbZ4-Nu5qFe-J2fa"], ["confirmation_sent_at", "2020-04-27 05:58:17.155464"], ["created_at", "2020-04-27 05:58:17.155333"], ["updated_at", "2020-04-27 05:58:17.155333"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 1.6ms | Allocations: 983)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 5.1ms
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Clay Lubowitz"], ["email", "example2@tku.ac.jp"], ["encrypted_password", "$2a$04$xgD5l19k7J16KuXY82lDBeyRkfq1kBAIUnKwe/V7eah9dPn.4qlx."], ["confirmation_token", "A1rbh7ezqXQmoVXbqs_e"], ["confirmation_sent_at", "2020-04-27 05:58:17.178022"], ["created_at", "2020-04-27 05:58:17.177945"], ["updated_at", "2020-04-27 05:58:17.177945"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.4ms | Allocations: 208)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.2ms
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example3@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Zachary Mohr V"], ["email", "example3@tku.ac.jp"], ["encrypted_password", "$2a$04$ko.ooCZq6xnN06jimvoymu8RHJF3OCR36NhA8VfCdekH.zMLkPBAu"], ["confirmation_token", "1zWXaJfGcsQgVgxWMmPP"], ["confirmation_sent_at", "2020-04-27 05:58:17.186432"], ["created_at", "2020-04-27 05:58:17.186373"], ["updated_at", "2020-04-27 05:58:17.186373"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 208)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.1ms
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example4@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Eli Smith"], ["email", "example4@tku.ac.jp"], ["encrypted_password", "$2a$04$yB1dJ61sB.jYiUj3wvSpk.e5Wdbyh5lZLXHXuzuheHAmEaTkYPS3W"], ["confirmation_token", "hrzCpy4DE5RizaDyPt8r"], ["confirmation_sent_at", "2020-04-27 05:58:17.194638"], ["created_at", "2020-04-27 05:58:17.194583"], ["updated_at", "2020-04-27 05:58:17.194583"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 208)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.0ms
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example1@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mr. Jamaal Shields"], ["email", "example1@tku.ac.jp"], ["encrypted_password", "$2a$04$n63OhnBFQRL/FHkuvSMnwu7D0sb.Pqo.KgXLZS034JOmVwCY2MzrG"], ["confirmation_token", "QU4yJd-NvXTUyR9Wuxc6"], ["confirmation_sent_at", "2020-04-27 06:00:43.540856"], ["created_at", "2020-04-27 06:00:43.540720"], ["updated_at", "2020-04-27 06:00:43.540720"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 1.5ms | Allocations: 983)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 4.9ms
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mandi Kuhic"], ["email", "example2@tku.ac.jp"], ["encrypted_password", "$2a$04$AOL5s6d32Kh3j370wArV5O8TwwnndqFA4/qpYlzLYuUnEqAHoYFX."], ["confirmation_token", "iepDBxYgJAbebsxxPCGF"], ["confirmation_sent_at", "2020-04-27 06:00:43.563235"], ["created_at", "2020-04-27 06:00:43.563166"], ["updated_at", "2020-04-27 06:00:43.563166"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 208)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.1ms
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example3@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Fredrick Trantow II"], ["email", "example3@tku.ac.jp"], ["encrypted_password", "$2a$04$fJshijtrOc3v2DO5ojWQqeGOO2Z4r46gVQFr65SrT8xqrTomZ8OLS"], ["confirmation_token", "tRjyEW3qYzg47RjrD3Pz"], ["confirmation_sent_at", "2020-04-27 06:00:43.571245"], ["created_at", "2020-04-27 06:00:43.571176"], ["updated_at", "2020-04-27 06:00:43.571176"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 208)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.0ms
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example4@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Karmen Bins"], ["email", "example4@tku.ac.jp"], ["encrypted_password", "$2a$04$eXNMMNt8BOmJ4CK.ZaSjtOIKWOJKPRMLmlZue3s1SCkfPGiU06b5W"], ["confirmation_token", "oiC_tZEwu1eK5A4szzE7"], ["confirmation_sent_at", "2020-04-27 06:00:43.579281"], ["created_at", "2020-04-27 06:00:43.579224"], ["updated_at", "2020-04-27 06:00:43.579224"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 208)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.0ms
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example1@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dr. Deedee Torp"], ["email", "example1@tku.ac.jp"], ["encrypted_password", "$2a$04$920m14QHQpXWS8.byUwjM..BuY6CAWYo3nLuSB/4CSywtKwSUKDfW"], ["confirmation_token", "5zvsGQahVxeipUzyzSaz"], ["confirmation_sent_at", "2020-04-27 06:08:16.458088"], ["created_at", "2020-04-27 06:08:16.457965"], ["updated_at", "2020-04-27 06:08:16.457965"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 1.1ms | Allocations: 552)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 8.6ms
+Delivered mail 5ea676d0757c1_233c2ac74e89395c869fd@ip-172-31-32-131.mail (10.9ms)
+Date: Mon, 27 Apr 2020 06:08:16 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: example1@tku.ac.jp
+Message-ID: <5ea676d0757c1_233c2ac74e89395c869fd@ip-172-31-32-131.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome example1@tku.ac.jp!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/confirmation?confirmation_token=5zvsGQahVxeipUzyzSaz">Confirm my account</a></p>
+
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dannette Kerluke DDS"], ["email", "example2@tku.ac.jp"], ["encrypted_password", "$2a$04$Yv9SB14O8/CJkP7Y6IR7UOgbbM.5kbTeH.ISWUFH6YEKQyAA6Yw/a"], ["confirmation_token", "roS3-wKtvqgGxNKhxQ3S"], ["confirmation_sent_at", "2020-04-27 06:08:16.494431"], ["created_at", "2020-04-27 06:08:16.494361"], ["updated_at", "2020-04-27 06:08:16.494361"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.2ms | Allocations: 85)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.3ms
+Delivered mail 5ea676d079aaf_233c2ac74e89395c870cf@ip-172-31-32-131.mail (1.4ms)
+Date: Mon, 27 Apr 2020 06:08:16 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: example2@tku.ac.jp
+Message-ID: <5ea676d079aaf_233c2ac74e89395c870cf@ip-172-31-32-131.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome example2@tku.ac.jp!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/confirmation?confirmation_token=roS3-wKtvqgGxNKhxQ3S">Confirm my account</a></p>
+
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example3@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Vicenta Schmeler"], ["email", "example3@tku.ac.jp"], ["encrypted_password", "$2a$04$Uu2d9BERRY9B8qB0QsKedu3//2Vy5ByujcSFbdbDaRSmh169x8HCm"], ["confirmation_token", "2sxsbGnqMLGiqDSFin4G"], ["confirmation_sent_at", "2020-04-27 06:08:16.504654"], ["created_at", "2020-04-27 06:08:16.504584"], ["updated_at", "2020-04-27 06:08:16.504584"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.2ms | Allocations: 85)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.2ms
+Delivered mail 5ea676d07c244_233c2ac74e89395c871e@ip-172-31-32-131.mail (1.3ms)
+Date: Mon, 27 Apr 2020 06:08:16 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: example3@tku.ac.jp
+Message-ID: <5ea676d07c244_233c2ac74e89395c871e@ip-172-31-32-131.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome example3@tku.ac.jp!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/confirmation?confirmation_token=2sxsbGnqMLGiqDSFin4G">Confirm my account</a></p>
+
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example4@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Wiley Monahan"], ["email", "example4@tku.ac.jp"], ["encrypted_password", "$2a$04$4UHgcZbuw//gaYbj1LP9PuooJbpwFrH7.2EUh1yoqfWquuSdLaIY."], ["confirmation_token", "MRsirSJTCbr49LsAByPe"], ["confirmation_sent_at", "2020-04-27 06:08:16.518597"], ["created_at", "2020-04-27 06:08:16.518534"], ["updated_at", "2020-04-27 06:08:16.518534"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.2ms | Allocations: 85)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.2ms
+Delivered mail 5ea676d07f8ee_233c2ac74e89395c872e5@ip-172-31-32-131.mail (1.3ms)
+Date: Mon, 27 Apr 2020 06:08:16 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: example4@tku.ac.jp
+Message-ID: <5ea676d07f8ee_233c2ac74e89395c872e5@ip-172-31-32-131.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome example4@tku.ac.jp!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/confirmation?confirmation_token=MRsirSJTCbr49LsAByPe">Confirm my account</a></p>
+
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example1@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Marcia Pfeffer"], ["email", "example1@tku.ac.jp"], ["encrypted_password", "$2a$04$7Pn4HifwCHn/0YSTWcn7Q.a8MC7CDzoY4x4Y7ggcmfbqHuOm1z9zG"], ["confirmation_token", "YxW4nsRbZF1hFZzrvru1"], ["confirmation_sent_at", "2020-04-27 06:09:34.244088"], ["created_at", "2020-04-27 06:09:34.243947"], ["updated_at", "2020-04-27 06:09:34.243947"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 1.1ms | Allocations: 552)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 4.8ms
+Delivered mail 5ea6771e3f7a7_242f2ae8738399702167c@ip-172-31-32-131.mail (2.8ms)
+Date: Mon, 27 Apr 2020 06:09:34 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: example1@tku.ac.jp
+Message-ID: <5ea6771e3f7a7_242f2ae8738399702167c@ip-172-31-32-131.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome example1@tku.ac.jp!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/confirmation?confirmation_token=YxW4nsRbZF1hFZzrvru1">Confirm my account</a></p>
+
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example2@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Kory Abernathy"], ["email", "example2@tku.ac.jp"], ["encrypted_password", "$2a$04$wcuW3gxhxKa/VEEI2YMOxeo9.nR4t1cazRlmGCDIUmiJ4868ITCfO"], ["confirmation_token", "K4hGyP_KsS53gtcHuWDk"], ["confirmation_sent_at", "2020-04-27 06:09:34.310689"], ["created_at", "2020-04-27 06:09:34.310612"], ["updated_at", "2020-04-27 06:09:34.310612"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.3ms | Allocations: 89)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.4ms
+Delivered mail 5ea6771e4cd9b_242f2ae87383997021741@ip-172-31-32-131.mail (1.4ms)
+Date: Mon, 27 Apr 2020 06:09:34 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: example2@tku.ac.jp
+Message-ID: <5ea6771e4cd9b_242f2ae87383997021741@ip-172-31-32-131.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome example2@tku.ac.jp!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/confirmation?confirmation_token=K4hGyP_KsS53gtcHuWDk">Confirm my account</a></p>
+
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example3@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Lanny Medhurst"], ["email", "example3@tku.ac.jp"], ["encrypted_password", "$2a$04$T4fC.X5pAKS1fP.JitPGMO5lqwOJo9TayNez4TNz68GDHyDnOGiPe"], ["confirmation_token", "ah9amu4yxdYA9fH8v1oU"], ["confirmation_sent_at", "2020-04-27 06:09:34.322235"], ["created_at", "2020-04-27 06:09:34.322175"], ["updated_at", "2020-04-27 06:09:34.322175"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.2ms | Allocations: 85)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.1ms
+Delivered mail 5ea6771e4f8ea_242f2ae87383997021846@ip-172-31-32-131.mail (1.3ms)
+Date: Mon, 27 Apr 2020 06:09:34 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: example3@tku.ac.jp
+Message-ID: <5ea6771e4f8ea_242f2ae87383997021846@ip-172-31-32-131.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome example3@tku.ac.jp!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/confirmation?confirmation_token=ah9amu4yxdYA9fH8v1oU">Confirm my account</a></p>
+
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example4@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Teodoro Bins"], ["email", "example4@tku.ac.jp"], ["encrypted_password", "$2a$04$OZdnnIbtsm3iopJuAnwqm.X60y6mEmm9GcQQE1Rgng3AaoByyJFPq"], ["confirmation_token", "5sGAkx1R4S3XWYx_rEgX"], ["confirmation_sent_at", "2020-04-27 06:09:34.332837"], ["created_at", "2020-04-27 06:09:34.332775"], ["updated_at", "2020-04-27 06:09:34.332775"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 0.2ms | Allocations: 85)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 1.1ms
+Delivered mail 5ea6771e521dd_242f2ae873839970219d7@ip-172-31-32-131.mail (1.3ms)
+Date: Mon, 27 Apr 2020 06:09:34 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: example4@tku.ac.jp
+Message-ID: <5ea6771e521dd_242f2ae873839970219d7@ip-172-31-32-131.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome example4@tku.ac.jp!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/confirmation?confirmation_token=5sGAkx1R4S3XWYx_rEgX">Confirm my account</a></p>
+
+  [1m[35m (2.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m

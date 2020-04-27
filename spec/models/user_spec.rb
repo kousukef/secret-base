@@ -6,8 +6,8 @@ RSpec.describe User, type: :model do
   describe 'validattion' do
       it 'should be invalid without user name' do
         user.name = ''
-        user.valid?
-        expect(user.errors.messages[:name]).to include('名前が入力されていません')
+        expect(user).not_to be_valid?
       end
+      
   end
 end

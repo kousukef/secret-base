@@ -32,7 +32,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -62,7 +62,7 @@ Rails.application.configure do
   
   config.hosts.clear
   
-  config.action_mailer.default_url_options = { protocol: 'https' , host: 'https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com' }
+  config.action_mailer.default_url_options = { protocol: 'https' , host: '8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com' }
 
   Dotenv::Railtie.load
   config.action_mailer.delivery_method = :smtp
