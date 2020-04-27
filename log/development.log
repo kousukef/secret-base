@@ -2529,3 +2529,80 @@ FOREIGN KEY ("user_id")
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "ad9cba5247bf7cdf400a09c1e09b315e3997edf4"], ["created_at", "2020-04-27 05:36:03.254891"], ["updated_at", "2020-04-27 05:36:03.254891"]]
   [1m[35m (12.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 111.239.189.89 at 2020-04-27 06:15:38 +0000
+Cannot render console from 111.239.189.89! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 888.3ms | Allocations: 1386800)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 933ms (Views: 921.2ms | ActiveRecord: 0.0ms | Allocations: 1399991)
+
+
+Started GET "/" for 111.239.189.89 at 2020-04-27 06:15:40 +0000
+Cannot render console from 111.239.189.89! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 4.7ms | Allocations: 3011)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.6ms | ActiveRecord: 0.0ms | Allocations: 7615)
+
+
+Started GET "/" for 111.239.189.89 at 2020-04-27 06:16:24 +0000
+Cannot render console from 111.239.189.89! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 4.6ms | Allocations: 3006)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms | Allocations: 7613)
+
+
+Started GET "/" for 111.239.189.89 at 2020-04-27 06:16:29 +0000
+Cannot render console from 111.239.189.89! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 4.5ms | Allocations: 3003)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms | Allocations: 7595)
+
+
+Started GET "/" for 111.239.189.89 at 2020-04-27 06:18:14 +0000
+Cannot render console from 111.239.189.89! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 19.4ms | Allocations: 21551)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 35.7ms | ActiveRecord: 0.0ms | Allocations: 33078)
+
+
+Started GET "/" for 111.239.189.89 at 2020-04-27 06:18:19 +0000
+Cannot render console from 111.239.189.89! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 4.7ms | Allocations: 3031)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.0ms | Allocations: 7633)
+
+
+Started GET "/users/sign_in" for 111.239.189.89 at 2020-04-27 06:18:21 +0000
+Cannot render console from 111.239.189.89! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_links.html.erb (Duration: 1.8ms | Allocations: 847)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 304.6ms | Allocations: 186069)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 339ms (Views: 315.6ms | ActiveRecord: 1.3ms | Allocations: 206847)
+
+
+Started GET "/users/sign_up" for 111.239.189.89 at 2020-04-27 06:18:26 +0000
+Cannot render console from 111.239.189.89! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_error_messages.html.erb (Duration: 0.9ms | Allocations: 213)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 252)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 6.9ms | Allocations: 2114)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 15.4ms | ActiveRecord: 0.0ms | Allocations: 7835)
+
+

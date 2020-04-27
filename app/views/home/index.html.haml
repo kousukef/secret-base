@@ -10,9 +10,9 @@
         %li.nav-item
           = link_to 'About', '#', class: 'nav-link'
         %li.nav-item
-          = link_to 'Signin', '#', class: 'nav-link'
+          = link_to 'Signin', new_user_session_path, class: 'nav-link'
         %li.nav-item
-          = link_to 'Signup', '#', class: 'nav-link'
+          = link_to 'Signup', new_user_registration_path, class: 'nav-link'
 
 /slide
 .carousel.slide#slides{data: {ride: 'carousel'}}
