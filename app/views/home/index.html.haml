@@ -1,19 +1,3 @@
-%nav.navbar.navbar-expand-md.navbar-light.bg-light.sticky-top
-  .container-fluid
-    = link_to image_tag("logo.jpeg"), root_path, class: 'navbar-brand'
-    %button.navnar-toggler{type: 'button', data: {toggle: 'collapse', target: '#navbarResponsive'}}
-      %span.navbar-toggler-icon
-    .collapse.navbar-collapse#navbarResponsive
-      %ul.navbar-nav.ml-auto
-        %li.nav-item.active
-          = link_to 'Home', root_path, class: 'nav-link'
-        %li.nav-item
-          = link_to 'About', '#', class: 'nav-link'
-        %li.nav-item
-          = link_to 'Signin', new_user_session_path, class: 'nav-link'
-        %li.nav-item
-          = link_to 'Signup', new_user_registration_path, class: 'nav-link'
-
 /slide
 .carousel.slide#slides{data: {ride: 'carousel'}}
   %ul.carousel-indicators
@@ -31,7 +15,7 @@
         %button.btn.btn-outline-light.btn-lg
           What You Can Do
         %button.btn.btn-primary.btn-lg
-          get started
+          = link_to 'get started', new_product_path
     .carousel-item
       = image_tag("slide1.jpg")
     .carousel-item
@@ -89,13 +73,3 @@
     .col-lg-6
       = image_tag 'default.png', class: 'img-fluid'
 
-
-/footer
-%footer
-  .container-fluid.padding
-    .row.text-center
-      .col-md-12
-        = image_tag 'logo.jpeg'
-        %hr.light
-        %p
-          &= 'secret.base.of.tku@gmail.com'

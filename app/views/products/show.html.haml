@@ -1,0 +1,20 @@
+.container
+  = image_tag @product.product_image.url, class: 'figure-img img-fluid rounded mt-1', alt: 'product image'
+  %table.table
+    %tbody
+      %tr
+        %th{scope: 'row'}
+          商品名
+        %td
+          = @product.name
+      %tr
+        %th{scope: 'row'}
+          説明
+        %td
+          = @product.description
+      %tr
+        %th{scope: 'row'}
+          値段
+        %td
+          = @product.price
+      

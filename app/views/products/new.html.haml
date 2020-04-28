@@ -1,0 +1,12 @@
+.container 
+  = simple_form_for @product do |f|
+    .form-group
+      = f.input :name, label: '商品名', class: 'form-control'
+    .form-group
+      = f.input :description, class: 'form-control'
+    .form-group
+      = f.input :price, class: 'form-control-file'
+    .form-group
+      = f.input :product_image, as: :file
+    = f.button :submit, class: 'btn btn-primary'
+      

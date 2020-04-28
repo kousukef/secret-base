@@ -9,6 +9,8 @@ gem 'devise'
 gem 'hamlit'
 gem 'erb2haml'
 gem 'carrierwave', '~> 2.0'
+gem 'simple_form'
+gem 'jquery-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
