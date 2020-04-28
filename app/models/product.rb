@@ -5,4 +5,5 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
   validates :product_image, presence: true
+  belongs_to :product_category
 end

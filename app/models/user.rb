@@ -3,5 +3,5 @@ class User < ApplicationRecord
          :validatable,:confirmable, :lockable, :timeoutable, :trackable
    mount_uploader :user_image, UserImageUploader
    validates :name, presence: true, length: {maximum: 30}
-   has_many :products
+   has_many :products, dependent: :destroy
 end

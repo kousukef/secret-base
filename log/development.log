@@ -5520,3 +5520,850 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.0ms | Allocations: 8863)
 
 
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProductCategories (20200428171516)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "product_categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428171516"]]
+  [1m[35m (14.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAncestryToProductCategories (20200428171727)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "product_categories" ADD "ancestry" varchar[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_product_categories_on_ancestry" ON "product_categories" ("ancestry")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428171727"]]
+  [1m[35m (14.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddProductCategoryIdToProduct (20200428173009)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "products" ADD "product_category_id" integer[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "products"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddProductCategoryIdToProduct (20200428173009)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "products" ADD "product_category_id" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "products"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "aproducts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddProductCategoryIdToProduct (20200428173009)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id" FROM "products"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddProductCategoryIdToProduct (20200428173009)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "products" ADD "product_category_id" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428173009"]]
+  [1m[35m (11.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNullFalseToProducts (20200428173928)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "products"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "aproducts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNullFalseToProducts (20200428173928)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "products"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer DEFAULT 0, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "products"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer DEFAULT 0 NOT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNullFalseToProducts (20200428173928)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "products"[0m
+  [1m[35m (2.0ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428173928"]]
+  [1m[35m (13.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNullFalseToProducts (20200428173928)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[33mUPDATE "products" SET "product_category_id"=0 WHERE "product_category_id" IS NULL[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "products"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproducts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20200428173928"]]
+  [1m[35m (13.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNullFalseToProducts (20200428173930)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "products"[0m
+  [1m[35m (3.7ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproducts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428173930"]]
+  [1m[35m (13.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "product_categories"[0m
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "product_categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "ancestry" varchar)[0m
+  [1m[35m (15.1ms)[0m  [1m[35mCREATE  INDEX "index_product_categories_on_ancestry" ON "product_categories" ("ancestry")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL)[0m
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime, "unconfirmed_email" varchar, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" varchar, "locked_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_image" varchar)[0m
+  [1m[35m (17.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (15.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "products"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproducts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (12.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (16.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200428173930)[0m
+  [1m[35m (13.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200425120459),
+(20200426050116),
+(20200427044100),
+(20200428171516),
+(20200428171727),
+(20200428173009);
+
+[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-28 17:53:44.607814"], ["updated_at", "2020-04-28 17:53:44.607814"]]
+  [1m[35m (12.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "8c113d237ed6b2a3fa298aa5a8059abfbaf46c8a"], ["created_at", "2020-04-28 17:53:44.636582"], ["updated_at", "2020-04-28 17:53:44.636582"]]
+  [1m[35m (12.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "product_categories"[0m
+  [1m[35m (15.0ms)[0m  [1m[35mCREATE TABLE "product_categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "ancestry" varchar)[0m
+  [1m[35m (15.1ms)[0m  [1m[35mCREATE  INDEX "index_product_categories_on_ancestry" ON "product_categories" ("ancestry")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL)[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime, "unconfirmed_email" varchar, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" varchar, "locked_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_image" varchar)[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (14.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "products"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproducts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (17.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (14.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (16.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200428173930)[0m
+  [1m[35m (13.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200425120459),
+(20200426050116),
+(20200427044100),
+(20200428171516),
+(20200428171727),
+(20200428173009);
+
+[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-28 17:53:44.976499"], ["updated_at", "2020-04-28 17:53:44.976499"]]
+  [1m[35m (12.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.6ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2020-04-28 17:53:44.995012"], ["key", "environment"]]
+  [1m[35m (12.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "8c113d237ed6b2a3fa298aa5a8059abfbaf46c8a"], ["created_at", "2020-04-28 17:53:45.013793"], ["updated_at", "2020-04-28 17:53:45.013793"]]
+  [1m[35m (12.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+DEPRECATION WARNING: `Module#parent` has been renamed to `module_parent`. `parent` is deprecated and will be removed in Rails 6.1. (called from rescue in irb_binding at (irb):2)
+DEPRECATION WARNING: `Module#parent` has been renamed to `module_parent`. `parent` is deprecated and will be removed in Rails 6.1. (called from rescue in irb_binding at (irb):3)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "books"], ["created_at", "2020-04-28 18:03:51.044101"], ["updated_at", "2020-04-28 18:03:51.044101"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Load (0.2ms)[0m  [1m[34mSELECT "product_categories".* FROM "product_categories" ORDER BY "product_categories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "text-books"], ["created_at", "2020-04-28 18:06:05.371488"], ["updated_at", "2020-04-28 18:06:05.371488"], ["ancestry", "1"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Load (0.2ms)[0m  [1m[34mSELECT "product_categories".* FROM "product_categories" ORDER BY "product_categories"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "english"], ["created_at", "2020-04-28 18:08:04.149632"], ["updated_at", "2020-04-28 18:08:04.149632"], ["ancestry", "1/2"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "grammer"], ["created_at", "2020-04-28 18:09:24.389823"], ["updated_at", "2020-04-28 18:09:24.389823"], ["ancestry", "1/2/3"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "past"], ["created_at", "2020-04-28 18:10:11.028314"], ["updated_at", "2020-04-28 18:10:11.028314"], ["ancestry", "1/2/3/4"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (1.8ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "本"], ["created_at", "2020-04-28 18:11:42.426376"], ["updated_at", "2020-04-28 18:11:42.426376"]]
+  [1m[35m (13.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (1.5ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "教科書/参考書"], ["created_at", "2020-04-28 18:12:49.058268"], ["updated_at", "2020-04-28 18:12:49.058268"], ["ancestry", "1"]]
+  [1m[35m (13.2ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/products/1" for 111.239.188.27 at 2020-04-28 18:17:10 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:8:in `show'
+Completed 404 Not Found in 16ms (ActiveRecord: 0.8ms | Allocations: 5311)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=1):
+  
+app/controllers/products_controller.rb:8:in `show'
+Started GET "/" for 111.239.188.27 at 2020-04-28 18:17:27 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 385.8ms | Allocations: 309482)
+Completed 500 Internal Server Error in 391ms (ActiveRecord: 0.0ms | Allocations: 310911)
+
+
+  
+ActionView::Template::Error (couldn't find file 'popper' with type 'application/javascript'
+Checked in these paths: 
+  /home/ubuntu/environment/secret_base/app/assets/config
+  /home/ubuntu/environment/secret_base/app/assets/images
+  /home/ubuntu/environment/secret_base/app/assets/javascript
+  /home/ubuntu/environment/secret_base/app/assets/stylesheets
+  /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/jquery-rails-4.3.5/vendor/assets/javascripts
+  /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/actioncable-6.0.2.2/app/assets/javascripts
+  /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/activestorage-6.0.2.2/app/assets/javascripts
+  /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/actionview-6.0.2.2/lib/assets/compiled
+  /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/turbolinks-source-5.2.0/lib/assets/javascripts
+  /home/ubuntu/environment/secret_base/node_modules):
+     6:     %li{data: {target: '#slides', slide: {to: '2'}}}
+     7:   .carousel-inner
+     8:     .carousel-item.active
+     9:       = image_tag("slide0.jpg")
+    10:       .carousel-caption
+    11:         %h1.display-2
+    12:           Secret Base
+  
+app/assets/javascript/application.js:5
+app/views/home/index.html.haml:9
+Started GET "/" for 111.239.188.27 at 2020-04-28 18:20:27 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 1540.3ms | Allocations: 1090540)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.haml:12
+  Rendered layouts/_header.html.haml (Duration: 13.0ms | Allocations: 8462)
+  Rendered layouts/_footer.html.haml (Duration: 2.7ms | Allocations: 2797)
+Completed 200 OK in 1594ms (Views: 1591.8ms | ActiveRecord: 1.3ms | Allocations: 1114793)
+
+
+Started GET "/users/sign_up" for 111.239.188.27 at 2020-04-28 18:20:33 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 214)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_links.html.erb (Duration: 1.8ms | Allocations: 754)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 244.3ms | Allocations: 185335)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 1.1ms | Allocations: 745)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 280)
+Completed 200 OK in 276ms (Views: 257.9ms | ActiveRecord: 0.0ms | Allocations: 206881)
+
+
+Started POST "/users" for 111.239.188.27 at 2020-04-28 18:20:47 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"WrEl6rPXRgOvlagEMXntlJ7oRplEbIrcFzxwUR3Bq6UGHsJSMGPWw8B81PR8ocOxIvYe5eMAxvYtRNfqKkwupA==", "user"=>{"email"=>"example@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 223)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 205)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1422)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 1.1ms | Allocations: 738)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 280)
+Completed 200 OK in 185ms (Views: 14.4ms | ActiveRecord: 0.8ms | Allocations: 16246)
+
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@exmaple.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (9.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "example"], ["email", "example@exmaple.com"], ["encrypted_password", "$2a$11$5.AsdN8nMJw9jsN49nUZGe1RmQWChIF/vqey0deIhfmEmIAseDSz."], ["confirmation_token", "xFt8BGxb23gCaN4fjJcq"], ["confirmation_sent_at", "2020-04-28 18:23:01.520307"], ["created_at", "2020-04-28 18:23:01.520155"], ["updated_at", "2020-04-28 18:23:01.520155"]]
+  [1m[35m (23.5ms)[0m  [1m[36mcommit transaction[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 2.3ms | Allocations: 555)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 10.7ms
+Delivered mail 5ea87485997a0_35192b18dee7d95898024@ip-172-31-32-131.mail (2012.3ms)
+Date: Tue, 28 Apr 2020 18:23:01 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: example@exmaple.com
+Message-ID: <5ea87485997a0_35192b18dee7d95898024@ip-172-31-32-131.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome example@exmaple.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/confirmation?confirmation_token=xFt8BGxb23gCaN4fjJcq">Confirm my account</a></p>
+
+Started GET "/users/confirmation?confirmation_token=xFt8BGxb23gCaN4fjJcq" for 111.239.188.27 at 2020-04-28 18:23:08 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"xFt8BGxb23gCaN4fjJcq"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."confirmation_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["confirmation_token", "xFt8BGxb23gCaN4fjJcq"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["confirmed_at", "2020-04-28 18:23:08.479745"], ["updated_at", "2020-04-28 18:23:08.480090"], ["id", 1]]
+  [1m[35m (12.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/sign_in
+Completed 302 Found in 27ms (ActiveRecord: 14.1ms | Allocations: 7575)
+
+
+Started GET "/users/sign_in" for 111.239.188.27 at 2020-04-28 18:23:08 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 343)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1875)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 1.1ms | Allocations: 745)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 280)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.0ms | Allocations: 10033)
+
+
+Started POST "/users/sign_in" for 111.239.188.27 at 2020-04-28 18:23:19 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"H5Ov/SmsvnjE2UixSp3bxJfUap0aeFIl4MK5/Dcgk962CXXLyYosfenVfDpL70Y6n4ceCgi8rIcT+GslBTEzkQ==", "user"=>{"email"=>"example@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "example@example.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.3ms | Allocations: 1909)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"H5Ov/SmsvnjE2UixSp3bxJfUap0aeFIl4MK5/Dcgk962CXXLyYosfenVfDpL70Y6n4ceCgi8rIcT+GslBTEzkQ==", "user"=>{"email"=>"example@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 262)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1205)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 1.1ms | Allocations: 702)
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 167ms (Views: 13.9ms | ActiveRecord: 0.0ms | Allocations: 8322)
+
+
+Started POST "/users/sign_in" for 111.239.188.27 at 2020-04-28 18:23:28 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"MfnKRG0Gm1FvdXXCfzafGQi32JEOSx0Rz+kVDfDgAFuYYxByjSAJVEJ5QUl+RALnAOSsBhyP47M808fUwvGgFA==", "user"=>{"email"=>"example@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "example@example.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.1ms | Allocations: 1849)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"MfnKRG0Gm1FvdXXCfzafGQi32JEOSx0Rz+kVDfDgAFuYYxByjSAJVEJ5QUl+RALnAOSsBhyP47M808fUwvGgFA==", "user"=>{"email"=>"example@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 262)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1205)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 1.1ms | Allocations: 702)
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 166ms (Views: 13.6ms | ActiveRecord: 0.0ms | Allocations: 8317)
+
+
+Started POST "/users/sign_in" for 111.239.188.27 at 2020-04-28 18:25:25 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"CIIe4GYm0Vhz3mogEyZyEAuNPCCVtiTfajc+UtC9DhGhGMTWhgBDXV7SXqsSVO/uA95It4dy2n2ZDeyL4qyuXg==", "user"=>{"email"=>"example@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "example@example.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.1ms | Allocations: 1831)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"CIIe4GYm0Vhz3mogEyZyEAuNPCCVtiTfajc+UtC9DhGhGMTWhgBDXV7SXqsSVO/uA95It4dy2n2ZDeyL4qyuXg==", "user"=>{"email"=>"example@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 262)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1205)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 1.1ms | Allocations: 702)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 280)
+Completed 200 OK in 166ms (Views: 14.1ms | ActiveRecord: 0.0ms | Allocations: 8317)
+
+
+  [1m[35m (6.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (3.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "kousukef123@yahoo.co.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (5.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "kousuke"], ["email", "kousukef123@yahoo.co.jp"], ["encrypted_password", "$2a$11$fR8dqBjOydFaL3qFZvsXgewP/z0UgtfNDzhBFyh.hJCxXQHDiCjOq"], ["confirmation_token", "y1ZGqAT1MnHLQi38ow4p"], ["confirmation_sent_at", "2020-04-28 18:28:57.074450"], ["created_at", "2020-04-28 18:28:57.074353"], ["updated_at", "2020-04-28 18:28:57.074353"]]
+  [1m[35m (15.1ms)[0m  [1m[36mcommit transaction[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 1.3ms | Allocations: 85)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 3.9ms
+Delivered mail 5ea875e919944_35192b18dee7d95898187@ip-172-31-32-131.mail (1461.3ms)
+Date: Tue, 28 Apr 2020 18:28:57 +0000
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: kousukef123@yahoo.co.jp
+Message-ID: <5ea875e919944_35192b18dee7d95898187@ip-172-31-32-131.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome kousukef123@yahoo.co.jp!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/confirmation?confirmation_token=y1ZGqAT1MnHLQi38ow4p">Confirm my account</a></p>
+
+Started GET "/users/confirmation?confirmation_token=y1ZGqAT1MnHLQi38ow4p" for 111.239.188.27 at 2020-04-28 18:30:10 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"y1ZGqAT1MnHLQi38ow4p"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."confirmation_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["confirmation_token", "y1ZGqAT1MnHLQi38ow4p"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["confirmed_at", "2020-04-28 18:30:10.255522"], ["updated_at", "2020-04-28 18:30:10.255924"], ["id", 2]]
+  [1m[35m (13.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/sign_in
+Completed 302 Found in 28ms (ActiveRecord: 15.9ms | Allocations: 6937)
+
+
+Started GET "/users/sign_in" for 111.239.188.27 at 2020-04-28 18:30:10 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 262)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1204)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 2.2ms | Allocations: 738)
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 46ms (Views: 44.7ms | ActiveRecord: 0.0ms | Allocations: 8517)
+
+
+Started POST "/users/sign_in" for 111.239.188.27 at 2020-04-28 18:30:18 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"df1hWfCN9nfEyhFemTcZnekyFGQtjXOAm762DSDa+0vcZ7tvEKtkcunGJdWYRYRj4WFg8z9JjSJohGTUEstbBA==", "user"=>{"email"=>"kousukef123@yahoo.co.jp", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "kousukef123@yahoo.co.jp"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (1.9ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2020-04-28 18:30:18.482845"], ["last_sign_in_at", "2020-04-28 18:30:18.482845"], ["current_sign_in_ip", "111.239.188.27"], ["last_sign_in_ip", "111.239.188.27"], ["sign_in_count", 1], ["updated_at", "2020-04-28 18:30:18.483257"], ["id", 2]]
+  [1m[35m (13.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 454ms (ActiveRecord: 15.7ms | Allocations: 10902)
+
+
+Started GET "/" for 111.239.188.27 at 2020-04-28 18:30:18 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 7.1ms | Allocations: 2267)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.haml:12
+  Rendered layouts/_header.html.haml (Duration: 3.7ms | Allocations: 1598)
+  Rendered layouts/_footer.html.haml (Duration: 0.5ms | Allocations: 280)
+Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 0.1ms | Allocations: 10080)
+
+
+Started GET "/myproducts" for 111.239.188.27 at 2020-04-28 18:30:21 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#myproducts as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:26:in `myproducts'
+  [1m[36mProduct Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:27:in `myproducts'
+Redirected to https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 17ms (ActiveRecord: 0.7ms | Allocations: 3868)
+
+
+Started GET "/" for 111.239.188.27 at 2020-04-28 18:30:21 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 4.7ms | Allocations: 2265)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.haml:12
+  Rendered layouts/_header.html.haml (Duration: 3.8ms | Allocations: 1592)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 280)
+Completed 200 OK in 19ms (Views: 18.5ms | ActiveRecord: 0.1ms | Allocations: 10082)
+
+
+Started GET "/products/new" for 111.239.188.27 at 2020-04-28 18:30:36 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.haml within layouts/application
+  Rendered products/new.html.haml within layouts/application (Duration: 57.2ms | Allocations: 19987)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.haml:12
+  Rendered layouts/_header.html.haml (Duration: 3.9ms | Allocations: 1636)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 280)
+Completed 200 OK in 82ms (Views: 73.6ms | ActiveRecord: 0.2ms | Allocations: 33593)
+
+
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "17b0493@tku.ac.jp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "confirmation_token", "confirmation_sent_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "fujimori"], ["email", "17b0493@tku.ac.jp"], ["encrypted_password", "$2a$11$JBop2EPnvyx.ZBLubq/egOFmJfrIl9glay3hHacF3sg.0MEq6jPKa"], ["confirmation_token", "ZUJfBh2jUss4Zq7gDigV"], ["confirmation_sent_at", "2020-04-28 18:44:38.040094"], ["created_at", "2020-04-28 18:44:38.039950"], ["updated_at", "2020-04-28 18:44:38.039950"]]
+  [1m[35m (11.8ms)[0m  [1m[36mcommit transaction[0m
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/mailer/confirmation_instructions.html.erb (Duration: 3.2ms | Allocations: 555)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 299.8ms
+Delivered mail 5ea879966897a_3b3a2b1d8b64796c816d9@ip-172-31-32-131.mail (1385.8ms)
+Date: Tue, 28 Apr 2020 18:44:38 +0000
+From: secret.base.of.tku@gmail.com
+Reply-To: secret.base.of.tku@gmail.com
+To: 17b0493@tku.ac.jp
+Message-ID: <5ea879966897a_3b3a2b1d8b64796c816d9@ip-172-31-32-131.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome 17b0493@tku.ac.jp!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/users/confirmation?confirmation_token=ZUJfBh2jUss4Zq7gDigV">Confirm my account</a></p>
+
+Started GET "/users/confirmation?confirmation_token=ZUJfBh2jUss4Zq7gDigV" for 111.239.188.27 at 2020-04-28 18:45:01 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"ZUJfBh2jUss4Zq7gDigV"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."confirmation_token" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["confirmation_token", "ZUJfBh2jUss4Zq7gDigV"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "confirmed_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["confirmed_at", "2020-04-28 18:45:01.394385"], ["updated_at", "2020-04-28 18:45:01.394691"], ["id", 3]]
+  [1m[35m (11.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 25ms (ActiveRecord: 12.3ms | Allocations: 7516)
+
+
+Started GET "/" for 111.239.188.27 at 2020-04-28 18:45:01 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 12.8ms | Allocations: 16098)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.haml:12
+  Rendered layouts/_header.html.haml (Duration: 13.8ms | Allocations: 7127)
+  Rendered layouts/_footer.html.haml (Duration: 3.1ms | Allocations: 2790)
+Completed 200 OK in 47ms (Views: 45.7ms | ActiveRecord: 0.1ms | Allocations: 39274)
+
+
+Started GET "/myproducts" for 111.239.188.27 at 2020-04-28 18:47:51 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#myproducts as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:26:in `myproducts'
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:27:in `myproducts'
+Redirected to https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 8ms (ActiveRecord: 0.3ms | Allocations: 1891)
+
+
+Started GET "/" for 111.239.188.27 at 2020-04-28 18:47:52 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 11.8ms | Allocations: 16063)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.haml:12
+  Rendered layouts/_header.html.haml (Duration: 7.4ms | Allocations: 7119)
+  Rendered layouts/_footer.html.haml (Duration: 2.2ms | Allocations: 2787)
+Completed 200 OK in 36ms (Views: 34.8ms | ActiveRecord: 0.1ms | Allocations: 39226)
+
+
+Started GET "/" for 111.239.188.27 at 2020-04-28 18:47:57 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 2.6ms | Allocations: 2268)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.haml:12
+  Rendered layouts/_header.html.haml (Duration: 3.4ms | Allocations: 1596)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 280)
+Completed 200 OK in 15ms (Views: 14.2ms | ActiveRecord: 0.1ms | Allocations: 10080)
+
+
+Started GET "/" for 111.239.188.27 at 2020-04-28 18:49:38 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 12.1ms | Allocations: 16063)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.haml:12
+  Rendered layouts/_header.html.haml (Duration: 7.5ms | Allocations: 7119)
+  Rendered layouts/_footer.html.haml (Duration: 2.3ms | Allocations: 2787)
+Completed 200 OK in 37ms (Views: 35.8ms | ActiveRecord: 0.2ms | Allocations: 39320)
+
+
+Started GET "/myproducts" for 111.239.188.27 at 2020-04-28 18:49:42 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#myproducts as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:26:in `myproducts'
+  [1m[36mProduct Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:27:in `myproducts'
+Redirected to https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 6ms (ActiveRecord: 0.3ms | Allocations: 1890)
+
+
+Started GET "/" for 111.239.188.27 at 2020-04-28 18:49:42 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 2.6ms | Allocations: 2268)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.haml:12
+  Rendered layouts/_header.html.haml (Duration: 3.4ms | Allocations: 1596)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 280)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.1ms | Allocations: 10081)
+
+
+Started GET "/" for 111.239.188.27 at 2020-04-28 18:49:47 +0000
+Cannot render console from 111.239.188.27! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 2.7ms | Allocations: 2263)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.haml:12
+  Rendered layouts/_header.html.haml (Duration: 3.5ms | Allocations: 1592)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 280)
+Completed 200 OK in 15ms (Views: 14.3ms | ActiveRecord: 0.1ms | Allocations: 10045)
+
+
