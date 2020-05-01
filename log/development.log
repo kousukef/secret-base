@@ -6367,3 +6367,323 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 15ms (Views: 14.3ms | ActiveRecord: 0.1ms | Allocations: 10045)
 
 
+Started GET "/" for 111.239.189.123 at 2020-04-29 09:00:02 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (12.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 2703.6ms | Allocations: 1381906)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 7.9ms | Allocations: 6313)
+  Rendered layouts/_footer.html.haml (Duration: 2.8ms | Allocations: 2797)
+Completed 200 OK in 2773ms (Views: 2753.7ms | ActiveRecord: 0.0ms | Allocations: 1406358)
+
+
+Started GET "/" for 111.239.189.123 at 2020-04-29 09:00:05 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 2.5ms | Allocations: 2271)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 0.9ms | Allocations: 739)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 280)
+Completed 200 OK in 13ms (Views: 12.5ms | ActiveRecord: 0.0ms | Allocations: 9115)
+
+
+Started GET "/users/sign_in" for 111.239.189.123 at 2020-04-29 09:00:19 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_links.html.erb (Duration: 1.9ms | Allocations: 845)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 209.2ms | Allocations: 185086)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 0.9ms | Allocations: 745)
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 242ms (Views: 221.1ms | ActiveRecord: 0.7ms | Allocations: 207888)
+
+
+Started POST "/users/sign_in" for 111.239.189.123 at 2020-04-29 09:00:35 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"qtwlBM1LBZwc2nSXM269V8yKRxjvdPzR7smCPT0C73OFNgJDpxVA/RoOLe+nIBcfaMhAf4dAL1B7fxxRV0RHwg==", "user"=>{"email"=>"kousukef123@yahoo.co.jp", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "kousukef123@yahoo.co.jp"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2020-04-29 09:00:35.966957"], ["current_sign_in_ip", "111.239.189.123"], ["sign_in_count", 2], ["updated_at", "2020-04-29 09:00:35.967537"], ["id", 2]]
+  [1m[35m (11.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 216ms (ActiveRecord: 13.0ms | Allocations: 11463)
+
+
+Started GET "/" for 111.239.189.123 at 2020-04-29 09:00:36 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 15.0ms | Allocations: 2271)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.haml:12
+  Rendered layouts/_header.html.haml (Duration: 21.8ms | Allocations: 1668)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 281)
+Completed 200 OK in 70ms (Views: 64.6ms | ActiveRecord: 0.2ms | Allocations: 10162)
+
+
+Started GET "/myproducts" for 111.239.189.123 at 2020-04-29 09:00:42 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#myproducts as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:26:in `myproducts'
+  [1m[36mProduct Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "products" WHERE "products"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:27:in `myproducts'
+Redirected to https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 22ms (ActiveRecord: 1.0ms | Allocations: 6416)
+
+
+Started GET "/" for 111.239.189.123 at 2020-04-29 09:00:42 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered home/index.html.haml within layouts/application (Duration: 2.6ms | Allocations: 2266)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.haml:12
+  Rendered layouts/_header.html.haml (Duration: 3.4ms | Allocations: 1609)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 280)
+Completed 200 OK in 20ms (Views: 19.1ms | ActiveRecord: 0.1ms | Allocations: 10094)
+
+
+Started GET "/" for 111.239.189.123 at 2020-04-29 09:22:51 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_home.html.haml:12
+  Rendered layouts/_header_home.html.haml (Duration: 7.9ms | Allocations: 7357)
+  Rendered home/index.html.haml within layouts/application (Duration: 20.2ms | Allocations: 23631)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 2.1ms | Allocations: 2790)
+Completed 200 OK in 36ms (Views: 34.9ms | ActiveRecord: 0.2ms | Allocations: 39521)
+
+
+Started GET "/products" for 111.239.189.123 at 2020-04-29 09:22:55 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.haml:3
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 5.1ms | Allocations: 2646)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.6ms | Allocations: 550)
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.6ms | Allocations: 9736)
+
+
+Started GET "/products" for 111.239.189.123 at 2020-04-29 09:24:46 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.haml:3
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 2.9ms | Allocations: 717)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.6ms | Allocations: 550)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.1ms | Allocations: 7232)
+
+
+Started GET "/products" for 111.239.189.123 at 2020-04-29 09:25:06 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  Rendered products/index.html.haml within layouts/application (Duration: 2.7ms | Allocations: 3241)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 4595)
+
+
+  
+ActionView::Template::Error (Missing partial layouts/_header_Tkstore with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :haml, :jbuilder]}. Searched in:
+  * "/home/ubuntu/environment/secret_base/app/views"
+  * "/home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views"
+  * "/home/ubuntu/.rvm/gems/ruby-2.6.3/gems/actiontext-6.0.2.2/app/views"
+  * "/home/ubuntu/.rvm/gems/ruby-2.6.3/gems/actionmailbox-6.0.2.2/app/views"
+):
+    1: = render 'layouts/header_Tkstore'
+    2: .containew-fluid.padding
+    3:   .row.padding
+    4:     = render @products
+  
+app/views/products/index.html.haml:1
+Started GET "/products" for 111.239.189.123 at 2020-04-29 09:26:46 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_tkstore.html.haml:12
+  Rendered layouts/_header_tkstore.html.haml (Duration: 7.9ms | Allocations: 7672)
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.haml:4
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 12.7ms | Allocations: 10568)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 2.2ms | Allocations: 2791)
+Completed 200 OK in 29ms (Views: 28.3ms | ActiveRecord: 0.2ms | Allocations: 26500)
+
+
+Started GET "/" for 111.239.189.123 at 2020-04-29 09:26:53 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_home.html.haml:12
+  Rendered layouts/_header_home.html.haml (Duration: 7.5ms | Allocations: 7292)
+  Rendered home/index.html.haml within layouts/application (Duration: 19.2ms | Allocations: 23546)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 28ms (Views: 27.0ms | ActiveRecord: 0.1ms | Allocations: 30249)
+
+
+Started GET "/products/new" for 111.239.189.123 at 2020-04-29 09:26:55 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.haml within layouts/application
+  Rendered products/new.html.haml within layouts/application (Duration: 61.7ms | Allocations: 22388)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.6ms | Allocations: 550)
+Completed 200 OK in 79ms (Views: 70.4ms | ActiveRecord: 0.4ms | Allocations: 34196)
+
+
+Started POST "/products" for 111.239.189.123 at 2020-04-29 09:27:58 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#create as HTML
+  Parameters: {"authenticity_token"=>"dCIYa8yFauhbFNqH9Wk4v3/m9r0UG40yA5UNBx/u+voloCdeFXOKLkOxPxIvE+30qAdz1GWMtdhBGgdGxFJ1Iw==", "product"=>{"name"=>"パオパオチャンネル", "description"=>"paopao", "price"=>"1000", "product_image"=>#<ActionDispatch::Http::UploadedFile:0x00007f8bd36b8120 @tempfile=#<Tempfile:/tmp/RackMultipart20200429-3202-vxwi8s.jpeg>, @original_filename="67AB210B-9972-4471-8CC7-FF43389E7743.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"product[product_image]\"; filename=\"67AB210B-9972-4471-8CC7-FF43389E7743.jpeg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Product"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  Rendering products/new.html.haml within layouts/application
+  Rendered products/new.html.haml within layouts/application (Duration: 15.2ms | Allocations: 10396)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.6ms | Allocations: 550)
+Completed 200 OK in 37ms (Views: 23.2ms | ActiveRecord: 0.1ms | Allocations: 22841)
+
+
+Started POST "/products" for 111.239.189.123 at 2020-04-29 09:28:08 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#create as HTML
+  Parameters: {"authenticity_token"=>"D/I5+pUvNEGVQf0GW3dqjQubN7VsfJhU0UyVLvh8p+vQdYVDPH8bFaVUL/mZly2ToXZ7Ney2d70YamkdGK0IGA==", "product"=>{"name"=>"パオパオチャンネル", "description"=>"paopao", "price"=>"1000"}, "commit"=>"Create Product"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:16:in `create'
+  Rendering products/new.html.haml within layouts/application
+  Rendered products/new.html.haml within layouts/application (Duration: 15.4ms | Allocations: 10577)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.5ms | Allocations: 550)
+Completed 200 OK in 29ms (Views: 23.5ms | ActiveRecord: 0.1ms | Allocations: 19313)
+
+
+Started GET "/products" for 111.239.189.123 at 2020-04-29 09:28:20 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_tkstore.html.haml:12
+  Rendered layouts/_header_tkstore.html.haml (Duration: 5.2ms | Allocations: 1777)
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.haml:4
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 8.2ms | Allocations: 2557)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.2ms | Allocations: 8706)
+
+
+Started GET "/products" for 111.239.189.123 at 2020-04-29 09:28:22 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_tkstore.html.haml:12
+  Rendered layouts/_header_tkstore.html.haml (Duration: 3.8ms | Allocations: 1773)
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.haml:4
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 6.8ms | Allocations: 2553)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.2ms | Allocations: 8676)
+
+
+Started GET "/products" for 111.239.189.123 at 2020-04-29 09:28:25 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_tkstore.html.haml:12
+  Rendered layouts/_header_tkstore.html.haml (Duration: 3.8ms | Allocations: 1773)
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.haml:4
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 6.8ms | Allocations: 2553)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.2ms | Allocations: 8683)
+
+
+Started GET "/products" for 111.239.189.123 at 2020-04-29 09:28:26 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_tkstore.html.haml:12
+  Rendered layouts/_header_tkstore.html.haml (Duration: 7.1ms | Allocations: 1773)
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.haml:4
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 8.5ms | Allocations: 2553)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 21ms (Views: 20.5ms | ActiveRecord: 0.2ms | Allocations: 8685)
+
+
+Started GET "/products" for 111.239.189.123 at 2020-04-29 09:28:27 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_tkstore.html.haml:12
+  Rendered layouts/_header_tkstore.html.haml (Duration: 4.0ms | Allocations: 1773)
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.haml:4
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 7.0ms | Allocations: 2553)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 21ms (Views: 20.6ms | ActiveRecord: 0.2ms | Allocations: 8685)
+
+
+Started GET "/" for 111.239.189.123 at 2020-04-29 09:28:29 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_home.html.haml:12
+  Rendered layouts/_header_home.html.haml (Duration: 3.8ms | Allocations: 1750)
+  Rendered home/index.html.haml within layouts/application (Duration: 6.4ms | Allocations: 3936)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.1ms | Allocations: 10071)
+
+
+Started GET "/products" for 111.239.189.123 at 2020-04-29 09:28:30 +0000
+Cannot render console from 111.239.189.123! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_tkstore.html.haml:12
+  Rendered layouts/_header_tkstore.html.haml (Duration: 3.7ms | Allocations: 1773)
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.haml:4
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 6.5ms | Allocations: 2553)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 15ms (Views: 13.6ms | ActiveRecord: 0.2ms | Allocations: 8691)
+
+
