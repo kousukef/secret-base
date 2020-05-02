@@ -12,6 +12,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'simple_form'
 gem 'jquery-rails'
 gem 'ancestry'
+gem 'pry-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
