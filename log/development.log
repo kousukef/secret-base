@@ -6687,3 +6687,594 @@ Processing by ProductsController#index as HTML
 Completed 200 OK in 15ms (Views: 13.6ms | ActiveRecord: 0.2ms | Allocations: 8691)
 
 
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMessages (20200501052058)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200501052058"]]
+  [1m[35m (14.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 111.239.189.192 at 2020-05-02 03:53:26 +0000
+Cannot render console from 111.239.189.192! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered layouts/_header_home.html.haml (Duration: 1176.1ms | Allocations: 1386452)
+  Rendered home/index.html.haml within layouts/application (Duration: 1193.2ms | Allocations: 1404465)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/ubuntu/environment/secret_base/public/packs
+[Webpacker] Hash: 877c30744eb23d9dacf3
+Version: webpack 4.43.0
+Time: 2155ms
+Built at: 05/02/2020 3:53:32 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-36f621fbde90985edf24.js    146 KiB  application  [emitted] [immutable]  application
+js/application-36f621fbde90985edf24.js.map    164 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-36f621fbde90985edf24.js js/application-36f621fbde90985edf24.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 182 bytes {application} [built]
+[./app/javascript/channels/consumer.js] 265 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/channels/room_channel.js] 479 bytes {application} [optional] [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 4 hidden modules
+
+  Rendered layouts/_footer.html.haml (Duration: 3.0ms | Allocations: 2797)
+Completed 200 OK in 5763ms (Views: 5752.7ms | ActiveRecord: 0.0ms | Allocations: 1425262)
+
+
+Started GET "/" for 111.239.189.192 at 2020-05-02 03:53:32 +0000
+Cannot render console from 111.239.189.192! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  Rendered layouts/_header_home.html.haml (Duration: 2.1ms | Allocations: 888)
+  Rendered home/index.html.haml within layouts/application (Duration: 7.6ms | Allocations: 3075)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 19ms (Views: 18.7ms | ActiveRecord: 0.0ms | Allocations: 10052)
+
+
+Started GET "/cable" for 111.239.189.192 at 2020-05-02 03:53:33 +0000
+Cannot render console from 111.239.189.192! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/cable/" [WebSocket] for 111.239.189.192 at 2020-05-02 03:53:33 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: upgrade, HTTP_UPGRADE: websocket)
+Started GET "/users/sign_in" for 111.239.189.192 at 2020-05-02 03:53:44 +0000
+Cannot render console from 111.239.189.192! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/shared/_links.html.erb (Duration: 2.0ms | Allocations: 847)
+  Rendered /home/ubuntu/.rvm/gems/ruby-2.6.3/gems/devise-4.7.1/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 342.2ms | Allocations: 185186)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 1.0ms | Allocations: 548)
+Completed 200 OK in 406ms (Views: 362.5ms | ActiveRecord: 0.7ms | Allocations: 208394)
+
+
+Started POST "/users/sign_in" for 111.239.189.192 at 2020-05-02 03:53:52 +0000
+Cannot render console from 111.239.189.192! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"GXYugh6lyTpJerHqIL6Tr3CP+SMx6z5PVbgeEbuuNlAVrVXqJ5jDWnoBZDZipbX594HbQ9oOBESpPiDsoZnjjQ==", "user"=>{"email"=>"kousukef123@yahoo.co.jp", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "kousukef123@yahoo.co.jp"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2020-05-02 03:53:52.572074"], ["last_sign_in_at", "2020-04-29 09:00:35.966957"], ["current_sign_in_ip", "111.239.189.192"], ["last_sign_in_ip", "111.239.189.123"], ["sign_in_count", 3], ["updated_at", "2020-05-02 03:53:52.572668"], ["id", 2]]
+  [1m[35m (25.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to https://8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 215ms (ActiveRecord: 28.5ms | Allocations: 11522)
+
+
+Started GET "/" for 111.239.189.192 at 2020-05-02 03:53:52 +0000
+Cannot render console from 111.239.189.192! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_home.html.haml:12
+  Rendered layouts/_header_home.html.haml (Duration: 4.3ms | Allocations: 1819)
+  Rendered home/index.html.haml within layouts/application (Duration: 8.0ms | Allocations: 4001)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 280)
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.3ms | Allocations: 11047)
+
+
+Finished "/cable/" [WebSocket] for 111.239.189.192 at 2020-05-02 03:53:52 +0000
+Started GET "/cable" for 111.239.189.192 at 2020-05-02 03:53:53 +0000
+Cannot render console from 111.239.189.192! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/cable/" [WebSocket] for 111.239.189.192 at 2020-05-02 03:53:53 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: upgrade, HTTP_UPGRADE: websocket)
+Started GET "/products" for 111.239.189.192 at 2020-05-02 03:53:59 +0000
+Cannot render console from 111.239.189.192! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_tkstore.html.haml:12
+  Rendered layouts/_header_tkstore.html.haml (Duration: 8.5ms | Allocations: 7628)
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.haml:4
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 15.7ms | Allocations: 10955)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 37ms (Views: 25.1ms | ActiveRecord: 1.0ms | Allocations: 20807)
+
+
+Started GET "/" for 111.239.189.192 at 2020-05-02 03:54:05 +0000
+Cannot render console from 111.239.189.192! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering home/index.html.haml within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header_home.html.haml:12
+  Rendered layouts/_header_home.html.haml (Duration: 4.2ms | Allocations: 1750)
+  Rendered home/index.html.haml within layouts/application (Duration: 7.9ms | Allocations: 3937)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.2ms | Allocations: 280)
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.1ms | Allocations: 10964)
+
+
+Started GET "/products/new" for 111.239.189.192 at 2020-05-02 03:54:06 +0000
+Cannot render console from 111.239.189.192! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.haml within layouts/application
+  Rendered products/new.html.haml within layouts/application (Duration: 69.4ms | Allocations: 22578)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.8ms | Allocations: 550)
+Completed 200 OK in 88ms (Views: 80.3ms | ActiveRecord: 0.3ms | Allocations: 35245)
+
+
+Started GET "/products/new" for 111.239.189.192 at 2020-05-02 03:54:29 +0000
+Cannot render console from 111.239.189.192! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.haml within layouts/application
+  Rendered products/new.html.haml within layouts/application (Duration: 15.6ms | Allocations: 10667)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_footer.html.haml (Duration: 0.8ms | Allocations: 550)
+Completed 200 OK in 27ms (Views: 26.5ms | ActiveRecord: 0.0ms | Allocations: 17994)
+
+
+Finished "/cable/" [WebSocket] for 111.239.189.192 at 2020-05-02 03:54:29 +0000
+Started GET "/cable" for 111.239.189.192 at 2020-05-02 03:54:29 +0000
+Cannot render console from 111.239.189.192! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/cable/" [WebSocket] for 111.239.189.192 at 2020-05-02 03:54:29 +0000
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: upgrade, HTTP_UPGRADE: websocket)
+RoomChannel is transmitting the subscription confirmation
+  [1m[35m (6.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "product_categories"[0m
+  [1m[36mProductCategory Load (0.9ms)[0m  [1m[34mSELECT "product_categories".* FROM "product_categories"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Create (1.5ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "本"], ["created_at", "2020-05-02 07:43:24.563855"], ["updated_at", "2020-05-02 07:43:24.563855"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Create (4.3ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "本"], ["created_at", "2020-05-02 07:45:32.232876"], ["updated_at", "2020-05-02 07:45:32.232876"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Create (2.3ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "本"], ["created_at", "2020-05-02 07:47:05.283338"], ["updated_at", "2020-05-02 07:47:05.283338"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "教科書"], ["created_at", "2020-05-02 07:49:51.459270"], ["updated_at", "2020-05-02 07:49:51.459270"], ["ancestry", "3"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Load (0.2ms)[0m  [1m[34mSELECT "product_categories".* FROM "product_categories" WHERE "product_categories"."name" = ? LIMIT ?[0m  [["name", "教科書"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProductCategory Create (0.1ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "教科書（経営学部）"], ["created_at", "2020-05-02 07:55:23.362828"], ["updated_at", "2020-05-02 07:55:23.362828"], ["ancestry", "3/4"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (3.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (15.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20200425120459)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime, "unconfirmed_email" varchar, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" varchar, "locked_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200425120459"]]
+  [1m[35m (11.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUserImageToUser (20200426050116)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (10.0ms)[0m  [1m[35mALTER TABLE "users" ADD "user_image" varchar[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200426050116"]]
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProducts (20200427044100)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200427044100"]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProductCategories (20200428171516)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "product_categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428171516"]]
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddAncestryToProductCategories (20200428171727)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "product_categories" ADD "ancestry" varchar[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_product_categories_on_ancestry" ON "product_categories" ("ancestry")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428171727"]]
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddProductCategoryIdToProduct (20200428173009)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "products" ADD "product_category_id" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428173009"]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddNullFalseToProducts (20200428173930)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "products"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproducts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428173930"]]
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMessages (20200501052058)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200501052058"]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-05-02 08:34:45.911804"], ["updated_at", "2020-05-02 08:34:45.911804"]]
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mProductCategory Load (0.5ms)[0m  [1m[34mSELECT "product_categories".* FROM "product_categories"[0m
+  [1m[36mProductCategory Load (0.2ms)[0m  [1m[34mSELECT "product_categories".* FROM "product_categories" ORDER BY "product_categories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "product_categories"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20200425120459)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime, "unconfirmed_email" varchar, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" varchar, "locked_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200425120459"]]
+  [1m[35m (10.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUserImageToUser (20200426050116)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "users" ADD "user_image" varchar[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200426050116"]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProducts (20200427044100)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200427044100"]]
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProductCategories (20200428171516)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "product_categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428171516"]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddAncestryToProductCategories (20200428171727)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "product_categories" ADD "ancestry" varchar[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_product_categories_on_ancestry" ON "product_categories" ("ancestry")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428171727"]]
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddProductCategoryIdToProduct (20200428173009)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "products" ADD "product_category_id" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428173009"]]
+  [1m[35m (9.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddNullFalseToProducts (20200428173930)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_user_id" ON "aproducts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "products"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "product_image" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_category_id" integer NOT NULL, CONSTRAINT "fk_rails_dee2631783"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_user_id" ON "products" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id")
+                     SELECT "id","name","description","price","product_image","created_at","updated_at","user_id","product_category_id" FROM "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200428173930"]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMessages (20200501052058)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200501052058"]]
+  [1m[35m (7.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-05-02 08:40:51.748072"], ["updated_at", "2020-05-02 08:40:51.748072"]]
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "本"], ["created_at", "2020-05-02 08:43:49.285404"], ["updated_at", "2020-05-02 08:43:49.285404"]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "本"], ["created_at", "2020-05-02 08:45:17.895821"], ["updated_at", "2020-05-02 08:45:17.895821"]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "教科書"], ["created_at", "2020-05-02 08:45:17.905513"], ["updated_at", "2020-05-02 08:45:17.905513"], ["ancestry", "2"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "教科書（経営学部）"], ["created_at", "2020-05-02 08:45:17.914277"], ["updated_at", "2020-05-02 08:45:17.914277"], ["ancestry", "2/3"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "教科書（経済学部）"], ["created_at", "2020-05-02 08:45:17.922575"], ["updated_at", "2020-05-02 08:45:17.922575"], ["ancestry", "2/3"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "教科書（コミュニケーション学部）"], ["created_at", "2020-05-02 08:45:17.931021"], ["updated_at", "2020-05-02 08:45:17.931021"], ["ancestry", "2/3"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "教科書（現代法学部）"], ["created_at", "2020-05-02 08:45:17.939404"], ["updated_at", "2020-05-02 08:45:17.939404"], ["ancestry", "2/3"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "教科書（その他）"], ["created_at", "2020-05-02 08:45:17.948020"], ["updated_at", "2020-05-02 08:45:17.948020"], ["ancestry", "2/3"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "参考書"], ["created_at", "2020-05-02 08:45:17.956828"], ["updated_at", "2020-05-02 08:45:17.956828"], ["ancestry", "2"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "漫画"], ["created_at", "2020-05-02 08:45:17.965357"], ["updated_at", "2020-05-02 08:45:17.965357"], ["ancestry", "2"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "少年漫画"], ["created_at", "2020-05-02 08:45:17.973999"], ["updated_at", "2020-05-02 08:45:17.973999"], ["ancestry", "2/10"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (1.9ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "青年漫画"], ["created_at", "2020-05-02 08:45:17.982616"], ["updated_at", "2020-05-02 08:45:17.982616"], ["ancestry", "2/10"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "少女漫画"], ["created_at", "2020-05-02 08:45:17.993063"], ["updated_at", "2020-05-02 08:45:17.993063"], ["ancestry", "2/10"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "雑誌"], ["created_at", "2020-05-02 08:45:18.001789"], ["updated_at", "2020-05-02 08:45:18.001789"], ["ancestry", "2"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "小説"], ["created_at", "2020-05-02 08:45:18.010218"], ["updated_at", "2020-05-02 08:45:18.010218"], ["ancestry", "2"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ビジネス書"], ["created_at", "2020-05-02 08:45:18.018856"], ["updated_at", "2020-05-02 08:45:18.018856"], ["ancestry", "2"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "その他"], ["created_at", "2020-05-02 08:45:18.027318"], ["updated_at", "2020-05-02 08:45:18.027318"], ["ancestry", "2"]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "メンズ"], ["created_at", "2020-05-02 08:45:18.036255"], ["updated_at", "2020-05-02 08:45:18.036255"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "服"], ["created_at", "2020-05-02 08:45:18.044745"], ["updated_at", "2020-05-02 08:45:18.044745"], ["ancestry", "18"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "トップス"], ["created_at", "2020-05-02 08:45:18.053490"], ["updated_at", "2020-05-02 08:45:18.053490"], ["ancestry", "18/19"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ジャケット/アウター"], ["created_at", "2020-05-02 08:45:18.062313"], ["updated_at", "2020-05-02 08:45:18.062313"], ["ancestry", "18/19"]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "パンツ"], ["created_at", "2020-05-02 08:45:18.071562"], ["updated_at", "2020-05-02 08:45:18.071562"], ["ancestry", "18/19"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "その他"], ["created_at", "2020-05-02 08:45:18.080193"], ["updated_at", "2020-05-02 08:45:18.080193"], ["ancestry", "18/19"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "靴"], ["created_at", "2020-05-02 08:45:18.088558"], ["updated_at", "2020-05-02 08:45:18.088558"], ["ancestry", "18"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "革靴"], ["created_at", "2020-05-02 08:45:18.098746"], ["updated_at", "2020-05-02 08:45:18.098746"], ["ancestry", "18/24"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "スニーカー"], ["created_at", "2020-05-02 08:45:18.107199"], ["updated_at", "2020-05-02 08:45:18.107199"], ["ancestry", "18/24"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "サンダル"], ["created_at", "2020-05-02 08:45:18.115815"], ["updated_at", "2020-05-02 08:45:18.115815"], ["ancestry", "18/24"]]
+  [1m[35m (8.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "その他"], ["created_at", "2020-05-02 08:45:18.128469"], ["updated_at", "2020-05-02 08:45:18.128469"], ["ancestry", "18/24"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "カバン"], ["created_at", "2020-05-02 08:45:18.137113"], ["updated_at", "2020-05-02 08:45:18.137113"], ["ancestry", "18"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "リュック"], ["created_at", "2020-05-02 08:45:18.145361"], ["updated_at", "2020-05-02 08:45:18.145361"], ["ancestry", "18/29"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "トートバッグ"], ["created_at", "2020-05-02 08:45:18.153797"], ["updated_at", "2020-05-02 08:45:18.153797"], ["ancestry", "18/29"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ショルダーバッグ"], ["created_at", "2020-05-02 08:45:18.162601"], ["updated_at", "2020-05-02 08:45:18.162601"], ["ancestry", "18/29"]]
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ボストンバッグ"], ["created_at", "2020-05-02 08:45:18.184367"], ["updated_at", "2020-05-02 08:45:18.184367"], ["ancestry", "18/29"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ボディーバッグ"], ["created_at", "2020-05-02 08:45:18.193040"], ["updated_at", "2020-05-02 08:45:18.193040"], ["ancestry", "18/29"]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ビジネスバッグ"], ["created_at", "2020-05-02 08:45:18.203215"], ["updated_at", "2020-05-02 08:45:18.203215"], ["ancestry", "18/29"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "その他"], ["created_at", "2020-05-02 08:45:18.211828"], ["updated_at", "2020-05-02 08:45:18.211828"], ["ancestry", "18/29"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "アクセサリー"], ["created_at", "2020-05-02 08:45:18.220487"], ["updated_at", "2020-05-02 08:45:18.220487"], ["ancestry", "18"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "小物"], ["created_at", "2020-05-02 08:45:18.228992"], ["updated_at", "2020-05-02 08:45:18.228992"], ["ancestry", "18"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "その他"], ["created_at", "2020-05-02 08:45:18.237385"], ["updated_at", "2020-05-02 08:45:18.237385"], ["ancestry", "18"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "レディース"], ["created_at", "2020-05-02 08:45:18.245635"], ["updated_at", "2020-05-02 08:45:18.245635"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "服"], ["created_at", "2020-05-02 08:45:18.253717"], ["updated_at", "2020-05-02 08:45:18.253717"], ["ancestry", "40"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "トップス"], ["created_at", "2020-05-02 08:45:18.261683"], ["updated_at", "2020-05-02 08:45:18.261683"], ["ancestry", "40/41"]]
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ジャケット/アウター"], ["created_at", "2020-05-02 08:45:18.270598"], ["updated_at", "2020-05-02 08:45:18.270598"], ["ancestry", "40/41"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "パンツ"], ["created_at", "2020-05-02 08:45:18.279083"], ["updated_at", "2020-05-02 08:45:18.279083"], ["ancestry", "40/41"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "その他"], ["created_at", "2020-05-02 08:45:18.287538"], ["updated_at", "2020-05-02 08:45:18.287538"], ["ancestry", "40/41"]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "靴"], ["created_at", "2020-05-02 08:45:18.296251"], ["updated_at", "2020-05-02 08:45:18.296251"], ["ancestry", "40"]]
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "革靴"], ["created_at", "2020-05-02 08:45:18.306212"], ["updated_at", "2020-05-02 08:45:18.306212"], ["ancestry", "40/46"]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "スニーカー"], ["created_at", "2020-05-02 08:45:18.314870"], ["updated_at", "2020-05-02 08:45:18.314870"], ["ancestry", "40/46"]]
+  [1m[35m (8.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "サンダル"], ["created_at", "2020-05-02 08:45:18.327603"], ["updated_at", "2020-05-02 08:45:18.327603"], ["ancestry", "40/46"]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "その他"], ["created_at", "2020-05-02 08:45:18.337241"], ["updated_at", "2020-05-02 08:45:18.337241"], ["ancestry", "40/46"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "カバン"], ["created_at", "2020-05-02 08:45:18.345762"], ["updated_at", "2020-05-02 08:45:18.345762"], ["ancestry", "40"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "リュック"], ["created_at", "2020-05-02 08:45:18.354227"], ["updated_at", "2020-05-02 08:45:18.354227"], ["ancestry", "40/51"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "トートバッグ"], ["created_at", "2020-05-02 08:45:18.362911"], ["updated_at", "2020-05-02 08:45:18.362911"], ["ancestry", "40/51"]]
+  [1m[35m (9.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ショルダーバッグ"], ["created_at", "2020-05-02 08:45:18.376302"], ["updated_at", "2020-05-02 08:45:18.376302"], ["ancestry", "40/51"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ボストンバッグ"], ["created_at", "2020-05-02 08:45:18.384489"], ["updated_at", "2020-05-02 08:45:18.384489"], ["ancestry", "40/51"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ボディーバッグ"], ["created_at", "2020-05-02 08:45:18.392570"], ["updated_at", "2020-05-02 08:45:18.392570"], ["ancestry", "40/51"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ビジネスバッグ"], ["created_at", "2020-05-02 08:45:18.400841"], ["updated_at", "2020-05-02 08:45:18.400841"], ["ancestry", "40/51"]]
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "その他"], ["created_at", "2020-05-02 08:45:18.410062"], ["updated_at", "2020-05-02 08:45:18.410062"], ["ancestry", "40/51"]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "アクセサリー"], ["created_at", "2020-05-02 08:45:18.418637"], ["updated_at", "2020-05-02 08:45:18.418637"], ["ancestry", "40"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "小物"], ["created_at", "2020-05-02 08:45:18.426751"], ["updated_at", "2020-05-02 08:45:18.426751"], ["ancestry", "40"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "その他"], ["created_at", "2020-05-02 08:45:18.434926"], ["updated_at", "2020-05-02 08:45:18.434926"], ["ancestry", "40"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "ガジェット"], ["created_at", "2020-05-02 08:45:18.442895"], ["updated_at", "2020-05-02 08:45:18.442895"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "スマホアクセサリー"], ["created_at", "2020-05-02 08:45:18.451089"], ["updated_at", "2020-05-02 08:45:18.451089"], ["ancestry", "62"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "PC"], ["created_at", "2020-05-02 08:45:18.459208"], ["updated_at", "2020-05-02 08:45:18.459208"], ["ancestry", "62"]]
+  [1m[35m (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "カメラ"], ["created_at", "2020-05-02 08:45:18.471829"], ["updated_at", "2020-05-02 08:45:18.471829"], ["ancestry", "62"]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "オーディオ機器"], ["created_at", "2020-05-02 08:45:18.480221"], ["updated_at", "2020-05-02 08:45:18.480221"], ["ancestry", "62"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "イヤホン"], ["created_at", "2020-05-02 08:45:18.488474"], ["updated_at", "2020-05-02 08:45:18.488474"], ["ancestry", "62/66"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (4.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ヘッドホン"], ["created_at", "2020-05-02 08:45:18.496793"], ["updated_at", "2020-05-02 08:45:18.496793"], ["ancestry", "62/66"]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "スピーカー"], ["created_at", "2020-05-02 08:45:18.522998"], ["updated_at", "2020-05-02 08:45:18.522998"], ["ancestry", "62/66"]]
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "ポータブルプレーヤー"], ["created_at", "2020-05-02 08:45:18.531823"], ["updated_at", "2020-05-02 08:45:18.531823"], ["ancestry", "62/66"]]
+  [1m[35m (8.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "その他"], ["created_at", "2020-05-02 08:45:18.544358"], ["updated_at", "2020-05-02 08:45:18.544358"], ["ancestry", "62/66"]]
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at", "ancestry") VALUES (?, ?, ?, ?)[0m  [["name", "その他"], ["created_at", "2020-05-02 08:45:18.553364"], ["updated_at", "2020-05-02 08:45:18.553364"], ["ancestry", "62"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProductCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "product_categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "その他"], ["created_at", "2020-05-02 08:45:18.561642"], ["updated_at", "2020-05-02 08:45:18.561642"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "product_categories"[0m
+  [1m[36mProductCategory Load (0.4ms)[0m  [1m[34mSELECT "product_categories".* FROM "product_categories"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "product_categories"[0m
