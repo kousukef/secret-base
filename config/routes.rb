@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :rooms, only: [:show, :create, :destroy]
   get '/myproducts', to: 'products#myproducts'
   mount ActionCable.server => '/cable'
+  get 'category', to: 'product_categories#category', defaults: { format: 'json' }
 end

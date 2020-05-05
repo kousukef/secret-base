@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
   
   def new
     @product = Product.new
+    @product_category = ProductCategory.new
+    product_categories = ProductCategory.where(ancestry: nil).map { |c| c[:name]}
+    @collections = product_categories.unshift('選択してください')
   end
   
   def create
