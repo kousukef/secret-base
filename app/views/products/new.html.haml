@@ -34,7 +34,7 @@
         }
         //select boxの選択された値を取得
         var selected_option = $(insert_after_id).val()
-        //後で直す、　初期値以外だったら処理実行
+        //初期値以外だったら処理実行
         if (selected_option !== '選択してください'){
           $.ajax({
           teype: 'GET',
@@ -42,9 +42,13 @@
           data: {category_name: selected_option},
           dataType: 'json'
         }).done(function(collections){
+          //送られてきたデータが空じゃなかったら処理実行
           if ($.isEmptyObject(collections) === false){
+          //新しいselectとその初期値を追加
           var select = $('<select>').attr('id', new_select).addClass('form-control');
           select.appendTo($('.select-boxes'));
+          $('<option>').text('選択してください').appendTo($('#' + new_select));
+          //送られてきたデータでselectのoption追加
           $.each(collections, function(property, value){
             $('<option>').val(value.name).text(value.name).appendTo($('#' + new_select));
           });
