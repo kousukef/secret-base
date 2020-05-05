@@ -1,0 +1,25 @@
+%nav.navbar.navbar-expand-md.navbar-light.bg-light.sticky-top
+  .container-fluid
+    = link_to image_tag("logo.jpeg"), root_path, class: 'navbar-brand'
+    .navnar-toggler{type: 'button', data: {toggle: 'collapse', target: '#navbarResponsive'}}
+    .collapse.navbar-collapse#navbarResponsive
+      - if @product_path
+        %ul.navbar-nav.mr-auto
+          - @product_path.each do |p|
+            %li.nav-item
+              = link_to "#{p}/", products_path(category: {name: p})
+      %ul.navbar-nav.ml-auto
+        %li.nav-item.active
+          = link_to '全て', products_path(category: {name: 'all'}), class: 'nav-link'
+        %li.nav-item
+          = link_to '本', products_path(category: {name: '本'}), class: 'nav-link'
+        %li.nav-item
+          = link_to 'メンズ', products_path(category: {name: 'メンズ'}), class: 'nav-link'
+        %li.nav-item
+          = link_to 'レディース', products_path(category: {name: 'レディース'}), class: 'nav-link'
+        %li.nav-item
+          = link_to 'ガジェット', products_path(category: {name: 'ガジェット'}), class: 'nav-link'
+        %li.nav-item
+          = link_to 'その他', products_path(category: {name: 'その他'}), class: 'nav-link'
+        %li.nav-item
+          = link_to 'Homeへ戻る', root_path, class: 'nav-link'

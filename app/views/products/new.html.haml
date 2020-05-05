@@ -45,7 +45,7 @@
           //送られてきたデータが空じゃなかったら処理実行
           if ($.isEmptyObject(collections) === false){
           //新しいselectとその初期値を追加
-          var select = $('<select>').attr('id', new_select).addClass('form-control');
+          var select = $('<select>').attr({id: new_select, name: 'product[product_category][ancestry]'}).addClass('form-control');
           select.appendTo($('.select-boxes'));
           $('<option>').text('選択してください').appendTo($('#' + new_select));
           //送られてきたデータでselectのoption追加

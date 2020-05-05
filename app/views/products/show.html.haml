@@ -16,8 +16,8 @@
         %th{scope: 'row'}
           値段
         %td
-          = @product.price
-          
-.container
-  render @messages
+          = "¥ #{@product.price}"
+  .btn.btn-bg.btn-primary 
+    = link_to '質問をする', '#', class: 'text-white'
+
       

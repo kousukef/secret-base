@@ -11,7 +11,7 @@
           = link_to 'About', '#', class: 'nav-link'
         - if user_signed_in?
           %li.nav-item
-            = link_to 'TKstore', products_path, class: 'nav-link'
+            = link_to 'TKstore', products_path(category: {name: 'all'}), class: 'nav-link'
           %li.nav-item
             = link_to 'MyProducrs', myproducts_path, class: 'nav-link'
           %li.nav-item

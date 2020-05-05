@@ -1,5 +1,11 @@
-= render 'layouts/header_tkstore'
-.containew-fluid.padding
+= render 'layouts/header_product_index'
+.container-fluid.padding
+  - if @product_children
+    - @product_children.each do |c|
+      = link_to "#{c}", products_path(category: {name: c})
+  - else
+    %h6
+      全て
   .row.padding
     = render @products
       
