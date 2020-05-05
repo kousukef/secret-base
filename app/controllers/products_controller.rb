@@ -1,7 +1,15 @@
 class ProductsController < ApplicationController
   
   def index
-    @products = Product.all
+    if category_params[:name] == 'all'
+      @products = Product.all
+    else
+      category = ProductCategory.find_by(category_params)
+      @products = Product.where(product_category_id: category.subtree_ids)
+      #左上のリンクに使う
+      @product_path = category.path.map {|c| c.name}
+      @product_children = category.children.map {|c| c.name}
+    end
   end
   
   def show
@@ -22,7 +30,7 @@ class ProductsController < ApplicationController
     category = ProductCategory.find_by(name: p[:product_category][:ancestry])
     @product.product_category_id = category.id
     if @product.save
-      redirect_to products_url, notice: '作成に成功'
+      redirect_to products_path(category: {name: 'all'}), notice: '作成に成功'
     else
       flash[:error] = '作成に失敗'
       render :new
@@ -43,5 +51,9 @@ class ProductsController < ApplicationController
   
     def product_params
       params.require(:product).permit(:name, :description, :price, :product_image,product_category: [:ancestry])
+    end
+    
+    def category_params
+      params.require(:category).permit(:name)
     end
 end

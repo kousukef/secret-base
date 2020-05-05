@@ -1,4 +1,6 @@
 #カテゴリー
+
+#子/孫カテゴリー
 books =     [{children: '教科書', grandchildren: ['教科書（経営学部）', '教科書（経済学部）', '教科書（コミュニケーション学部）',
                                                   '教科書（現代法学部）','教科書（その他）']},
              {children: '参考書'},
@@ -47,10 +49,10 @@ categorys.each do |category|
   if category.has_key?(:childs)
     category[:childs].each do |child|
       
-      #childsからこカテゴリーを取り出して、親と関連付けて子カテゴリーを作る
+      #childsから子カテゴリーを取り出して、親と関連付けて子カテゴリーを作る
       c = p.children.create!(name: child[:children])
       
-      #そのカテゴリーに孫がもしいれば子カテゴリーから孫カテゴリーを作り出す
+      #そのカテゴリーに孫がもしいれば、子カテゴリーから孫カテゴリーを作り出す
       if child.has_key?(:grandchildren)
         child[:grandchildren].each do |g|
           c.children.create!(name: g)
