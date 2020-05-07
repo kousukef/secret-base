@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_135628) do
+ActiveRecord::Schema.define(version: 2020_05_07_150929) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
-    t.integer "products_id"
-    t.index ["products_id"], name: "index_messages_on_products_id"
+    t.integer "product_id", null: false
+    t.index ["product_id"], name: "index_messages_on_product_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_135628) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "messages", "products", column: "products_id"
+  add_foreign_key "messages", "products"
   add_foreign_key "messages", "users"
   add_foreign_key "products", "users"
 end
