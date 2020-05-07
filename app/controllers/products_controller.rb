@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   
+  
   def index
     if category_params[:name] == 'all'
       @products = Product.all
@@ -45,6 +46,11 @@ class ProductsController < ApplicationController
       flash[:alert] = 'MyProductsがありません'
       redirect_to root_path
     end
+  end
+  
+  def speak
+    @product = Product.find(params[:id])
+    @messages = Message.where(product_id: @product.id)
   end
   
   private

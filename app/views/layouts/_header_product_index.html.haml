@@ -7,7 +7,7 @@
         %ul.navbar-nav.mr-auto
           - @product_path.each do |p|
             %li.nav-item
-              = link_to "#{p}/", products_path(category: {name: p})
+              = link_to "#{p}/", products_path(category: {name: p}), class: 'mr-2'
       %ul.navbar-nav.ml-auto
         %li.nav-item.active
           = link_to '全て', products_path(category: {name: 'all'}), class: 'nav-link'

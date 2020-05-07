@@ -6,4 +6,5 @@ class Product < ApplicationRecord
   validates :price, presence: true
   validates :product_image, presence: true
   belongs_to :product_category
+  has_many :messages
 end

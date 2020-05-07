@@ -1,0 +1,8 @@
+%h1
+  Chat Room
+%ul{id: 'messages', data: {product_id: "#{@product.id}"}}
+  = render @messages
+%input#message_field{type: 'text'}
+%button#message_button
+  送信
+

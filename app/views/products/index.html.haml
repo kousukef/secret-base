@@ -2,10 +2,13 @@
 .container-fluid.padding
   - if @product_children
     - @product_children.each do |c|
-      = link_to "#{c}", products_path(category: {name: c})
+      = link_to "#{c}", products_path(category: {name: c}), class: 'mr-3'
   - else
-    %h6
-      全て
+    = link_to '本', products_path(category: {name: '本'}), class: 'mr-3'
+    = link_to 'メンズ', products_path(category: {name: 'メンズ'}), class: 'mr-3'
+    = link_to 'レディース', products_path(category: {name: 'レディース'}), class: 'mr-3'
+    = link_to 'ガジェット', products_path(category: {name: 'ガジェット'}), class: 'mr-3'
+    = link_to 'その他', products_path(category: {name: 'その他'}), class: 'mr-3'
   .row.padding
     = render @products
       
