@@ -14,10 +14,18 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload' 
   %body
     -if notice
-      %p.notice= notice
+      .alert.alert-primary{role: 'alert', id: 'notice'}
+        = notice
     -if alert
-      %p.alert= alert
+      .alert.alert-danger{role: 'alert', id: 'alert'}
+        = alert
     = yield
     = render 'layouts/footer'
+
     
-    
+:javascript
+  $(function(){
+    $('#notice').fadeOut(5000);
+    $('#alert').fadeOut(5000);
+  });
+

@@ -4,4 +4,5 @@ class User < ApplicationRecord
    mount_uploader :user_image, UserImageUploader
    validates :name, presence: true, length: {maximum: 30}
    has_many :products, dependent: :destroy
+   has_many :messages, dependent: :destroy
 end
