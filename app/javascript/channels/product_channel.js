@@ -15,8 +15,19 @@ const chatChannel = consumer.subscriptions.create({
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
-    var li = $('<li>').text(data['message']);
-    li.appendTo('#messages');
+    var message = `<div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+                     <div class="card-header" style='max-height: 3rem;'>
+                       <img src="..." class="rounded mr-2" alt="...">
+                       <strong class="mr-auto">Bootstrap</strong>
+                       <small>11 mins ago</small>
+                     </div>
+                     <div class="card-body">
+                       <p class="card-text">${data['message']}</p>
+                     </div>
+                  </div>`;
+    console.log(current_user);
+    var messages = document.getElementById('messages');
+    messages.insertAdjacentHTML('beforeend', message);
   },
 
   speak: function(message) {

@@ -1,2 +1,10 @@
-%li
-  = message.content
+.card.text-white.bg-success.mb-3{style: "max-width: 20rem" }
+  .card-header{style: 'max-height: 3rem;'}
+    %img{src: "...", class: "rounded mr-2", alt: "..."}
+    %strong.mr-auto
+      Bootstrap
+    %small.text-muted
+      just now
+  .card-body
+    .card-text
+      = message.content
