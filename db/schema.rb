@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_150929) do
+ActiveRecord::Schema.define(version: 2020_05_08_112839) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_150929) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.integer "product_id", null: false
+    t.boolean "exhibitor", default: false
     t.index ["product_id"], name: "index_messages_on_product_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end

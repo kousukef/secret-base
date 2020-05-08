@@ -15,7 +15,8 @@ const chatChannel = consumer.subscriptions.create({
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
-    var message = `<div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+    var message = `<div class="col-12">
+                    <div class="card text-white bg-success mb-3 float-${data['user']}" style="max-width: 75%;">
                      <div class="card-header" style='max-height: 3rem;'>
                        <img src="..." class="rounded mr-2" alt="...">
                        <strong class="mr-auto">Bootstrap</strong>
@@ -24,8 +25,8 @@ const chatChannel = consumer.subscriptions.create({
                      <div class="card-body">
                        <p class="card-text">${data['message']}</p>
                      </div>
+                    </div>
                   </div>`;
-    console.log(current_user);
     var messages = document.getElementById('messages');
     messages.insertAdjacentHTML('beforeend', message);
   },
