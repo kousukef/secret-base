@@ -11,14 +11,16 @@ class ProductChannel < ApplicationCable::Channel
     product = Product.find(params[:product_id])
     #productの出品者かどうかを識別する
     if product.user_id == current_user.id
-      user = 'right'
+      right_or_left = 'right'
       exhibitor = true
     else
-      user = 'left'
+      right_or_left = 'left'
       exhibitor = false
     end
-    Message.create!(content: data['message'], product_id: product.id, user_id: current_user.id, exhibitor: exhibitor)
-    ProductChannel.broadcast_to product, {message: data['message'], user: user}
+    user = current_user
+    user_image = user.user_image.message_thumb.url
+    Message.create!(content: data['message'], product_id: product.id, user_id: user.id, exhibitor: exhibitor)
+    ProductChannel.broadcast_to product, {message: data['message'], right_or_left: right_or_left, user_image: user_image}
   end
   
   def product
