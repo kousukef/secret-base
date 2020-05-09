@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  get 'users/info'
   root to: 'home#index'
   devise_for :users
+  get 'users/:id/info', to: 'users#info', as: 'user_info'
   resources :products
   get 'product/:id/speak', to: 'products#speak', as: 'speak'
   resources :rooms, only: [:show, :create, :destroy]

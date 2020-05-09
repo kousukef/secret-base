@@ -1,0 +1,5 @@
+.container.bg-secondary
+  = image_tag @user.user_image.user_info_thumb.url, class: "mx-auto d-block mt-3", style: "border-radius: 50%;"
+  = link_to '編集', edit_user_registration_path, class: 'text-white'
+  
+  
