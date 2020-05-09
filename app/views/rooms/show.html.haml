@@ -1,0 +1,8 @@
+.container 
+  %h1
+    = @room.name
+  %button.btn.btn-sm.btn-denngerf.float-left
+    通報する
+  #chat-message{data: {room-id: "#{@room.id}"}
+    = render @chat_messages
+
