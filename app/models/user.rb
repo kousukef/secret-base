@@ -5,4 +5,5 @@ class User < ApplicationRecord
    validates :name, presence: true, length: {maximum: 30}
    has_many :products, dependent: :destroy
    has_many :messages, dependent: :destroy
+   has_many :chat_messages, dependent: :destroy
 end

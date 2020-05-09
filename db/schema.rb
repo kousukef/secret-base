@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_112839) do
+ActiveRecord::Schema.define(version: 2020_05_09_151258) do
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_chat_messages_on_room_id"
+    t.index ["user_id"], name: "index_chat_messages_on_user_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
@@ -40,7 +50,14 @@ ActiveRecord::Schema.define(version: 2020_05_08_112839) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.integer "product_category_id", null: false
+    t.boolean "for_sale", null: false
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,6 +88,8 @@ ActiveRecord::Schema.define(version: 2020_05_08_112839) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "chat_messages", "rooms"
+  add_foreign_key "chat_messages", "users"
   add_foreign_key "messages", "products"
   add_foreign_key "messages", "users"
   add_foreign_key "products", "users"

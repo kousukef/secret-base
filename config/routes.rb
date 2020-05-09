@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/info'
   root to: 'home#index'
   devise_for :users
   get 'users/:id/info', to: 'users#info', as: 'user_info'
