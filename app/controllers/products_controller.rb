@@ -11,6 +11,8 @@ class ProductsController < ApplicationController
       @product_path = category.path.map {|c| c.name}
       @product_children = category.children.map {|c| c.name}
     end
+    #検索formに使う
+    @q = Product.ransack(params[:q])
   end
   
   def show
@@ -51,6 +53,12 @@ class ProductsController < ApplicationController
   def speak
     @product = Product.find(params[:id])
     @messages = Message.where(product_id: @product.id)
+  end
+  
+  def search
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
+    render 'index'
   end
   
   private
