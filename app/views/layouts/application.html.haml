@@ -16,7 +16,7 @@
     -if notice
       .alert.alert-primary{role: 'alert', id: 'notice'}
         = notice
-    -if alert
+    -elsif alert
       .alert.alert-danger{role: 'alert', id: 'alert'}
         = alert
     = yield

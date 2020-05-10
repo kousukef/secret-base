@@ -9,6 +9,10 @@
     = link_to 'レディース', products_path(category: {name: 'レディース'}), class: 'mr-3'
     = link_to 'ガジェット', products_path(category: {name: 'ガジェット'}), class: 'mr-3'
     = link_to 'その他', products_path(category: {name: 'その他'}), class: 'mr-3'
+  /userページの出品商品linkからとんできた場合
+  - if @exhibitor
+    %h1
+      出品商品
   .row.padding
     = render @products
       

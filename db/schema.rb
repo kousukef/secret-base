@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_151258) do
+ActiveRecord::Schema.define(version: 2020_05_10_051934) do
 
   create_table "chat_messages", force: :cascade do |t|
     t.text "content"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_05_09_151258) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.integer "product_category_id", null: false
-    t.boolean "for_sale", null: false
+    t.boolean "for_sale", default: true, null: false
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 

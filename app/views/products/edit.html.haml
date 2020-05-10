@@ -1,0 +1,71 @@
+.container 
+  = form_with model: @product do |f|
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :description
+      = f.text_area :description, class: 'form-control'
+    .form-group
+      = f.label :price
+      = f.number_field :price, class: 'form-control'
+    .form-group
+      = f.label :product_image
+      = f.file_field :product_image, class: 'form-control-file'
+      -# id入れたいけど入らない
+    .form-group
+      = f.fields_for @product_category, { id: 'select_parent' } do |c| 
+        = c.label :ancestry
+        = c.select :ancestry, @collections, class: 'form-control'
+    = f.button :submit, class: 'btn btn-primary'
+
+:javascript
+  $(function() {
+    //selectを作るfunctionを定義
+    function create_category(new_select, insert_after_id){
+      // select新しく作るとき前のselect を削除する
+      var select2 = document.getElementById(new_select)
+        if(select2){
+          var select3 = document.getElementById('select3')
+          if(select3){
+            select3.remove();
+          }
+          select2.remove();
+        }
+        //select boxの選択された値を取得
+        var selected_option = $(insert_after_id).val()
+        //初期値以外だったら処理実行
+        if (selected_option !== '選択してください'){
+          $.ajax({
+          teype: 'GET',
+          url: '/category',
+          data: {category_name: selected_option},
+          dataType: 'json'
+        }).done(function(collections){
+          //送られてきたデータが空じゃなかったら処理実行
+          if ($.isEmptyObject(collections) === false){
+          //新しいselectとその初期値を追加
+          var select = $('<select>').attr({id: new_select, name: 'product[product_category][ancestry]'}).addClass('form-control');
+          select.appendTo($('.select-boxes'));
+          $('<option>').text('選択してください').appendTo($('#' + new_select));
+          //送られてきたデータでselectのoption追加
+          $.each(collections, function(property, value){
+            $('<option>').val(value.name).text(value.name).appendTo($('#' + new_select));
+          });
+          }
+        })
+        .fail(function(){
+        alert('カテゴリー取得に失敗しました');
+        });
+        }
+      }
+    //子select作る
+    $('#product_product_category_ancestry').on('change', function(){
+      create_category('select2', '#product_product_category_ancestry');
+    });
+    //孫select作る
+    $('.select-boxes').on('change', '#select2', function(){
+      create_category('select3', '#select2');
+    });
+  });
+  

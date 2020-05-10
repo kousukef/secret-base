@@ -1,5 +1,25 @@
-.container.bg-secondary
-  = image_tag @user.user_image.user_info_thumb.url, class: "mx-auto d-block mt-3", style: "border-radius: 50%;"
-  = link_to '編集', edit_user_registration_path, class: 'text-white'
+.container.border.border-secondary.mt-5.rounded{style: 'width: 500px;'}
+  .text-center
+    = image_tag @user.user_image.user_info_thumb.url, class: 'mt-3', style: "border-radius: 50%;"
+  .row.justify-content-center.mt-3
+    .col-2.font-weight-bolder
+      Name:
+    .col-2
+      = @user.name
+  .row.justify-content-center.mt-3
+    .col-2.font-weight-bolder
+      Email:
+    .col-2
+      = @user.email
+  .row
+    .col-3
+      = link_to '出品商品', myproducts_path(exhibitor: true), class: 'font-weight-bolder'
+    .col-3
+      = link_to 'お気に入り', '#'
+    .col-6
+      .text-right
+        = link_to '編集', edit_user_registration_path, class: 'font-weight-bolder'
+  
+  
   
   

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  
+  before_action :correct_user,   only: :destroy
   
   def index
     if category_params[:name] == 'all'
@@ -26,6 +26,7 @@ class ProductsController < ApplicationController
     @collections = product_categories.unshift('選択してください')
   end
   
+  
   def create
     p = product_params
     product_p = {name: p[:name], description: p[:description], price: p[:price], product_image: p[:product_image]}
@@ -40,15 +41,49 @@ class ProductsController < ApplicationController
     end
   end
   
+  def edit
+    @product = Product.find(params[:id])
+    @product_category = @product.product_category
+  end
+  
+  def update
+    @product = Product.find(params[:id])
+    if @user.update(product_params)
+      flash[:success] = "編集に成功しました"
+      redirect_to @product
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
+    @product.destroy
+    flash[:success] = '削除しました'
+    @user = current_user
+    
+    #userの商品がもうないなら
+    if @user.products.empty?
+      render user_info_path
+      
+    #userの商品がまだあれば
+    else
+      @products = @user.products
+      @exhibitor = true
+      render :index
+    end
+  end
+  
   def myproducts
     @products = current_user.products
     if @products.any?
+      @exhibitor = params[:exhibitor]
       render :index
     else
       flash[:alert] = 'MyProductsがありません'
-      redirect_to root_path
+      redirect_to user_info_path
     end
   end
+  
   
   def speak
     @product = Product.find(params[:id])
@@ -58,7 +93,7 @@ class ProductsController < ApplicationController
   def search
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
-    render 'index'
+    render :index
   end
   
   private
@@ -69,5 +104,10 @@ class ProductsController < ApplicationController
     
     def category_params
       params.require(:category).permit(:name)
+    end
+    
+    def correct_user
+      @product = current_user.products.find_by(id: params[:id])
+      redirect_to root_url if @product.nil?
     end
 end
