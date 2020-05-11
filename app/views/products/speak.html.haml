@@ -2,7 +2,7 @@
   %h1.mx-auto{style: "width: 200px;"}
     質問Room
   .row{id: 'messages', data: {product_id: "#{@product.id}", message_type: "#{@message_type}"}}
-    = render @messages
+    = render partial: "message", collection: @messages
   %input#message_field{type: 'text'}
   %button#message_button
     送信

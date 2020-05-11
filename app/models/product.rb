@@ -8,5 +8,6 @@ class Product < ApplicationRecord
   validates :price, presence: true
   validates :product_image, presence: true
   belongs_to :product_category
-  has_many :messages, dependent: :destroy
+  has_many :q_and_a_messages, dependent: :destroy
+  has_many :after_purchased_messages, dependent: :destroy
 end

@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get 'product/search', to: 'products#search', as: 'search'
   get '/myproducts', to: 'products#myproducts'
   get 'category', to: 'product_categories#category', defaults: { format: 'json' }
-  patch 'product/:id/purchase', to: 'products#purchase', as: 'purchase'
+  get 'product/:id/purchase', to: 'products#purchase', as: 'purchase'
 end

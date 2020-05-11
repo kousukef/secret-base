@@ -15,6 +15,7 @@ const chatChannel = consumer.subscriptions.create({
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
+    if(data['message_type'] === $('#messages').data('message-type')){
     var message = `<div class="col-12">
                     <div class="card text-white bg-success mb-3 float-${data['right_or_left']}" style="max-width: 75%;">
                      <div class="card-header" style='max-height: 3rem;'>
@@ -29,6 +30,7 @@ const chatChannel = consumer.subscriptions.create({
                   </div>`;
     var messages = document.getElementById('messages');
     messages.insertAdjacentHTML('beforeend', message);
+    }
   },
 
   speak: function(message, message_type) {
@@ -38,9 +40,9 @@ const chatChannel = consumer.subscriptions.create({
 
 //message送信
   $(document).on('click', '#message_button', function(){
-    const message_type = document.getElementById('messages').dataset.message_type
-    const message = $('#message_field').val();
-    chatChannel.speak(message, message_type);
+    const messageType = $('#messages').data('message-type');
+    const messageVal = $('#message_field').val();
+    chatChannel.speak(messageVal, messageType);
     document.getElementById('message_field').value = '';
     $('#message_field').focus();
   });
