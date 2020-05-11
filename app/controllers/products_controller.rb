@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
   
   def show
     @product = Product.find(params[:id])
+    @current_user = current_user
   end
   
   def new
@@ -44,11 +45,13 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
     @product_category = @product.product_category
+    product_categories = ProductCategory.where(ancestry: nil).map { |c| c[:name]}
+    @collections = product_categories.unshift('選択してください')
   end
   
   def update
     @product = Product.find(params[:id])
-    if @user.update(product_params)
+    if @product.update(product_params)
       flash[:success] = "編集に成功しました"
       redirect_to @product
     else
@@ -84,10 +87,14 @@ class ProductsController < ApplicationController
     end
   end
   
-  
+  #質問ルーム
   def speak
     @product = Product.find(params[:id])
     @messages = Message.where(product_id: @product.id)
+  end
+  
+  def purchase
+    
   end
   
   def search
@@ -99,7 +106,7 @@ class ProductsController < ApplicationController
   private
   
     def product_params
-      params.require(:product).permit(:name, :description, :price, :product_image,product_category: [:ancestry])
+      params.require(:product).permit(:name, :description, :price, {product_image: []},product_category: [:ancestry])
     end
     
     def category_params

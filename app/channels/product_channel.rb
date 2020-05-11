@@ -19,8 +19,9 @@ class ProductChannel < ApplicationCable::Channel
     end
     user = current_user
     user_image = user.user_image.message_thumb.url
+    user_name = user.name
     Message.create!(content: data['message'], product_id: product.id, user_id: user.id, exhibitor: exhibitor)
-    ProductChannel.broadcast_to product, {message: data['message'], right_or_left: right_or_left, user_image: user_image}
+    ProductChannel.broadcast_to product, {message: data['message'], right_or_left: right_or_left, user_image: user_image, user_name: user_name}
   end
   
   def product
