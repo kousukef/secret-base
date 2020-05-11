@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_032526) do
+ActiveRecord::Schema.define(version: 2020_05_11_164251) do
+
+  create_table "after_purchased_messages", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "product_id"
+    t.boolean "exhibitor", default: false
+    t.index ["product_id"], name: "index_after_purchased_messages_on_product_id"
+    t.index ["user_id"], name: "index_after_purchased_messages_on_user_id"
+  end
 
   create_table "chat_messages", force: :cascade do |t|
     t.text "content"
@@ -20,17 +31,6 @@ ActiveRecord::Schema.define(version: 2020_05_11_032526) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_chat_messages_on_room_id"
     t.index ["user_id"], name: "index_chat_messages_on_user_id"
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.string "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
-    t.integer "product_id", null: false
-    t.boolean "exhibitor", default: false
-    t.index ["product_id"], name: "index_messages_on_product_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "product_categories", force: :cascade do |t|
@@ -48,10 +48,21 @@ ActiveRecord::Schema.define(version: 2020_05_11_032526) do
     t.string "product_image", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
+    t.integer "seller_id", null: false
     t.integer "product_category_id", null: false
     t.integer "purchaser_id"
-    t.index ["user_id"], name: "index_products_on_user_id"
+    t.index ["seller_id"], name: "index_products_on_seller_id"
+  end
+
+  create_table "q_and_a_messages", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
+    t.boolean "exhibitor", default: false
+    t.index ["product_id"], name: "index_q_and_a_messages_on_product_id"
+    t.index ["user_id"], name: "index_q_and_a_messages_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -88,9 +99,10 @@ ActiveRecord::Schema.define(version: 2020_05_11_032526) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "after_purchased_messages", "products"
+  add_foreign_key "after_purchased_messages", "users"
   add_foreign_key "chat_messages", "rooms"
   add_foreign_key "chat_messages", "users"
-  add_foreign_key "messages", "products"
-  add_foreign_key "messages", "users"
-  add_foreign_key "products", "users"
+  add_foreign_key "q_and_a_messages", "products"
+  add_foreign_key "q_and_a_messages", "users"
 end

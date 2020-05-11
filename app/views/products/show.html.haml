@@ -30,8 +30,8 @@
         %td
           = "¥ #{@product.price}"
   .btn.btn-bg.btn-primary 
-    = link_to '質問をする', speak_path(@product), class: 'text-white', data: {"turbolinks" => false}
-  - if @product.user_id != @current_user.id
+    = link_to '質問をする', speak_path(@product, message_type: 'q_and_a'), class: 'text-white', data: {"turbolinks" => false}
+  - if @product.seller_id != @current_user.id
     %button.btn.btn-success{type: "button", data: {toggle: "modal", target: "#exampleModal"}}
       購入に進む
 .modal.fade{id: "exampleModal", tabindex: "-1", role: "dialog", aria: {labelledby: "exampleModalLabel", hidden:"true"}}
@@ -60,4 +60,4 @@
       .modal-footer
         %button.btn.btn-secondary{type: "button", data: {dismiss: "modal"}}
           Close
-        = link_to '購入', purchase_path(@product), class: 'btn btn-success', type: "button"
+        = link_to '購入', speak_path(@product, message_type: 'after_purchased'), class: 'btn btn-success', type: "button"
