@@ -1,6 +1,6 @@
 .col-md-3
   .card.m-4
-    = image_tag product.product_image.url, class: 'card-img-top'
+    = image_tag product.product_image[0].url, class: 'card-img-top'
     .card-body
       %h4.card-title
         = product.name

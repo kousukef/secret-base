@@ -1,5 +1,17 @@
 .container
-  = image_tag @product.product_image.url, class: 'figure-img img-fluid rounded mt-1', alt: 'product image'
+  .carousel.slide#carouselExampleControls{data: {ride: "carousel"}}
+    .carousel-inner
+      - @product.product_image.each_with_index do |p,i|
+        %div{class: "carousel-item #{(i == 0)? 'active' : ''}"}
+          = image_tag p.url, class: "d-block w-100", alt: 'product imagre'
+    %a.carousel-control-prev{href: "#carouselExampleControls", role: "button", data: {slide: "prev"}}
+      %span.carousel-control-prev-icon{aria: {hidden: "true"}}
+      %span.sr-only
+        Previous
+    %a.carousel-control-next{href: "#carouselExampleControls", role: "button", data: {slide: "next"}}
+      %span.carousel-control-next-icon{aria: {hidden: "true"}}
+      %span.sr-only
+        Next
   %table.table
     %tbody
       %tr
@@ -19,8 +31,9 @@
           = "¥ #{@product.price}"
   .btn.btn-bg.btn-primary 
     = link_to '質問をする', speak_path(@product), class: 'text-white', data: {"turbolinks" => false}
-  %button.btn.btn-success{type: "button", data: {toggle: "modal", target: "#exampleModal"}}
-    購入に進む
+  - if @product.user_id != @current_user.id
+    %button.btn.btn-success{type: "button", data: {toggle: "modal", target: "#exampleModal"}}
+      購入に進む
 .modal.fade{id: "exampleModal", tabindex: "-1", role: "dialog", aria: {labelledby: "exampleModalLabel", hidden:"true"}}
   .modal-dialog{role: "document"}
     .modal-content
@@ -47,4 +60,4 @@
       .modal-footer
         %button.btn.btn-secondary{type: "button", data: {dismiss: "modal"}}
           Close
-        = link_to '購入', '#', class: 'btn btn-success', type: "button"
+        = link_to '購入', purchase_path(@product), class: 'btn btn-success', type: "button"

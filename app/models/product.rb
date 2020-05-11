@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
-  mount_uploader :product_image, ProductImageUploader
+  mount_uploaders :product_image, ProductImageUploader
+  serialize :product_image, JSON
   belongs_to :user
   validates :name, presence: true
   validates :description, presence: true
