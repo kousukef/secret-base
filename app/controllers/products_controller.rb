@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
   def create
     p = product_params
     product_p = {name: p[:name], description: p[:description], price: p[:price], product_image: p[:product_image]}
-    @product = current_user.products.build(product_p)
+    @product = current_user.sales_products.build(product_p)
     category = ProductCategory.find_by(name: p[:product_category][:ancestry])
     @product.product_category_id = category.id
     if @product.save
@@ -65,19 +65,19 @@ class ProductsController < ApplicationController
     @user = current_user
     
     #userの商品がもうないなら
-    if @user.products.empty?
+    if @user.sales_products.empty?
       render user_info_path
       
     #userの商品がまだあれば
     else
-      @products = @user.products
+      @products = @user.sales_products
       @exhibitor = true
       render :index
     end
   end
   
   def myproducts
-    @products = current_user.products
+    @products = current_user.sales_products
     if @products.any?
       @exhibitor = params[:exhibitor]
       render :index
@@ -90,12 +90,15 @@ class ProductsController < ApplicationController
   #質問ルーム
   def speak
     @product = Product.find(params[:id])
-    @messages = Message.where(product_id: @product.id)
+    if params[:message_type] == 'q_and_a'
+      @messages = QAndAMessage.where(product_id: @product.id)
+      @message_type = 'q_and_a'
+    elsif params[:message_type] == 'after_purchased'
+      @messages = AfterPurchasedMessage.where(product_id: @product.id)
+      @message_type = 'after_purchased'
+    end
   end
   
-  def purchase
-    
-  end
   
   def search
     @q = Product.ransack(params[:q])

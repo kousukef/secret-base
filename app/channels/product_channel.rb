@@ -7,21 +7,31 @@ class ProductChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def speak(data)
+  def speak(message, message_type)
     product = Product.find(params[:product_id])
+    binding.pry
     #productの出品者かどうかを識別する
-    if product.user_id == current_user.id
+    if product.seller_id == current_user.id
       right_or_left = 'right'
       exhibitor = true
     else
       right_or_left = 'left'
       exhibitor = false
     end
+    
+    
     user = current_user
     user_image = user.user_image.message_thumb.url
     user_name = user.name
-    Message.create!(content: data['message'], product_id: product.id, user_id: user.id, exhibitor: exhibitor)
-    ProductChannel.broadcast_to product, {message: data['message'], right_or_left: right_or_left, user_image: user_image, user_name: user_name}
+    
+    #Q&A messageか、購入後のmessageかを見分ける
+    if message_type == 'q_and_a'
+      Message.create!(content: message['message'], product_id: product.id, user_id: user.id, exhibitor: exhibitor)
+    elsif message_type == 'after_purchased'
+      Message.create!(content: message['message'], product_id: product.id, user_id: user.id, exhibitor: exhibitor)
+    end
+    ProductChannel.broadcast_to product, {message: message['message'], right_or_left: right_or_left,
+                                          user_image: user_image, user_name: user_name, message_type: message_type}
   end
   
   def product

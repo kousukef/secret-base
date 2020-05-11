@@ -31,14 +31,16 @@ const chatChannel = consumer.subscriptions.create({
     messages.insertAdjacentHTML('beforeend', message);
   },
 
-  speak: function(message) {
-    return this.perform('speak', {message: message});
+  speak: function(message, message_type) {
+    return this.perform('speak', {message: message, message_type: message_type});
   }
 });
 
+//message送信
   $(document).on('click', '#message_button', function(){
-    const value = $('#message_field').val();
-    chatChannel.speak(value);
+    const message_type = document.getElementById('messages').dataset.message_type
+    const message = $('#message_field').val();
+    chatChannel.speak(message, message_type);
     document.getElementById('message_field').value = '';
     $('#message_field').focus();
   });

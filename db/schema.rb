@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_032526) do
+ActiveRecord::Schema.define(version: 2020_05_11_135910) do
 
   create_table "chat_messages", force: :cascade do |t|
     t.text "content"
@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 2020_05_11_032526) do
     t.string "product_image", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
+    t.integer "seller_id", null: false
     t.integer "product_category_id", null: false
     t.integer "purchaser_id"
-    t.index ["user_id"], name: "index_products_on_user_id"
+    t.index ["seller_id"], name: "index_products_on_seller_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -92,5 +92,4 @@ ActiveRecord::Schema.define(version: 2020_05_11_032526) do
   add_foreign_key "chat_messages", "users"
   add_foreign_key "messages", "products"
   add_foreign_key "messages", "users"
-  add_foreign_key "products", "users"
 end
