@@ -1,17 +1,19 @@
 class ProductsController < ApplicationController
   before_action :correct_user,   only: :destroy
   
+  
   def index
-    if category_params[:name] == 'all'
+    if params[:category].nil?
       @products = Product.all
     else
       category = ProductCategory.find_by(category_params)
       @products = Product.where(product_category_id: category.subtree_ids)
+      
       #左上のリンクに使う
       @product_path = category.path.map {|c| c.name}
       @product_children = category.children.map {|c| c.name}
     end
-    #検索formに使う
+    #検索フォーム
     @q = Product.ransack(params[:q])
   end
   
@@ -76,19 +78,33 @@ class ProductsController < ApplicationController
     end
   end
   
-  def myproducts
+  #出品商品一覧
+  def sales_products
     @products = current_user.sales_products
     if @products.any?
-      @exhibitor = params[:exhibitor]
+      @title = '出品商品'
       render :index
     else
-      flash[:alert] = 'MyProductsがありません'
-      redirect_to user_info_path
+      flash[:alert] = '出品商品がありません'
+      redirect_to user_info_url
+    end
+  end
+  
+  #購入商品一覧
+  def purchased_products
+    @products = current_user.purchased_products
+    if @products.any?
+      @title = '購入商品'
+      render :index
+    else
+      flash[:alert] = '購入商品がありません'
+      redirect_to user_info_url
     end
   end
   
   #質問ルーム
   def speak
+    #message type に合ったmessageをviewに渡す
     @product = Product.find(params[:id])
     if params[:message_type] == 'q_and_a'
       @messages = QAndAMessage.where(product_id: @product.id)

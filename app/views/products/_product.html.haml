@@ -6,7 +6,14 @@
         = product.name
       %p.card-text
         = "¥ #{product.price}"
+        - if product.purchaser_id
+          .text-danger.text-right{style: 'font-size: 20px;'}
+            Sold Out
       = link_to '詳細', product_path(product), class: 'btn btn-outline-secondary'
+      /出品者の場合
       - if @exhibitor
-        = link_to '編集', edit_product_path(product), class: 'btn btn-outline-secondary ml-5'
-        = link_to '削除', product_path(product), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'btn btn-outline-secondary'
+        - if product.purchaser_id
+          = link_to 'メッセージ', speak_path(@product, message_type: 'after_purchased'), class: 'btn btn-outline-secondary ml-5'
+        - else
+          = link_to '編集', edit_product_path(product), class: 'btn btn-outline-secondary ml-5'
+          = link_to '削除', product_path(product), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'btn btn-outline-secondary'

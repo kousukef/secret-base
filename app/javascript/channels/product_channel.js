@@ -14,7 +14,7 @@ const chatChannel = consumer.subscriptions.create({
   },
 
   received(data) {
-    // Called when there's incoming data on the websocket for this channel
+    // message-typeに合ったmessageだけ表示させる
     if(data['message_type'] === $('#messages').data('message-type')){
     var message = `<div class="col-12">
                     <div class="card text-white bg-success mb-3 float-${data['right_or_left']}" style="max-width: 75%;">
