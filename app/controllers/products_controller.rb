@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   
   def show
     @product = Product.find(params[:id])
-    @current_user = current_user
+    show_images
   end
   
   def new
@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
   def create
     @product = current_user.sales_products.build(@product_params)
     if @product.save
-      redirect_to products_path(category: {name: 'all'}), notice: '作成に成功'
+      redirect_to products_path, notice: '作成に成功'
     else
       flash[:error] = '作成に失敗'
       render :new
@@ -75,7 +75,21 @@ class ProductsController < ApplicationController
     end
   end
   
-  #出品商品一覧
+ 
+  #質問ルーム
+  def speak
+    #message type に合ったmessageをviewに渡す
+    @product = Product.find(params[:id])
+    if params[:message_type] == 'q_and_a'
+      @messages = QAndAMessage.where(product_id: @product.id)
+      @message_type = 'q_and_a'
+    elsif params[:message_type] == 'after_purchased'
+      @product.update!(purchaser_id: current_user.id) if @product.purchaser_id.niL?
+      @messages = AfterPurchasedMessage.where(product_id: @product.id)
+      @message_type = 'after_purchased'
+    end
+  end
+   #出品商品一覧
   def sales_products
     @products = current_user.sales_products
     if @products.any?
@@ -99,25 +113,12 @@ class ProductsController < ApplicationController
     end
   end
   
-  #質問ルーム
-  def speak
-    #message type に合ったmessageをviewに渡す
-    @product = Product.find(params[:id])
-    if params[:message_type] == 'q_and_a'
-      @messages = QAndAMessage.where(product_id: @product.id)
-      @message_type = 'q_and_a'
-    elsif params[:message_type] == 'after_purchased'
-      @messages = AfterPurchasedMessage.where(product_id: @product.id)
-      @message_type = 'after_purchased'
-    end
-  end
-  
-  
   def search
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
     render :index
   end
+  
   
   private
   
@@ -134,7 +135,11 @@ class ProductsController < ApplicationController
     end
     
     def correct_user
-      @product = current_user.products.find_by(id: params[:id])
+      @product = current_user.sales_products.find_by(id: params[:id])
       redirect_to root_url if @product.nil?
+    end
+    
+    def show_images
+      @product_images = @product.product_image.map {|i| i.show_image.url}
     end
 end

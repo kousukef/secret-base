@@ -1,9 +1,9 @@
-.container
+.container{style: 'width:700px;'}
   .carousel.slide#carouselExampleControls{data: {ride: "carousel"}}
     .carousel-inner
-      - @product.product_image.each_with_index do |p,i|
+      - @product_images.each_with_index do |p,i|
         %div{class: "carousel-item #{(i == 0)? 'active' : ''}"}
-          = image_tag p.show_image.url, class: "d-block w-100", alt: 'product imagre'
+          = image_tag p, class: "d-block mx-auto w-75", alt: 'product imagre'
     %a.carousel-control-prev{href: "#carouselExampleControls", role: "button", data: {slide: "prev"}}
       %span.carousel-control-prev-icon{aria: {hidden: "true"}}
       %span.sr-only
@@ -14,6 +14,9 @@
         Next
   %table.table
     %tbody
+      -unless @product.purchaser_id.nil?
+        %p.display-4.text-danger
+        Sold Out
       %tr
         %th{scope: 'row'}
           商品名
@@ -29,11 +32,14 @@
           値段
         %td
           = "¥ #{@product.price}"
-  .btn.btn-bg.btn-primary 
-    = link_to '質問をする', speak_path(@product, message_type: 'q_and_a'), class: 'text-white', data: {"turbolinks" => false}
-  - if @product.seller_id != @current_user.id
-    %button.btn.btn-success{type: "button", data: {toggle: "modal", target: "#exampleModal"}}
-      購入に進む
+  - if @product.purchaser_id.nil?
+    .btn.btn-bg.btn-primary 
+      = link_to '質問をする', speak_path(@product, message_type: 'q_and_a'), class: 'text-white', data: {"turbolinks" => false}
+    - if @product.seller_id != current_user.id
+      %button.btn.btn-success{type: "button", data: {toggle: "modal", target: "#exampleModal"}}
+        購入に進む
+  - elsif @product.purchaser_id == current_user.id
+    = link_to 'メッセージ', speak_path(@product, message_type: 'after_purchased'), class: 'btn btn-success', type: "button",  data: {"turbolinks" => false}
 .modal.fade{id: "exampleModal", tabindex: "-1", role: "dialog", aria: {labelledby: "exampleModalLabel", hidden:"true"}}
   .modal-dialog{role: "document"}
     .modal-content
