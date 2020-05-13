@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :correct_user,   only: :destroy
-  
+  before_action :product_params, only: [:create, :update]
+  before_action :authenticate_user!, except: [:index, :search]
   
   def index
     if params[:category].nil?
@@ -31,11 +32,7 @@ class ProductsController < ApplicationController
   
   
   def create
-    p = product_params
-    product_p = {name: p[:name], description: p[:description], price: p[:price], product_image: p[:product_image]}
-    @product = current_user.sales_products.build(product_p)
-    category = ProductCategory.find_by(name: p[:product_category][:ancestry])
-    @product.product_category_id = category.id
+    @product = current_user.sales_products.build(@product_params)
     if @product.save
       redirect_to products_path(category: {name: 'all'}), notice: '作成に成功'
     else
@@ -53,7 +50,7 @@ class ProductsController < ApplicationController
   
   def update
     @product = Product.find(params[:id])
-    if @product.update(product_params)
+    if @product.update(@product_params)
       flash[:success] = "編集に成功しました"
       redirect_to @product
     else
@@ -124,8 +121,12 @@ class ProductsController < ApplicationController
   
   private
   
+    #そのまま渡せないので分解
     def product_params
-      params.require(:product).permit(:name, :description, :price, {product_image: []},product_category: [:ancestry])
+      p = params.require(:product).permit(:name, :description, :price, {product_image: []},product_category: [:ancestry])
+      product_category_id = ProductCategory.find_by(name: p[:product_category][:ancestry]).id
+      @product_params = {name: p[:name], description: p[:description], price: p[:price],
+                          product_image: p[:product_image], product_category_id: product_category_id }
     end
     
     def category_params

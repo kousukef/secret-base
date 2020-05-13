@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   mount_uploaders :product_image, ProductImageUploader
   serialize :product_image, JSON
   belongs_to :seller, class_name: 'User'
-  belongs_to :puchaser, class_name: 'User'
+  belongs_to :purchaser, class_name: 'User', optional: true
   validates :name, presence: true
   validates :description, presence: true
   validates :price, presence: true

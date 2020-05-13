@@ -1,0 +1,35 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light.sticky-top
+  = link_to image_tag("logo.jpeg"), root_path, class: 'navbar-brand'
+  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    - if @product_path
+      %ul.navbar-nav.mr-auto
+        - @product_path.each do |p|
+          %li.nav-item
+            = link_to "#{p}/", products_path(category: {name: p}), class: 'mr-2'
+    %ul.navbar-nav.ml-auto
+      %li.nav-item.active
+        = link_to 'Home', root_path, class: 'nav-link'
+      %li.nav-item.dropdown
+        = link_to '商品', '#', class: 'nav-link dropdown-toggle', href: '#', id: 'productDropdown', role: 'button', data: { toggle: 'dropdown'}, aria: {haspopup: 'true', expanded: 'false'}
+        .dropdown-menu{aria: {labelledby: 'productDropdown'}}
+          = link_to '全て', products_path, class: 'dropdown-item'
+          = link_to '本', products_path(category: {name: '本'}), class: 'dropdown-item'
+          = link_to 'メンズ', products_path(category: {name: 'メンズ'}), class: 'dropdown-item'
+          = link_to 'レディース', products_path(category: {name: 'レディース'}), class: 'dropdown-item'
+          = link_to 'ガジェット', products_path(category: {name: 'ガジェット'}), class: 'dropdown-item'
+          = link_to 'その他', products_path(category: {name: 'その他'}), class: 'dropdown-item'
+      %li.nav-item.dropdown
+        = link_to 'Users', '#', class: 'nav-link dropdown-toggle', href: '#', id: 'userDropdown', role: 'button', data: { toggle: 'dropdown'}, aria: {haspopup: 'true', expanded: 'false'}
+        .dropdown-menu{aria: {labelledby: 'userDropdown'}}
+          - if user_signed_in?
+            = link_to "#{current_user.name}", user_info_path(current_user), class: 'dropdown-item'
+            = link_to 'Signout', destroy_user_session_path, method: :delete, data: {confirm: 'Signoutしてよろしいですか？'}, class: 'dropdown-item'
+          - else
+            = link_to 'Signin', new_user_session_path, class: 'dropdown-item'
+            = link_to 'Signup', new_user_registration_path, class: 'dropdown-item'
+    - if @q
+      = search_form_for @q, url: search_path, class: 'form-inline my-2 my-lg-0' do |f|
+        = f.search_field :name_or_description_cont, class: 'form-control mr-sm-2'
+        = f.submit '検索', class: 'btn btn-outline-success my-2 my-sm-0' 

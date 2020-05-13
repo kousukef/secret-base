@@ -61,3 +61,13 @@ categorys.each do |category|
     end
   end
 end
+
+
+100.times do
+  Product.create!(
+    name: Faker::Movies::BackToTheFuture.character,
+    description: Faker::Movies::BackToTheFuture.quote,
+    product_image:,
+    seller_id: 1,
+    product_category_id: Faker::Number.between(from: 1, to: 73))
+end
