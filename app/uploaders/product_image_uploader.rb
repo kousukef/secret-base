@@ -27,10 +27,11 @@ class ProductImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-
+  process resize_to_fill: [250, 250, "Center"]
+  
   # Create different versions of your uploaded files:
   version :show_image do
-    process resize_to_fit: [400, 300]
+    process resize_to_fill: [700, 500, "Center"]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
