@@ -27,7 +27,7 @@ class ProductImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-  process resize_to_fill: [250, 250, "Center"]
+  process resize_to_fill: [200, 200, "Center"]
   
   # Create different versions of your uploaded files:
   version :show_image do

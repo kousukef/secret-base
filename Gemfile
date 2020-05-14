@@ -9,6 +9,7 @@ gem 'devise'
 gem 'hamlit'
 gem 'erb2haml'
 gem 'carrierwave', '~> 2.0'
+gem 'carrierwave_backgrounder'
 gem "mini_magick"
 gem 'simple_form'
 gem 'jquery-rails'

@@ -1,5 +1,6 @@
 .container 
   = form_with model: @product do |f|
+    = render 'layouts/error_messages'
     .form-group
       = f.label :name
       = f.text_field :name, class: 'form-control'

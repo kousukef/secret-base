@@ -19,15 +19,16 @@ class ProductsController < ApplicationController
   end
   
   def show
-    @product = Product.find(params[:id])
-    show_images
+    if @product = Product.find_by(id: params[:id])
+      show_images
+    else
+      redirect_to products_url
+    end
   end
   
   def new
     @product = Product.new
-    @product_category = ProductCategory.new
-    product_categories = ProductCategory.where(ancestry: nil).map { |c| c[:name]}
-    @collections = product_categories.unshift('選択してください')
+    product_categories
   end
   
   
@@ -36,16 +37,15 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_path, notice: '作成に成功'
     else
-      flash[:error] = '作成に失敗'
-      render :new
+      flash[:alert] = '作成に失敗'
+      product_categories
+      redirect_to new_product_url
     end
   end
   
   def edit
     @product = Product.find(params[:id])
-    @product_category = @product.product_category
-    product_categories = ProductCategory.where(ancestry: nil).map { |c| c[:name]}
-    @collections = product_categories.unshift('選択してください')
+    product_categories
   end
   
   def update
@@ -54,6 +54,8 @@ class ProductsController < ApplicationController
       flash[:success] = "編集に成功しました"
       redirect_to @product
     else
+      flash.now[:alert] = '編集に失敗しました'
+      product_categories
       render :edit
     end
   end
@@ -125,9 +127,11 @@ class ProductsController < ApplicationController
     #そのまま渡せないので分解
     def product_params
       p = params.require(:product).permit(:name, :description, :price, {product_image: []},product_category: [:ancestry])
-      product_category_id = ProductCategory.find_by(name: p[:product_category][:ancestry]).id
-      @product_params = {name: p[:name], description: p[:description], price: p[:price],
+      if p[:product_category][:ancestry] != '選択してください'
+        product_category_id = ProductCategory.find_by(name: p[:product_category][:ancestry]).id 
+        @product_params = {name: p[:name], description: p[:description], price: p[:price],
                           product_image: p[:product_image], product_category_id: product_category_id }
+      end
     end
     
     def category_params
@@ -141,5 +145,11 @@ class ProductsController < ApplicationController
     
     def show_images
       @product_images = @product.product_image.map {|i| i.show_image.url}
+    end
+    
+    def product_categories
+      @product_category = ProductCategory.new
+      product_categories = ProductCategory.where(ancestry: nil).map { |c| c[:name]}
+      @collections = product_categories.unshift('選択してください')
     end
 end
