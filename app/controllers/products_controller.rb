@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   before_action :correct_user,   only: :destroy
-  before_action :product_params, only: [:create, :update]
   before_action :authenticate_user!, except: [:index, :search]
   
   def index
@@ -19,11 +18,7 @@ class ProductsController < ApplicationController
   end
   
   def show
-    if @product = Product.find_by(id: params[:id])
-      show_images
-    else
-      redirect_to products_url
-    end
+    @product = Product.find_by(id: params[:id])
   end
   
   def new
@@ -33,13 +28,14 @@ class ProductsController < ApplicationController
   
   
   def create
-    @product = current_user.sales_products.build(@product_params)
+    binding.pry
+    @product = current_user.sales_products.build(product_params)
     if @product.save
       redirect_to products_path, notice: '作成に成功'
     else
       flash[:alert] = '作成に失敗'
       product_categories
-      redirect_to new_product_url
+      render :new
     end
   end
   
@@ -50,7 +46,7 @@ class ProductsController < ApplicationController
   
   def update
     @product = Product.find(params[:id])
-    if @product.update(@product_params)
+    if @product.update(product_params)
       flash[:success] = "編集に成功しました"
       redirect_to @product
     else
@@ -124,14 +120,8 @@ class ProductsController < ApplicationController
   
   private
   
-    #そのまま渡せないので分解
     def product_params
-      p = params.require(:product).permit(:name, :description, :price, {product_image: []},product_category: [:ancestry])
-      if p[:product_category][:ancestry] != '選択してください'
-        product_category_id = ProductCategory.find_by(name: p[:product_category][:ancestry]).id 
-        @product_params = {name: p[:name], description: p[:description], price: p[:price],
-                          product_image: p[:product_image], product_category_id: product_category_id }
-      end
+      params.require(:product).permit(:name, :description, :price, :product_category_id, images: [])
     end
     
     def category_params
@@ -143,13 +133,10 @@ class ProductsController < ApplicationController
       redirect_to root_url if @product.nil?
     end
     
-    def show_images
-      @product_images = @product.product_image.map {|i| i.show_image.url}
-    end
     
     def product_categories
       @product_category = ProductCategory.new
-      product_categories = ProductCategory.where(ancestry: nil).map { |c| c[:name]}
-      @collections = product_categories.unshift('選択してください')
+      @product_categories = ProductCategory.where(ancestry: nil)
     end
+    
 end
