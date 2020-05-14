@@ -2,7 +2,7 @@
   /出品者のコメントは右へ、それ以外は左へ
   %div{class: "card text-white bg-success mb-3 float-#{message.exhibitor ? 'right' : 'left'}", style: "max-width: 75%"}
     .card-header{style: 'max-height: 3rem;'}
-      = image_tag message.user.user_image.message_thumb.url, class: "rounded-circle mr-2", alt: "user image"
+      = image_tag message.user.avatar.message_thumb.url, class: "rounded-circle mr-2", alt: "user image"
       %strong.mr-auto
         = message.user.name + "#{message.exhibitor ? '(出品者)' : ''}"
       %small.text-white.float-right.mt-2.ml-2

@@ -21,7 +21,7 @@ class ProductChannel < ApplicationCable::Channel
     
     
     user = current_user
-    user_image = user.user_image.message_thumb.url
+    avatar = user.avatar.message_thumb.url
     user_name = user.name
     
     #Q&A messageか、購入後のmessageかを見分ける
@@ -31,7 +31,7 @@ class ProductChannel < ApplicationCable::Channel
       AfterPurchasedMessage.create!(content: data['message'], product_id: product.id, user_id: user.id, exhibitor: exhibitor)
     end
     ProductChannel.broadcast_to product, {message: data['message'], right_or_left: right_or_left,
-                                          user_image: user_image, user_name: user_name, message_type: data['message_type']}
+                                          avatar: avatar, user_name: user_name, message_type: data['message_type']}
   end
   
   def product

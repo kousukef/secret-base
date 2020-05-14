@@ -34,9 +34,9 @@
       %br/
       = f.password_field :current_password, autocomplete: "current-password", class: 'form-control'
     .form-group
-      = f.label :user_image
+      = f.label :avatar
       %br/
-      = f.file_field :user_image, class: 'form-control-file'
+      = f.file_field :avatar, class: 'form-control-file'
     .actions
       = f.submit "Update"
   %h5.mt-3 アカウント削除

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_135025) do
+ActiveRecord::Schema.define(version: 2020_05_14_174641) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_135025) do
     t.integer "seller_id", null: false
     t.integer "product_category_id", null: false
     t.integer "purchaser_id"
+    t.string "images", null: false
     t.index ["seller_id"], name: "index_products_on_seller_id"
   end
 
@@ -112,7 +113,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_135025) do
     t.datetime "locked_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "user_image"
+    t.string "avatar"
     t.boolean "admin", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
