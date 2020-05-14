@@ -28,7 +28,6 @@ class ProductsController < ApplicationController
   
   
   def create
-    binding.pry
     @product = current_user.sales_products.build(product_params)
     if @product.save
       redirect_to products_path, notice: '作成に成功'
@@ -121,7 +120,7 @@ class ProductsController < ApplicationController
   private
   
     def product_params
-      params.require(:product).permit(:name, :description, :price, :product_category_id, images: [])
+      params.require(:product).permit(:name, :description, :price, :product_category_id, {images: []})
     end
     
     def category_params

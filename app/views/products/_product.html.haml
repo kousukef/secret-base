@@ -1,8 +1,8 @@
-.col-md-3.col-sm-6{style: 'width:300px; height:500px'}
-  .card.m-1
-    = image_tag product.images[0], class: 'card-img-top'
+.col-md-3.col-sm-6
+  .card.m-2
+    = image_tag product.index_image, class: 'card-img-top'
     .card-body
-      %h5.card-title
+      %h4.card-title
         = product.name
       %p.card-text
         = "¥ #{product.price}"
@@ -15,6 +15,6 @@
         - if @exhibitor
           - if product.purchaser_id
             = link_to 'メッセージ', speak_path(@product, message_type: 'after_purchased'), class: 'btn btn-outline-secondary col-md-3 col-sm-4 col-3 mr-2'
-        - else
-          = link_to '編集', edit_product_path(product), class: 'btn btn-outline-success col-md-3 col-sm-4 col-3 mr-2'
-          = link_to '削除', product_path(product), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'btn btn-outline-danger col-md-3 col-sm-4 col-3'
+          - else
+            = link_to '編集', edit_product_path(product), class: 'btn btn-outline-success col-md-3 col-sm-4 col-3 mr-2'
+            = link_to '削除', product_path(product), method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'btn btn-outline-danger col-md-3 col-sm-4 col-3'

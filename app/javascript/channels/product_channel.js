@@ -19,7 +19,7 @@ const chatChannel = consumer.subscriptions.create({
     var message = `<div class="col-12">
                     <div class="card text-white bg-success mb-3 float-${data['right_or_left']}" style="max-width: 75%;">
                      <div class="card-header" style='max-height: 3rem;'>
-                       <img src="${data['user_image']}" class="rounded mr-2" alt="user image">
+                       <img src="${data['avatar']}" class="rounded mr-2" alt="user image">
                        <strong class="mr-auto">${data['user_name']}</strong>
                        <small>less than a minute ago</small>
                      </div>

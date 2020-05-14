@@ -9,6 +9,7 @@ gem 'devise'
 gem 'hamlit'
 gem 'erb2haml'
 gem 'carrierwave', '~> 2.0'
+gem "image_processing", "~> 1.0"
 gem "mini_magick"
 gem 'simple_form'
 gem 'jquery-rails'
