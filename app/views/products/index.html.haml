@@ -1,4 +1,4 @@
-.container-fluid.padding
+.container-fluid
   - if @product_children
     - @product_children.each do |c|
       = link_to "#{c}", products_path(category: {name: c}), class: 'mr-3'
@@ -13,7 +13,7 @@
   - if @title
     %h1
       = @title
-  .row.padding
-    .card-group
+  .row
+    .card-group.mx-auto
       = render @products
       

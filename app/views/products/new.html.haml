@@ -1,71 +1,61 @@
-.container 
+.container.mt-5.w-50 
   = form_with model: @product do |f|
     .form-group
-      = f.label :name
+      = f.label :name, '商品名'
       = f.text_field :name, class: 'form-control', value: @product.name
     .form-group
-      = f.label :description
+      = f.label :description, '説明'
       = f.text_area :description, class: 'form-control', value: @product.description
     .form-group
-      = f.label :price
+      = f.label :price, '価格'
       = f.number_field :price, class: 'form-control', value: @product.price
     .form-group
-      = f.label :product_image
-      = f.file_field :product_image, multiple: true, class: 'form-control-file'
-      -# id入れたいけど入らない
-    .select-boxes
-      = f.fields_for @product_category, { id: 'select_parent' } do |c| 
-        = c.label :ancestry
-        = c.select :ancestry, @collections, class: 'form-control'
+      = f.label :images, '画像（複数画像をアップロードする場合は多少時間がかかる恐れがあります'
+      = f.file_field :images, multiple: true, class: 'form-control-file'
+    .select-boxes.form-group
+      = f.label :product_category_id, 'カテゴリー'
+      = f.select :product_category_id, options_for_select(@product_categories.map{|c| [c[:name], c[:id]]}),{}, class: 'form-control select-box', id: 'select-first'
     = f.button :submit, class: 'btn btn-primary'
 
 :javascript
   $(function() {
+    //最初のselectboxに初期値を渡す
+    $('<option disabled selected>選択してください</option>').prependTo($('#select-first'));
+    
     //selectを作るfunctionを定義
-    function create_category(new_select, insert_after_id){
+    function create_category(selected_box){
+    
+      //select boxの選択された値を取得
+      var category_id = selected_box.val();
       // select新しく作るとき前のselect を削除する
-      var select2 = document.getElementById(new_select)
-        if(select2){
-          var select3 = document.getElementById('select3')
-          if(select3){
-            select3.remove();
-          }
-          select2.remove();
-        }
-        //select boxの選択された値を取得
-        var selected_option = $(insert_after_id).val()
-        //初期値以外だったら処理実行
-        if (selected_option !== '選択してください'){
-          $.ajax({
+      selected_box.nextAll('.select-box').remove();
+        $.ajax({
           teype: 'GET',
           url: '/category',
-          data: {category_name: selected_option},
+          data: {category_id: category_id},
           dataType: 'json'
-        }).done(function(collections){
-          //送られてきたデータが空じゃなかったら処理実行
-          if ($.isEmptyObject(collections) === false){
+        }).done(function(categories){
+        if ($.isEmptyObject(categories) === false){
           //新しいselectとその初期値を追加
-          var select = $('<select>').attr({id: new_select, name: 'product[product_category][ancestry]'}).addClass('form-control');
+          var select = $('<select>').attr({name: 'product[product_category_id]'}).addClass('form-control select-box');
           select.appendTo($('.select-boxes'));
-          $('<option>').text('選択してください').appendTo($('#' + new_select));
+          //新しいselectを取得
+          var new_select = $('.select-box').last();
+          $('<option disabled selected>選択してください</option>').appendTo(new_select);
           //送られてきたデータでselectのoption追加
-          $.each(collections, function(property, value){
-            $('<option>').val(value.name).text(value.name).appendTo($('#' + new_select));
-          });
-          }
+          $.each(categories, function(index, category){
+            $('<option>').val(category.id).text(category.name).appendTo($(new_select));
+          })
+        }
         })
         .fail(function(){
         alert('カテゴリー取得に失敗しました');
         });
-        }
       }
-    //子select作る
-    $('#product_product_category_ancestry').on('change', function(){
-      create_category('select2', '#product_product_category_ancestry');
-    });
-    //孫select作る
-    $('.select-boxes').on('change', '#select2', function(){
-      create_category('select3', '#select2');
+    //selectを作る
+    $('.select-boxes').on('change', '.select-box', function(){
+      var selected_box = $(this);
+      create_category(selected_box);
     });
   });
   
