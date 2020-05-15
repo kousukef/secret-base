@@ -81,7 +81,7 @@ class ProductsController < ApplicationController
       @messages = QAndAMessage.where(product_id: @product.id)
       @message_type = 'q_and_a'
     elsif params[:message_type] == 'after_purchased'
-      @product.update!(purchaser_id: current_user.id) if @product.purchaser_id.niL?
+      @product.update!(purchaser_id: current_user.id) if @product.purchaser_id.nil?
       @messages = AfterPurchasedMessage.where(product_id: @product.id)
       @message_type = 'after_purchased'
     end
