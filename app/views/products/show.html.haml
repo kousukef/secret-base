@@ -16,7 +16,7 @@
     %tbody
       -unless @product.purchaser_id.nil?
         %p.display-4.text-danger
-        Sold Out
+          Sold Out
       %tr
         %th{scope: 'row'}
           商品名
@@ -66,4 +66,4 @@
       .modal-footer
         %button.btn.btn-secondary{type: "button", data: {dismiss: "modal"}}
           Close
-        = link_to '購入', speak_path(@product, message_type: 'after_purchased'), class: 'btn btn-success', type: "button",  data: {"turbolinks" => false}
+        = link_to '購入', speak_path(@product, message_type: 'after_purchased'), class: 'btn btn-success', type: "button", data: {"turbolinks" => false}

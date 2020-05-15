@@ -1,14 +1,15 @@
 .container.mt-5.w-50 
-  = form_with model: @product do |f|
+  = form_with model: @product, local: true do |f|
+    = render 'layouts/error_messages'
     .form-group
       = f.label :name, '商品名'
-      = f.text_field :name, class: 'form-control', value: @product.name
+      = f.text_field :name, class: 'form-control'
     .form-group
       = f.label :description, '説明'
-      = f.text_area :description, class: 'form-control', value: @product.description
+      = f.text_area :description, class: 'form-control'
     .form-group
       = f.label :price, '価格'
-      = f.number_field :price, class: 'form-control', value: @product.price
+      = f.number_field :price, class: 'form-control'
     .form-group
       = f.label :images, '画像（複数画像をアップロードする場合は多少時間がかかる恐れがあります'
       = f.file_field :images, multiple: true, class: 'form-control-file'
@@ -19,6 +20,7 @@
 
 :javascript
   $(function() {
+    
     //最初のselectboxに初期値を渡す
     $('<option disabled selected>選択してください</option>').prependTo($('#select-first'));
     

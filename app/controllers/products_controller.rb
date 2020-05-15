@@ -32,9 +32,8 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_path, notice: '作成に成功'
     else
-      flash[:alert] = '作成に失敗'
       product_categories
-      render :new
+      render :new 
     end
   end
   
@@ -49,7 +48,6 @@ class ProductsController < ApplicationController
       flash[:success] = "編集に成功しました"
       redirect_to @product
     else
-      flash.now[:alert] = '編集に失敗しました'
       product_categories
       render :edit
     end

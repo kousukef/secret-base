@@ -1,5 +1,5 @@
 .container.mt-5.w-50 
-  = form_with model: @product do |f|
+  = form_with model: @product local: true do |f|
     .form-group
       = f.label :name, '商品名'
       = f.text_field :name, class: 'form-control', value: @product.name
