@@ -23,7 +23,6 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -52,6 +51,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
