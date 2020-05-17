@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_174641) do
+ActiveRecord::Schema.define(version: 2020_05_17_063003) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 2020_05_14_174641) do
     t.index ["user_id"], name: "index_after_purchased_messages_on_user_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
   create_table "chat_messages", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
@@ -54,14 +62,6 @@ ActiveRecord::Schema.define(version: 2020_05_14_174641) do
     t.index ["user_id"], name: "index_chat_messages_on_user_id"
   end
 
-  create_table "product_categories", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "ancestry"
-    t.index ["ancestry"], name: "index_product_categories_on_ancestry"
-  end
-
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_174641) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "seller_id", null: false
-    t.integer "product_category_id", null: false
+    t.integer "category_id", null: false
     t.integer "purchaser_id"
     t.string "images", null: false
     t.index ["seller_id"], name: "index_products_on_seller_id"

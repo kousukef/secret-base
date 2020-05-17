@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   serialize :images, JSON
   belongs_to :seller, class_name: 'User'
   belongs_to :purchaser, class_name: 'User', optional: true
-  belongs_to :product_category
+  belongs_to :category
   has_many :q_and_a_messages, dependent: :destroy
   has_many :after_purchased_messages, dependent: :destroy
   validates :name, presence: true

@@ -4,10 +4,10 @@ class ProductsController < ApplicationController
   
   def index
     if params[:category].nil?
-      @products = Product.all.page(params[:page]).per(4)
+      @products = Product.all.page(params[:page]).per(20)
     else
-      category = ProductCategory.find_by(category_params)
-      @products = Product.where(product_category_id: category.subtree_ids).page(params[:page]).per(20)
+      category = Category.find_by(category_params)
+      @products = Product.where(category_id: category.subtree_ids).page(params[:page]).per(20)
       
       #左上のリンクに使う
       @product_path = category.path.map {|c| c.name}
@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
   
   def new
     @product = Product.new
-    product_categories
+    categories
   end
   
   
@@ -32,14 +32,14 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_path, notice: '作成に成功'
     else
-      product_categories
+      categories
       render :new 
     end
   end
   
   def edit
     @product = Product.find(params[:id])
-    product_categories
+    categories
   end
   
   def update
@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
       flash[:success] = "編集に成功しました"
       redirect_to @product
     else
-      product_categories
+      categories
       render :edit
     end
   end
@@ -86,7 +86,7 @@ class ProductsController < ApplicationController
   end
    #出品商品一覧
   def sales_products
-    @products = current_user.sales_products
+    @products = current_user.sales_products.page(params[:page]).per(20)
     if @products.any?
       @title = '出品商品'
       render :index
@@ -98,7 +98,7 @@ class ProductsController < ApplicationController
   
   #購入商品一覧
   def purchased_products
-    @products = current_user.purchased_products
+    @products = current_user.purchased_products.page(params[:page]).per(20)
     if @products.any?
       @title = '購入商品'
       render :index
@@ -118,7 +118,7 @@ class ProductsController < ApplicationController
   private
   
     def product_params
-      params.require(:product).permit(:name, :description, :price, :product_category_id, {images: []})
+      params.require(:product).permit(:name, :description, :price, :category_id, {images: []})
     end
     
     def category_params
@@ -131,9 +131,9 @@ class ProductsController < ApplicationController
     end
     
     
-    def product_categories
-      @product_category = ProductCategory.new
-      @product_categories = ProductCategory.where(ancestry: nil)
+    def categories
+      @category = Category.new
+      @categories = Category.where(ancestry: nil)
     end
     
 end

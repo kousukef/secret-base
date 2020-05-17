@@ -31,7 +31,7 @@
         %th{scope: 'row'}
           値段
         %td
-          = "¥ #{@product.price}"
+          = "¥ #{@product.price.to_s(:delimited)}"
   - if @product.purchaser_id.nil?
     .btn.btn-bg.btn-primary 
       = link_to '質問をする', speak_path(@product, message_type: 'q_and_a'), class: 'text-white', data: {"turbolinks" => false}

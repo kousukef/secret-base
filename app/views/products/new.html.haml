@@ -12,10 +12,10 @@
       = f.number_field :price, class: 'form-control'
     .form-group
       = f.label :images, '画像（複数画像をアップロードする場合は多少時間がかかる恐れがあります'
-      = f.file_field :images, multiple: true, class: 'form-control-file'
+      = f.file_field :images, multiple: true, class: 'form-control-file', accept: 'image/*'
     .select-boxes.form-group
-      = f.label :product_category_id, 'カテゴリー'
-      = f.select :product_category_id, options_for_select(@product_categories.map{|c| [c[:name], c[:id]]}),{}, class: 'form-control select-box', id: 'select-first'
+      = f.label :category_id, 'カテゴリー'
+      = f.select :category_id, options_for_select(@categories.map{|c| [c[:name], c[:id]]}),{}, class: 'form-control select-box', id: 'select-first'
     = f.button :submit, class: 'btn btn-primary'
 
 :javascript
@@ -39,7 +39,7 @@
         }).done(function(categories){
         if ($.isEmptyObject(categories) === false){
           //新しいselectとその初期値を追加
-          var select = $('<select>').attr({name: 'product[product_category_id]'}).addClass('form-control select-box');
+          var select = $('<select>').attr({name: 'product[category_id]'}).addClass('form-control select-box');
           select.appendTo($('.select-boxes'));
           //新しいselectを取得
           var new_select = $('.select-box').last();
