@@ -4,10 +4,10 @@ class ProductsController < ApplicationController
   
   def index
     if params[:category].nil?
-      @products = Product.all
+      @products = Product.all.page(params[:page]).per(4)
     else
       category = ProductCategory.find_by(category_params)
-      @products = Product.where(product_category_id: category.subtree_ids)
+      @products = Product.where(product_category_id: category.subtree_ids).page(params[:page]).per(20)
       
       #左上のリンクに使う
       @product_path = category.path.map {|c| c.name}

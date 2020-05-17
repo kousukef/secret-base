@@ -27,10 +27,10 @@
         .dropdown-menu.dropdown-menu-right{aria: {labelledby: 'userDropdown'}}
           - if user_signed_in?
             = link_to "#{current_user.name}", user_info_path, class: 'dropdown-item'
-            = link_to 'Signout', destroy_user_session_path, method: :delete, data: {confirm: 'Signoutしてよろしいですか？'}, class: 'dropdown-item'
+            = link_to 'サインアウト', destroy_user_session_path, method: :delete, data: {confirm: 'Signoutしてよろしいですか？'}, class: 'dropdown-item'
           - else
-            = link_to 'Signin', new_user_session_path, class: 'dropdown-item'
-            = link_to 'Signup', new_user_registration_path, class: 'dropdown-item'
+            = link_to 'サインイン', new_user_session_path, class: 'dropdown-item'
+            = link_to 'サインアップ', new_user_registration_path, class: 'dropdown-item'
     - if @q
       = search_form_for @q, url: search_path, class: 'form-inline my-2 my-lg-0' do |f|
         = f.search_field :name_or_description_cont, class: 'form-control mr-sm-2'

@@ -1,4 +1,4 @@
-.container-fluid
+.container
   - if @product_children
     - @product_children.each do |c|
       = link_to "#{c}", products_path(category: {name: c}), class: 'mr-3'
@@ -15,4 +15,5 @@
       = @title
   .row
     = render @products
-      
+  = paginate @products, outer_window: 3
+    

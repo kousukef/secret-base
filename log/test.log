@@ -514,3 +514,286 @@ Content-Transfer-Encoding: 7bit
   [1m[35m (2.1ms)[0m  [1m[31mrollback transaction[0m
   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
   [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "after_purchased_messages"[0m
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE TABLE "after_purchased_messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer, "product_id" integer, "exhibitor" boolean DEFAULT 0)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE  INDEX "index_after_purchased_messages_on_product_id" ON "after_purchased_messages" ("product_id")[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE  INDEX "index_after_purchased_messages_on_user_id" ON "after_purchased_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "chat_messages"[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "chat_messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "user_id" integer, "room_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (11.0ms)[0m  [1m[35mCREATE  INDEX "index_chat_messages_on_room_id" ON "chat_messages" ("room_id")[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE  INDEX "index_chat_messages_on_user_id" ON "chat_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "product_categories"[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "product_categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "ancestry" varchar)[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE  INDEX "index_product_categories_on_ancestry" ON "product_categories" ("ancestry")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "description" text NOT NULL, "price" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "seller_id" integer NOT NULL, "product_category_id" integer NOT NULL, "purchaser_id" integer, "images" varchar NOT NULL)[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE  INDEX "index_products_on_seller_id" ON "products" ("seller_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "q_and_a_messages"[0m
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE TABLE "q_and_a_messages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_id" integer NOT NULL, "exhibitor" boolean DEFAULT 0)[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE  INDEX "index_q_and_a_messages_on_product_id" ON "q_and_a_messages" ("product_id")[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE  INDEX "index_q_and_a_messages_on_user_id" ON "q_and_a_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms"[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "name" varchar NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "confirmation_token" varchar, "confirmed_at" datetime, "confirmation_sent_at" datetime, "unconfirmed_email" varchar, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" varchar, "locked_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "avatar" varchar, "admin" boolean DEFAULT 0)[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_confirmation_token" ON "users" ("confirmation_token")[0m
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_unlock_token" ON "users" ("unlock_token")[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_attachments_uniqueness" ON "aactive_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aactive_storage_attachments_on_blob_id" ON "aactive_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aactive_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "active_storage_attachments"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "active_storage_attachments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "aactive_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_attachments"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aafter_purchased_messages" ("id" integer NOT NULL PRIMARY KEY, "content" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer DEFAULT NULL, "product_id" integer DEFAULT NULL, "exhibitor" boolean DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aafter_purchased_messages_on_user_id" ON "aafter_purchased_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aafter_purchased_messages_on_product_id" ON "aafter_purchased_messages" ("product_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aafter_purchased_messages" ("id","content","created_at","updated_at","user_id","product_id","exhibitor")
+                     SELECT "id","content","created_at","updated_at","user_id","product_id","exhibitor" FROM "after_purchased_messages"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "after_purchased_messages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "after_purchased_messages" ("id" integer NOT NULL PRIMARY KEY, "content" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer DEFAULT NULL, "product_id" integer DEFAULT NULL, "exhibitor" boolean DEFAULT 0, CONSTRAINT "fk_rails_2609948dd5"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_after_purchased_messages_on_product_id" ON "after_purchased_messages" ("product_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_after_purchased_messages_on_user_id" ON "after_purchased_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "after_purchased_messages" ("id","content","created_at","updated_at","user_id","product_id","exhibitor")
+                     SELECT "id","content","created_at","updated_at","user_id","product_id","exhibitor" FROM "aafter_purchased_messages"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aafter_purchased_messages"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aafter_purchased_messages" ("id" integer NOT NULL PRIMARY KEY, "content" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer DEFAULT NULL, "product_id" integer DEFAULT NULL, "exhibitor" boolean DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aafter_purchased_messages_on_user_id" ON "aafter_purchased_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aafter_purchased_messages_on_product_id" ON "aafter_purchased_messages" ("product_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aafter_purchased_messages" ("id","content","created_at","updated_at","user_id","product_id","exhibitor")
+                     SELECT "id","content","created_at","updated_at","user_id","product_id","exhibitor" FROM "after_purchased_messages"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "after_purchased_messages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "after_purchased_messages" ("id" integer NOT NULL PRIMARY KEY, "content" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer DEFAULT NULL, "product_id" integer DEFAULT NULL, "exhibitor" boolean DEFAULT 0, CONSTRAINT "fk_rails_2609948dd5"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+, CONSTRAINT "fk_rails_2ea6fe3877"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_after_purchased_messages_on_product_id" ON "after_purchased_messages" ("product_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_after_purchased_messages_on_user_id" ON "after_purchased_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "after_purchased_messages" ("id","content","created_at","updated_at","user_id","product_id","exhibitor")
+                     SELECT "id","content","created_at","updated_at","user_id","product_id","exhibitor" FROM "aafter_purchased_messages"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aafter_purchased_messages"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achat_messages" ("id" integer NOT NULL PRIMARY KEY, "content" text DEFAULT NULL, "user_id" integer DEFAULT NULL, "room_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_achat_messages_on_user_id" ON "achat_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_achat_messages_on_room_id" ON "achat_messages" ("room_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "achat_messages" ("id","content","user_id","room_id","created_at","updated_at")
+                     SELECT "id","content","user_id","room_id","created_at","updated_at" FROM "chat_messages"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "chat_messages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "chat_messages" ("id" integer NOT NULL PRIMARY KEY, "content" text DEFAULT NULL, "user_id" integer DEFAULT NULL, "room_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_35c7aa84be"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_chat_messages_on_room_id" ON "chat_messages" ("room_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_chat_messages_on_user_id" ON "chat_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "chat_messages" ("id","content","user_id","room_id","created_at","updated_at")
+                     SELECT "id","content","user_id","room_id","created_at","updated_at" FROM "achat_messages"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "achat_messages"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "achat_messages" ("id" integer NOT NULL PRIMARY KEY, "content" text DEFAULT NULL, "user_id" integer DEFAULT NULL, "room_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_achat_messages_on_user_id" ON "achat_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_achat_messages_on_room_id" ON "achat_messages" ("room_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "achat_messages" ("id","content","user_id","room_id","created_at","updated_at")
+                     SELECT "id","content","user_id","room_id","created_at","updated_at" FROM "chat_messages"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "chat_messages"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "chat_messages" ("id" integer NOT NULL PRIMARY KEY, "content" text DEFAULT NULL, "user_id" integer DEFAULT NULL, "room_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_35c7aa84be"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+, CONSTRAINT "fk_rails_918ef7acc4"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_chat_messages_on_room_id" ON "chat_messages" ("room_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_chat_messages_on_user_id" ON "chat_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "chat_messages" ("id","content","user_id","room_id","created_at","updated_at")
+                     SELECT "id","content","user_id","room_id","created_at","updated_at" FROM "achat_messages"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "achat_messages"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aq_and_a_messages" ("id" integer NOT NULL PRIMARY KEY, "content" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_id" integer NOT NULL, "exhibitor" boolean DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aq_and_a_messages_on_user_id" ON "aq_and_a_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aq_and_a_messages_on_product_id" ON "aq_and_a_messages" ("product_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aq_and_a_messages" ("id","content","created_at","updated_at","user_id","product_id","exhibitor")
+                     SELECT "id","content","created_at","updated_at","user_id","product_id","exhibitor" FROM "q_and_a_messages"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "q_and_a_messages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "q_and_a_messages" ("id" integer NOT NULL PRIMARY KEY, "content" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_id" integer NOT NULL, "exhibitor" boolean DEFAULT 0, CONSTRAINT "fk_rails_2d27c5e7cd"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_q_and_a_messages_on_product_id" ON "q_and_a_messages" ("product_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_q_and_a_messages_on_user_id" ON "q_and_a_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "q_and_a_messages" ("id","content","created_at","updated_at","user_id","product_id","exhibitor")
+                     SELECT "id","content","created_at","updated_at","user_id","product_id","exhibitor" FROM "aq_and_a_messages"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aq_and_a_messages"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aq_and_a_messages" ("id" integer NOT NULL PRIMARY KEY, "content" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_id" integer NOT NULL, "exhibitor" boolean DEFAULT 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aq_and_a_messages_on_user_id" ON "aq_and_a_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aq_and_a_messages_on_product_id" ON "aq_and_a_messages" ("product_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aq_and_a_messages" ("id","content","created_at","updated_at","user_id","product_id","exhibitor")
+                     SELECT "id","content","created_at","updated_at","user_id","product_id","exhibitor" FROM "q_and_a_messages"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "q_and_a_messages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "q_and_a_messages" ("id" integer NOT NULL PRIMARY KEY, "content" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, "product_id" integer NOT NULL, "exhibitor" boolean DEFAULT 0, CONSTRAINT "fk_rails_2d27c5e7cd"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+, CONSTRAINT "fk_rails_bff426cecc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_q_and_a_messages_on_product_id" ON "q_and_a_messages" ("product_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_q_and_a_messages_on_user_id" ON "q_and_a_messages" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "q_and_a_messages" ("id","content","created_at","updated_at","user_id","product_id","exhibitor")
+                     SELECT "id","content","created_at","updated_at","user_id","product_id","exhibitor" FROM "aq_and_a_messages"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aq_and_a_messages"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (5.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200514174641)[0m
+  [1m[35m (5.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200425120459),
+(20200426050116),
+(20200427044100),
+(20200428171516),
+(20200428171727),
+(20200428173009),
+(20200428173930),
+(20200501052058),
+(20200506141725),
+(20200507135628),
+(20200507150929),
+(20200508112839),
+(20200509072200),
+(20200509072405),
+(20200509124534),
+(20200509151258),
+(20200510051934),
+(20200511032526),
+(20200511135910),
+(20200511163720),
+(20200511164251),
+(20200513180345),
+(20200513180649),
+(20200514132723),
+(20200514135025),
+(20200514171007);
+
+[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2020-05-17 01:53:46.308773"], ["updated_at", "2020-05-17 01:53:46.308773"]]
+  [1m[35m (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "adff6c8e10b423fa9e0249f96da1adfb8396c9a8"], ["created_at", "2020-05-17 01:53:46.322187"], ["updated_at", "2020-05-17 01:53:46.322187"]]
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m

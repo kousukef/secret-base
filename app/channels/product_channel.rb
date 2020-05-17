@@ -22,7 +22,8 @@ class ProductChannel < ApplicationCable::Channel
     
     user = current_user
     avatar = user.avatar.message_thumb.url
-    user_name = user.name
+    user_name = user.id == product.seller_id ? "#{user.name}(出品者)" : user.name
+    
     
     #Q&A messageか、購入後のmessageかを見分ける
     if data['message_type'] == 'q_and_a'
