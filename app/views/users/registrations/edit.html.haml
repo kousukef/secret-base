@@ -36,7 +36,7 @@
     .form-group
       = f.label :avatar, 'サムネイル'
       %br/
-      = f.file_field :avatar, class: 'form-control-file'
+      = f.file_field :avatar, class: 'form-control-file', accept: 'image/*'
     .actions
       = f.submit "Update"
   %h5.mt-3 アカウント削除

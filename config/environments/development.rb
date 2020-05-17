@@ -62,17 +62,18 @@ Rails.application.configure do
   
   config.hosts.clear
   
+  config.action_mailer.default_options = { from: 'noreply@example.com' }
   config.action_mailer.default_url_options = { protocol: 'https' , host: '8d1dd552ae5740d08e486c157a325dbb.vfs.cloud9.ap-northeast-1.amazonaws.com' }
 
   Dotenv::Railtie.load
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :enable_starttls_auto => true,
       :address => "smtp.gmail.com",
       :port => 587,
       :domain => 'smtp.gmail.com',
       :user_name => ENV['EMAIL'],
       :password => ENV['EMAIL_PASSWORD'],  
-      :authentication => 'login',
+      :authentication => :plain,
+      :enable_starttls_auto => true
     }
 end
