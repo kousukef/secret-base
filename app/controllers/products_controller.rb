@@ -110,7 +110,7 @@ class ProductsController < ApplicationController
   
   def search
     @q = Product.ransack(params[:q])
-    @products = @q.result(distinct: true)
+    @products = @q.result(distinct: true).page(params[:page]).per(20)
     render :index
   end
   

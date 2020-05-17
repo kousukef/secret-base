@@ -29,8 +29,8 @@
       %br/
       = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
     .form-group
-      = f.label :current_password
-      %i (現在のパスワードを入力してください)
+      = f.label :current_password現在のパスワードを入力してください
+      %i.text-danger (必須)
       %br/
       = f.password_field :current_password, autocomplete: "current-password", class: 'form-control'
     .form-group

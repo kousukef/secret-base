@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   
   devise :database_authenticatable, :registerable,:recoverable, :rememberable,
-        :validatable, :lockable, :timeoutable, :trackable, :confirmable
+        :validatable, :lockable, :timeoutable, :trackable # :confirmable
   mount_uploader :avatar, AvatarUploader
   validates :name, presence: true, length: {maximum: 30}
   has_many :q_and_a_messages, dependent: :destroy

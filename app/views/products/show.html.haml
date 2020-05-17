@@ -53,7 +53,7 @@
         %strong
           = "商品名: #{@product.name}"
           %br
-          = "  価格: #{@product.price} 円"
+          = "  価格: #{@product.price.to_s(:delimited)} 円"
         %p
           %br
           支払い方法は大学内で、現物との直接交換になります。
