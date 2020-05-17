@@ -20,7 +20,7 @@ const chatChannel = consumer.subscriptions.create({
                     <div class="card text-white bg-success mb-3 float-${data['right_or_left']}" style="max-width: 75%;">
                      <div class="card-header" style='max-height: 3rem;'>
                        <img src="${data['avatar']}" class="rounded mr-2" alt="user image">
-                       <strong class="mr-auto">${data['user_name']}(出品者)</strong>
+                       <strong class="mr-auto">${data['user_name']}</strong>
                        <small>１分未満</small>
                      </div>
                      <div class="card-body">
