@@ -63,61 +63,7 @@ categorys.each do |category|
 end
 
 
-1.step(20,4) do |n|
-  Product.create!(
-    name: Faker::Movies::BackToTheFuture.character,
-    description: Faker::Movies::BackToTheFuture.quote,
-    images: [open("#{Rails.root}/db/fixtures/seeds_images/image_#{n}.jpeg"), open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+1}.jpeg"),
-                    open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+2}.jpeg"), open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+3}.jpeg"),],
-    seller_id: 1,
-    category_id: Faker::Number.between(from: 1, to: 73),
-    price: Faker::Number.between(from: 100, to: 50000))
-end
 
-
-21.step(40,4) do |n|
-  Product.create!(
-    name: Faker::Movies::BackToTheFuture.character,
-    description: Faker::Movies::BackToTheFuture.quote,
-    images: [open("#{Rails.root}/db/fixtures/seeds_images/image_#{n}.jpeg"), open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+1}.jpeg"),
-                    open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+2}.jpeg"), open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+3}.jpeg"),],
-    seller_id: 2,
-    category_id: Faker::Number.between(from: 1, to: 73),
-    price: Faker::Number.between(from: 100, to: 50000))
-end
-
-41.step(60,4) do |n|
-  Product.create!(
-    name: Faker::Movies::BackToTheFuture.character,
-    description: Faker::Movies::BackToTheFuture.quote,
-    images: [open("#{Rails.root}/db/fixtures/seeds_images/image_#{n}.jpeg"), open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+1}.jpeg"),
-                    open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+2}.jpeg"), open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+3}.jpeg"),],
-    seller_id: 3,
-    category_id: Faker::Number.between(from: 1, to: 73),
-    price: Faker::Number.between(from: 100, to: 50000))
-end
-
-61.step(80,4) do |n|
-  Product.create!(
-    name: Faker::Movies::BackToTheFuture.character,
-    description: Faker::Movies::BackToTheFuture.quote,
-    images: [open("#{Rails.root}/db/fixtures/seeds_images/image_#{n}.jpeg"), open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+1}.jpeg"),
-                    open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+2}.jpeg"), open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+3}.jpeg"),],
-    seller_id: 4,
-    category_id: Faker::Number.between(from: 1, to: 73),
-    price: Faker::Number.between(from: 100, to: 50000))
-end
-
-81.step(100,4) do |n|
-  Product.create!(
-    name: Faker::Movies::BackToTheFuture.character,
-    description: Faker::Movies::BackToTheFuture.quote,
-    images: [open("#{Rails.root}/db/fixtures/seeds_images/image_#{n}.jpeg"), open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+1}.jpeg"),
-                    open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+2}.jpeg"), open("#{Rails.root}/db/fixtures/seeds_images/image_#{n+3}.jpeg"),],
-    seller_id: 5,
-    category_id: Faker::Number.between(from: 1, to: 73),
-    price: Faker::Number.between(from: 100, to: 50000))
-end
 
 User.create!(
   name: 'admin',
