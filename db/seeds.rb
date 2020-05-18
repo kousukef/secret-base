@@ -118,3 +118,11 @@ end
     category_id: Faker::Number.between(from: 1, to: 73),
     price: Faker::Number.between(from: 100, to: 50000))
 end
+
+User.create!(
+  name: 'admin',
+  email: 'admin@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  admin: true
+  )
