@@ -116,8 +116,8 @@ class ProductsController < ApplicationController
     end
     
     def correct_user
-      @product = current_user.sales_products.find_by(id: params[:id])
-      redirect_to root_url if @product.nil?
+      @product = Product.find_by(id: params[:id])
+      redirect_to root_url unless @product.seller_id == current_user.id || current_user.admin
     end
     
     
