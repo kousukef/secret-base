@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
     @product.destroy
     flash[:success] = '削除しました'
     @products = Product.all.page(params[:page]).per(20)
-    render :index
+    redirect_to products_url
   end
   
  
