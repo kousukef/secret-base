@@ -56,18 +56,8 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     flash[:success] = '削除しました'
-    @user = current_user
-    
-    #userの商品がもうないなら
-    if @user.sales_products.empty?
-      render user_info_path
-      
-    #userの商品がまだあれば
-    else
-      @products = @user.sales_products
-      @exhibitor = true
-      render :index
-    end
+    @products = Product.all.page(params[:page]).per(20)
+    render :index
   end
   
  
