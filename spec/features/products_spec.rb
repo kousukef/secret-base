@@ -63,7 +63,7 @@ RSpec.feature "Products", type: :feature do
   describe 'user buy a product' do
     before do
       user = FactoryBot.create(:user)
-      product = Factorybot.create(:product)
+      product = FactoryBot.create(:product)
     end
 
     scenario 'user buy a product successfully' do

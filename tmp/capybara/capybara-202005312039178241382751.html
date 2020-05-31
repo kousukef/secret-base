@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<title>SecretBase</title>
+
+
+<link rel="stylesheet" media="all" href="/assets/application-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="reload" />
+<script src="/packs-test/js/application-80950042b43a58bd0816.js" data-turbolinks-track="reload"></script>
+<link crossorigin='anonymous' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' rel='stylesheet'>
+<script crossorigin='anonymous' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' src='https://code.jquery.com/jquery-3.4.1.slim.min.js'></script>
+<script crossorigin='anonymous' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+<script crossorigin='anonymous' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'></script>
+<script src="/assets/application-0df451b7774f965a1f035b6198ca0300cb50241da92078a67f5a09d86cbfa8e1.js" data-turbolinks-track="reload"></script>
+</head>
+<body>
+<nav class='navbar navbar-expand-lg navbar-light bg-light sticky-top'>
+<a class="navbar-brand" href="/"><img src="/assets/logo-adaae006530be826e8c14571fdc4c27bc3dad5b1164f4893897ff82d3eab7fdf.jpg" /></a>
+<button aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation' class='navbar-toggler' data-target='#navbarSupportedContent' data-toggle='collapse' type='button'>
+<span class='navbar-toggler-icon'></span>
+</button>
+<div class='collapse navbar-collapse' id='navbarSupportedContent'>
+<ul class='navbar-nav ml-auto'>
+<li class='nav-item active'>
+<a class="nav-link" href="/">Home</a>
+</li>
+<li class='nav-item dropdown'>
+<a class="nav-link dropdown-toggle" id="productDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">商品</a>
+<div aria-labelledby='productDropdown' class='dropdown-menu dropdown-menu-right'>
+<a class="dropdown-item" href="/products">全て</a>
+<a class="dropdown-item px-auto" href="/products?category%5Bname%5D=%E6%9C%AC">本</a>
+<a class="dropdown-item" href="/products?category%5Bname%5D=%E3%83%A1%E3%83%B3%E3%82%BA">メンズ</a>
+<a class="dropdown-item" href="/products?category%5Bname%5D=%E3%83%AC%E3%83%87%E3%82%A3%E3%83%BC%E3%82%B9">レディース</a>
+<a class="dropdown-item" href="/products?category%5Bname%5D=%E3%82%AC%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88">ガジェット</a>
+<a class="dropdown-item" href="/products?category%5Bname%5D=%E3%81%9D%E3%81%AE%E4%BB%96">その他</a>
+<div class='dropdown-divider'>"</div>
+<a class="dropdown-item" href="/products/new">出品する</a>
+</div>
+</li>
+<li class='nav-item dropdown'>
+<a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Users</a>
+<div aria-labelledby='userDropdown' class='dropdown-menu dropdown-menu-right'>
+<a class="dropdown-item" href="/users/info">user_1</a>
+<a data-confirm="Signoutしてよろしいですか？" class="dropdown-item" rel="nofollow" data-method="delete" href="/users/sign_out">サインアウト</a>
+</div>
+</li>
+</ul>
+</div>
+</nav>
+
+<div class='container mt-5 w-50'>
+<form enctype="multipart/form-data" action="/products" accept-charset="UTF-8" method="post"><div id='error_explanation'>
+<ul>
+<li>
+商品名を入力してください
+</li>
+</ul>
+</div>
+
+<div class='form-group'>
+<div class="field_with_errors"><label for="product_name">商品名</label></div>
+<div class="field_with_errors"><input class="form-control" type="text" value="" name="product[name]" id="product_name" /></div>
+</div>
+<div class='form-group'>
+<label for="product_description">説明</label>
+<textarea class="form-control" name="product[description]" id="product_description">
+this is a product</textarea>
+</div>
+<div class='form-group'>
+<label for="product_price">価格</label>
+<input class="form-control" type="number" value="3000" name="product[price]" id="product_price" />
+</div>
+<div class='form-group'>
+<label for="product_images">画像（複数画像をアップロードする場合は多少時間がかかる恐れがあります</label>
+<input multiple="multiple" class="form-control-file" accept="image/*" type="file" name="product[images][]" id="product_images" />
+</div>
+<div class='select-boxes form-group'>
+<label for="product_category_id">カテゴリー</label>
+<select class="form-control select-box" id="select-first" name="product[category_id]"><option value="1">category</option></select>
+</div>
+<button name="button" type="submit" class="btn btn-primary">submit</button>
+</form></div>
+<script>
+  $(function() {
+    
+    //最初のselectboxに初期値を渡す
+    $('<option disabled selected>選択してください</option>').prependTo($('#select-first'));
+    
+    //selectを作るfunctionを定義
+    function create_category(selected_box){
+    
+      //select boxの選択された値を取得
+      var category_id = selected_box.val();
+      // select新しく作るとき前のselect を削除する
+      selected_box.nextAll('.select-box').remove();
+        $.ajax({
+          teype: 'GET',
+          url: '/category',
+          data: {category_id: category_id},
+          dataType: 'json'
+        }).done(function(categories){
+        if ($.isEmptyObject(categories) === false){
+          //新しいselectとその初期値を追加
+          var select = $('<select>').attr({name: 'product[category_id]'}).addClass('form-control select-box');
+          select.appendTo($('.select-boxes'));
+          //新しいselectを取得
+          var new_select = $('.select-box').last();
+          $('<option disabled selected>選択してください</option>').appendTo(new_select);
+          //送られてきたデータでselectのoption追加
+          $.each(categories, function(index, category){
+            $('<option>').val(category.id).text(category.name).appendTo($(new_select));
+          })
+        }
+        })
+        .fail(function(){
+        alert('カテゴリー取得に失敗しました');
+        });
+      }
+    //selectを作る
+    $('.select-boxes').on('change', '.select-box', function(){
+      var selected_box = $(this);
+      create_category(selected_box);
+    });
+  });
+</script>
+
+<footer>
+<div class='container-fluid padding'>
+<div class='row text-center'>
+<div class='col-md-12'>
+<img src="/assets/logo-adaae006530be826e8c14571fdc4c27bc3dad5b1164f4893897ff82d3eab7fdf.jpg" />
+<hr class='light'>
+<p>
+secret.base.of.tku@gmail.com
+</p>
+</div>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
+<script>
+  $(function(){
+    $('#notice').fadeOut(5000);
+    $('#alert').fadeOut(5000);
+  });
+</script>
