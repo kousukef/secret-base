@@ -1,7 +1,7 @@
 .col-md-3.col-sm-6
   .card-deck.mt-3
     .card.m-2
-      = link_to image_tag asset_path(product.index_image, class: 'card-img-top'), product_path(product)
+      = link_to image_tag(product.index_image, class: 'card-img-top'), product_path(product)
       .card-body
         %h4.card-title
           = product.name
