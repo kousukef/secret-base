@@ -3,6 +3,7 @@ ja:
     models:
       product: 商品
       product_category: カテゴリー
+      user:
     attributes:
       product:
         name: 商品名
@@ -10,3 +11,5 @@ ja:
         price: 価格
         images: 画像
         category: カテゴリー
+      user:
+        name: 名前

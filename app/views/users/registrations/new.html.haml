@@ -14,7 +14,7 @@
       = f.label :password, 'パスワード'
       - if @minimum_password_length
         %em
-          (#{@minimum_password_length} characters minimum)
+          (#{@minimum_password_length}文字以上にしてください)
       %br/
       = f.password_field :password, autocomplete: "new-password", class: 'form-control'
     .form-group
