@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #user
   devise_for :users
   get 'users/info', to: 'users#info', as: 'user_info'
+  get '/users', to: 'users#redirect_to_new_user_registration_path'
   
   #product
   resources :products

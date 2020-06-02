@@ -4,10 +4,10 @@ class ProductsController < ApplicationController
   
   def index
     if params[:category].nil?
-      @products = Product.all.page(params[:page]).per(20)
+      @products = Product.all.page(params[:page]).per(20).order(created_at: :desc)
     else
       category = Category.find_by(category_params)
-      @products = Product.where(category_id: category.subtree_ids).page(params[:page]).per(20)
+      @products = Product.where(category_id: category.subtree_ids).page(params[:page]).per(20).order(created_at: :desc)
       
       #左上のリンクに使う
       @product_path = category.path.map {|c| c.name}
@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     flash[:success] = '削除しました'
-    @products = Product.all.page(params[:page]).per(20)
+    @products = Product.all.page(params[:page]).per(20).order(created_at: :desc)
     redirect_to products_url
   end
   
@@ -79,7 +79,7 @@ class ProductsController < ApplicationController
   end
    #出品商品一覧
   def sales_products
-    @products = current_user.sales_products.page(params[:page]).per(20)
+    @products = current_user.sales_products.page(params[:page]).per(20).order(created_at: :desc)
     if @products.any?
       @title = '出品商品'
       render :index
@@ -91,7 +91,7 @@ class ProductsController < ApplicationController
   
   #購入商品一覧
   def purchased_products
-    @products = current_user.purchased_products.page(params[:page]).per(20)
+    @products = current_user.purchased_products.page(params[:page]).per(20).order(created_at: :desc)
     if @products.any?
       @title = '購入商品'
       render :index
@@ -103,7 +103,7 @@ class ProductsController < ApplicationController
   
   def search
     @q = Product.ransack(params[:q])
-    @products = @q.result(distinct: true).page(params[:page]).per(20)
+    @products = @q.result(distinct: true).page(params[:page]).per(20).order(created_at: :desc)
     render :index
   end
   
