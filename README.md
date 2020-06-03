@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+大学内オンラインフリマショッピングストア
 
-Things you may want to cover:
+機能一覧(使用技術)
+    ・商品の閲覧、出品、編集、削除、購入機能
+    ・adminによる全ての商品の編集、削除機能
+    ・購入前、購入後のメッセージでの質問機能（ActionCable）
+    ・ページネーション機能(kaminari)
+    ・商品検索機能(ransack)
+    ・認証機能(device)
+    ・画像添付機能(carrierwave)
+    ・多階層カテゴリ(ancestry)
 
-* Ruby version
+テスト
+    Rspec
 
-* System dependencies
+使用技術
 
-* Configuration
+サイトURL
+    https://boiling-beach-31545.herokuapp.com/
 
-* Database creation
+ログイン
+    user
+        email: user_1@example.com
+        pass: password
+    admin
+        email: admin@example.com
+        pass: password
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

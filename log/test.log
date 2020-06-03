@@ -16583,3 +16583,305 @@ Completed 200 OK in 68ms (Views: 14.2ms | ActiveRecord: 0.4ms | Allocations: 179
   [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
   [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@example.com"], ["LIMIT", 1]]
   [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "category"], ["created_at", "2020-06-03 11:18:28.345258"], ["updated_at", "2020-06-03 11:18:28.345258"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "user_1"], ["email", "user_1@example.com"], ["encrypted_password", "$2a$04$y1d8sk3JDF4i2FpxxOgGte/IjAIR7jw9KaoZuXHwN1qdlrF/KlcXi"], ["created_at", "2020-06-03 11:18:28.417971"], ["updated_at", "2020-06-03 11:18:28.417971"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-06-03 11:18:28 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering users/sessions/new.html.haml within layouts/application
+  Rendered users/shared/_links.html.haml (Duration: 2.7ms | Allocations: 2333)
+  Rendered users/sessions/new.html.haml within layouts/application (Duration: 367.5ms | Allocations: 327085)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 11.2ms | Allocations: 9929)
+  Rendered layouts/_footer.html.haml (Duration: 5.7ms | Allocations: 3188)
+Completed 200 OK in 2407ms (Views: 2393.5ms | ActiveRecord: 0.0ms | Allocations: 1871711)
+Started POST "/users/sign_in" for 127.0.0.1 at 2020-06-03 11:18:30 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"user_1@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"ログイン"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2020-06-03 11:18:30.933186"], ["last_sign_in_at", "2020-06-03 11:18:30.933186"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2020-06-03 11:18:30.933671"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 34ms (ActiveRecord: 0.6ms | Allocations: 5985)
+Started GET "/" for 127.0.0.1 at 2020-06-03 11:18:30 +0900
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 6.5ms | Allocations: 3746)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_header.html.haml (Duration: 4.6ms | Allocations: 2975)
+  Rendered layouts/_footer.html.haml (Duration: 0.4ms | Allocations: 917)
+Completed 200 OK in 27ms (Views: 19.9ms | ActiveRecord: 0.7ms | Allocations: 18990)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" WHERE "products"."seller_id" = ?[0m  [["seller_id", 1]]
+Started GET "/products/new" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/new.html.haml within layouts/application
+  Rendered layouts/_error_messages.html.haml (Duration: 2.1ms | Allocations: 1700)
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."ancestry" IS NULL[0m
+  Rendered products/new.html.haml within layouts/application (Duration: 14.0ms | Allocations: 8353)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 1.3ms | Allocations: 2190)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 917)
+Completed 200 OK in 30ms (Views: 21.5ms | ActiveRecord: 0.4ms | Allocations: 27393)
+Started POST "/products" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"name"=>"product", "description"=>"this is a product", "price"=>"3000", "images"=>[#<ActionDispatch::Http::UploadedFile:0x00007fc7cfd13140 @tempfile=#<Tempfile:/var/folders/y8/9mxjmdmn6q3c5yjvmsvgsg0h0000gn/T/RackMultipart20200603-8816-1e1x1al.jpeg>, @original_filename="test.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"product[images][]\"; filename=\"test.jpeg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 14306\r\n">], "category_id"=>"1"}, "button"=>""}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "seller_id", "category_id", "images") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "product"], ["description", "this is a product"], ["price", 3000], ["created_at", "2020-06-03 11:18:31.272886"], ["updated_at", "2020-06-03 11:18:31.272886"], ["seller_id", 1], ["category_id", 1], ["images", "[\"test.jpeg\"]"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/products
+Completed 302 Found in 170ms (ActiveRecord: 0.7ms | Allocations: 5163)
+Started GET "/products" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of products/_product.html.haml [1 times] (Duration: 55.2ms | Allocations: 5983)
+  Rendered products/index.html.haml within layouts/application (Duration: 58.9ms | Allocations: 6887)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 1.8ms | Allocations: 2490)
+  Rendered layouts/_footer.html.haml (Duration: 0.4ms | Allocations: 917)
+Completed 200 OK in 69ms (Views: 67.1ms | ActiveRecord: 0.4ms | Allocations: 19687)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" WHERE "products"."seller_id" = ?[0m  [["seller_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "category"], ["created_at", "2020-06-03 11:18:31.401547"], ["updated_at", "2020-06-03 11:18:31.401547"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user_2@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "user_1"], ["email", "user_2@example.com"], ["encrypted_password", "$2a$04$doDyyWzbP267AjvoYn4NRuoxQ8yJhGE8t2TraPdLclZU/FMcXm7hi"], ["created_at", "2020-06-03 11:18:31.407032"], ["updated_at", "2020-06-03 11:18:31.407032"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering users/sessions/new.html.haml within layouts/application
+  Rendered users/shared/_links.html.haml (Duration: 0.3ms | Allocations: 208)
+  Rendered users/sessions/new.html.haml within layouts/application (Duration: 1.5ms | Allocations: 910)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 1.5ms | Allocations: 2206)
+  Rendered layouts/_footer.html.haml (Duration: 0.3ms | Allocations: 917)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.0ms | Allocations: 13382)
+Started POST "/users/sign_in" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"user_2@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"ログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "user_2@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2020-06-03 11:18:31.470970"], ["last_sign_in_at", "2020-06-03 11:18:31.470970"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2020-06-03 11:18:31.471248"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 9ms (ActiveRecord: 0.4ms | Allocations: 1988)
+Started GET "/" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 2.5ms | Allocations: 683)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_header.html.haml (Duration: 3.1ms | Allocations: 2785)
+  Rendered layouts/_footer.html.haml (Duration: 0.4ms | Allocations: 917)
+Completed 200 OK in 16ms (Views: 14.5ms | ActiveRecord: 0.2ms | Allocations: 13770)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" WHERE "products"."seller_id" = ?[0m  [["seller_id", 1]]
+Started GET "/products/new" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by ProductsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/new.html.haml within layouts/application
+  Rendered layouts/_error_messages.html.haml (Duration: 0.1ms | Allocations: 19)
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."ancestry" IS NULL[0m
+  Rendered products/new.html.haml within layouts/application (Duration: 3.5ms | Allocations: 2824)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 1.5ms | Allocations: 2180)
+  Rendered layouts/_footer.html.haml (Duration: 0.4ms | Allocations: 917)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.2ms | Allocations: 15352)
+Started POST "/products" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"name"=>"", "description"=>"this is a product", "price"=>"3000", "images"=>[#<ActionDispatch::Http::UploadedFile:0x00007fc7d11eff00 @tempfile=#<Tempfile:/var/folders/y8/9mxjmdmn6q3c5yjvmsvgsg0h0000gn/T/RackMultipart20200603-8816-141gncj.jpeg>, @original_filename="test.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"product[images][]\"; filename=\"test.jpeg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 14306\r\n">], "category_id"=>"1"}, "button"=>""}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering products/new.html.haml within layouts/application
+  Rendered layouts/_error_messages.html.haml (Duration: 0.5ms | Allocations: 136)
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."ancestry" IS NULL[0m
+  Rendered products/new.html.haml within layouts/application (Duration: 5.0ms | Allocations: 2952)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 1.9ms | Allocations: 2171)
+  Rendered layouts/_footer.html.haml (Duration: 0.4ms | Allocations: 917)
+Completed 200 OK in 87ms (Views: 15.5ms | ActiveRecord: 0.6ms | Allocations: 18584)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" WHERE "products"."seller_id" = ?[0m  [["seller_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "category"], ["created_at", "2020-06-03 11:18:31.684688"], ["updated_at", "2020-06-03 11:18:31.684688"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 1.4ms | Allocations: 683)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 2.2ms | Allocations: 2531)
+  Rendered layouts/_footer.html.haml (Duration: 0.4ms | Allocations: 917)
+Completed 200 OK in 12ms (Views: 11.2ms | ActiveRecord: 0.2ms | Allocations: 13408)
+Started GET "/products/new" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by ProductsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 225)
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering users/sessions/new.html.haml within layouts/application
+  Rendered users/shared/_links.html.haml (Duration: 0.3ms | Allocations: 207)
+  Rendered users/sessions/new.html.haml within layouts/application (Duration: 1.6ms | Allocations: 898)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 1.7ms | Allocations: 2197)
+  Rendered layouts/_footer.html.haml (Duration: 0.4ms | Allocations: 917)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.0ms | Allocations: 13461)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering users/registrations/new.html.haml within layouts/application
+  Rendered /Library/Ruby/Gems/2.6.0/gems/devise-i18n-1.9.1/app/views/devise/shared/_error_messages.html.erb (Duration: 1.2ms | Allocations: 213)
+  Rendered users/shared/_links.html.haml (Duration: 0.4ms | Allocations: 188)
+  Rendered users/registrations/new.html.haml within layouts/application (Duration: 8.1ms | Allocations: 6002)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 2.4ms | Allocations: 2206)
+  Rendered layouts/_footer.html.haml (Duration: 0.5ms | Allocations: 917)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.0ms | Allocations: 19577)
+Started POST "/users" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"name"=>"user_1", "email"=>"user_1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fc7d0b553e8 @tempfile=#<Tempfile:/var/folders/y8/9mxjmdmn6q3c5yjvmsvgsg0h0000gn/T/RackMultipart20200603-8816-1p9ss5w.jpeg>, @original_filename="test.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"test.jpeg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 14306\r\n">}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at", "avatar") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "user_1"], ["email", "user_1@example.com"], ["encrypted_password", "$2a$04$p3AQOsL/jCoGyRHKr.BIAen.zjiedI7HbCq9WHjx8v5dlBYu85VWC"], ["created_at", "2020-06-03 11:18:31.934417"], ["updated_at", "2020-06-03 11:18:31.934417"], ["avatar", "test.jpeg"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2020-06-03 11:18:31.941912"], ["last_sign_in_at", "2020-06-03 11:18:31.941912"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2020-06-03 11:18:31.942143"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 65ms (ActiveRecord: 1.4ms | Allocations: 5846)
+Started GET "/" for 127.0.0.1 at 2020-06-03 11:18:31 +0900
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered products/index.html.haml within layouts/application (Duration: 2.0ms | Allocations: 687)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered layouts/_header.html.haml (Duration: 8.0ms | Allocations: 2796)
+  Rendered layouts/_footer.html.haml (Duration: 1.4ms | Allocations: 917)
+Completed 200 OK in 31ms (Views: 29.6ms | ActiveRecord: 0.3ms | Allocations: 13796)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-06-03 11:18:32 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering users/registrations/new.html.haml within layouts/application
+  Rendered /Library/Ruby/Gems/2.6.0/gems/devise-i18n-1.9.1/app/views/devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 15)
+  Rendered users/shared/_links.html.haml (Duration: 0.3ms | Allocations: 150)
+  Rendered users/registrations/new.html.haml within layouts/application (Duration: 3.2ms | Allocations: 1087)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 3.4ms | Allocations: 2197)
+  Rendered layouts/_footer.html.haml (Duration: 1.3ms | Allocations: 917)
+Completed 200 OK in 24ms (Views: 22.9ms | ActiveRecord: 0.0ms | Allocations: 13500)
+Started POST "/users" for 127.0.0.1 at 2020-06-03 11:18:32 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"name"=>"", "email"=>"user_1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fc7ce5a4810 @tempfile=#<Tempfile:/var/folders/y8/9mxjmdmn6q3c5yjvmsvgsg0h0000gn/T/RackMultipart20200603-8816-19mdnoh.jpeg>, @original_filename="test.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"test.jpeg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 14306\r\n">}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering users/registrations/new.html.haml within layouts/application
+  Rendered /Library/Ruby/Gems/2.6.0/gems/devise-i18n-1.9.1/app/views/devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 222)
+  Rendered users/shared/_links.html.haml (Duration: 0.3ms | Allocations: 150)
+  Rendered users/registrations/new.html.haml within layouts/application (Duration: 3.8ms | Allocations: 1304)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 2.5ms | Allocations: 2197)
+  Rendered layouts/_footer.html.haml (Duration: 0.7ms | Allocations: 917)
+Completed 200 OK in 69ms (Views: 18.4ms | ActiveRecord: 0.3ms | Allocations: 16814)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "user_1"], ["email", "user_1@example.com"], ["encrypted_password", "$2a$04$eGngm5joPmEWCnS1fdhW9u3/dJZ5OYbmZKT1nAYtMl.jjYiStmqdO"], ["created_at", "2020-06-03 11:18:32.188357"], ["updated_at", "2020-06-03 11:18:32.188357"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-06-03 11:18:32 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering users/registrations/new.html.haml within layouts/application
+  Rendered /Library/Ruby/Gems/2.6.0/gems/devise-i18n-1.9.1/app/views/devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 15)
+  Rendered users/shared/_links.html.haml (Duration: 0.4ms | Allocations: 150)
+  Rendered users/registrations/new.html.haml within layouts/application (Duration: 2.1ms | Allocations: 1084)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 2.0ms | Allocations: 2197)
+  Rendered layouts/_footer.html.haml (Duration: 0.5ms | Allocations: 917)
+Completed 200 OK in 15ms (Views: 14.3ms | ActiveRecord: 0.0ms | Allocations: 13499)
+Started POST "/users" for 127.0.0.1 at 2020-06-03 11:18:32 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"name"=>"user_1", "email"=>"user_1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fc7d082c5b8 @tempfile=#<Tempfile:/var/folders/y8/9mxjmdmn6q3c5yjvmsvgsg0h0000gn/T/RackMultipart20200603-8816-1v60p5m.jpeg>, @original_filename="test.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"test.jpeg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 14306\r\n">}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user_1@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering users/registrations/new.html.haml within layouts/application
+  Rendered /Library/Ruby/Gems/2.6.0/gems/devise-i18n-1.9.1/app/views/devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 198)
+  Rendered users/shared/_links.html.haml (Duration: 0.3ms | Allocations: 150)
+  Rendered users/registrations/new.html.haml within layouts/application (Duration: 3.0ms | Allocations: 1279)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_header.html.haml (Duration: 2.7ms | Allocations: 2197)
+  Rendered layouts/_footer.html.haml (Duration: 0.5ms | Allocations: 917)
+Completed 200 OK in 71ms (Views: 16.5ms | ActiveRecord: 0.3ms | Allocations: 16815)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user_10@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user_11@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user_12@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "user_1"], ["email", "example@example.com"], ["encrypted_password", "$2a$04$d984PnI8J6MxuJecn.2Dw.sCJpn6q2i2qh/Axc4fk8zfOzkP1FKme"], ["created_at", "2020-06-03 11:18:32.484577"], ["updated_at", "2020-06-03 11:18:32.484577"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "example@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
