@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :correct_user,   only: :destroy
   before_action :authenticate_user!, except: [:index, :search]
+  before_action :categories, only: [:new, :create, :edit, :update]
   
   def index
     if params[:category].nil?
@@ -23,7 +24,6 @@ class ProductsController < ApplicationController
   
   def new
     @product = Product.new
-    categories
   end
   
   
@@ -32,30 +32,27 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_path, notice: '作成に成功'
     else
-      categories
       render :new 
     end
   end
   
   def edit
     @product = Product.find(params[:id])
-    categories
   end
   
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      flash[:success] = "編集に成功しました"
+      flash[:notice] = "編集に成功しました"
       redirect_to @product
     else
-      categories
       render :edit
     end
   end
   
   def destroy
     @product.destroy
-    flash[:success] = '削除しました'
+    flash[:notice] = '削除しました'
     @products = Product.all.page(params[:page]).per(20).order(created_at: :desc)
     redirect_to products_url
   end
@@ -71,7 +68,7 @@ class ProductsController < ApplicationController
     elsif params[:message_type] == 'after_purchased'
       if @product.purchaser_id.nil?
         @product.update!(purchaser_id: current_user.id)
-        flash[:success] = '購入しました'
+        flash[:notice] = '購入しました'
       end
       @messages = AfterPurchasedMessage.where(product_id: @product.id)
       @message_type = 'after_purchased'
