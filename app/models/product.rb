@@ -11,4 +11,5 @@ class Product < ApplicationRecord
   validates :price, presence: true
   validates :images, presence: true
   validates :seller_id, presence: true
+  scope :recent, -> {per(20).order(created_at: :desc)}
 end
