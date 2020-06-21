@@ -8,11 +8,14 @@ Rails.application.routes.draw do
   
   #product
   resources :products
-  get 'product/:id/speak', to: 'products#speak', as: 'speak'
   get 'product/:id/purchase', to: 'products#purchase', as: 'purchase'
-  get 'product/search', to: 'products#search', as: 'search'
   get '/sales_products', to: 'products#sales_products'
   get '/purchased_products', to: 'products#purchased_products'
   get 'category', to: 'categories#category', defaults: { format: 'json' }
-  
+
+  #search
+  get 'search', to: 'search#search', as: 'search'
+
+  #speak
+  get 'product/:id/speak', to: 'speaks#speak', as: 'speak'
 end

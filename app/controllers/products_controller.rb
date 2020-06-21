@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :correct_user,   only: :destroy
-  before_action :authenticate_user!, except: [:index, :search]
+  before_action :correct_user, only: :destroy
+  before_action :authenticate_user!, except: [:index]
   before_action :categories, only: [:new, :create, :edit, :update]
   
   def index
@@ -53,27 +53,9 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     flash[:notice] = '削除しました'
-    @products = Product.all.page(params[:page]).recent
     redirect_to products_url
   end
-  
- 
-  #質問ルーム
-  def speak
-    #message type に合ったmessageをviewに渡す
-    @product = Product.find(params[:id])
-    if params[:message_type] == 'q_and_a'
-      @messages = QAndAMessage.where(product_id: @product.id)
-      @message_type = 'q_and_a'
-    elsif params[:message_type] == 'after_purchased'
-      if @product.purchaser_id.nil?
-        @product.update!(purchaser_id: current_user.id)
-        flash[:notice] = '購入しました'
-      end
-      @messages = AfterPurchasedMessage.where(product_id: @product.id)
-      @message_type = 'after_purchased'
-    end
-  end
+
    #出品商品一覧
   def sales_products
     @products = current_user.sales_products.page(params[:page]).recent
@@ -97,13 +79,6 @@ class ProductsController < ApplicationController
       redirect_to user_info_url
     end
   end
-  
-  def search
-    @q = Product.ransack(params[:q])
-    @products = @q.result(distinct: true).page(params[:page]).recent
-    render :index
-  end
-  
   
   private
   
